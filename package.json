@@ -1,0 +1,36 @@
+{
+  "name": "sitio-institucional",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "git:time-travel": "git-time-travel",
+    "git:time-travel:1": "git-time-travel -c 1",
+    "git:time-travel:all": "git-time-travel -a",
+    "git:time-travel:interactive": "git-time-travel -i",
+    "git:time-travel:help": "git-time-travel --help"
+  },
+  "dependencies": {
+    "lucide-react": "^1.11.0",
+    "next": "16.2.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "git-time-travel": "^2.0.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "volta": {
+    "node": "24.15.0"
+  }
+}

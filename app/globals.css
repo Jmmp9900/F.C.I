@@ -1,0 +1,338 @@
+@import "tailwindcss";
+
+/* F.C.I. — tokens de marca (fondo profundo, oro, Tierra, Espacio) */
+:root {
+  --fci-void: #02050c;
+  --fci-base: #060a12;
+  --fci-surface: #0d1420;
+  --fci-navy: #080f1e;
+  --fci-gold: #d4b56e;
+  --fci-gold-hover: #e8c86b;
+  --fci-gold-dim: #b8954a;
+  --fci-earth: #1f5c3a;
+  --fci-earth-rich: #1d5034;
+  --fci-space: #4a1c78;
+  --fci-space-rich: #5a2a92;
+  --fci-violet: #9458ff;
+  --fci-foreground: #fafbfc;
+  --fci-muted: #a8b0c0;
+}
+
+@theme inline {
+  --color-fci-void: var(--fci-void);
+  --color-fci-base: var(--fci-base);
+  --color-fci-surface: var(--fci-surface);
+  --color-fci-navy: var(--fci-navy);
+  --color-fci-gold: var(--fci-gold);
+  --color-fci-gold-hover: var(--fci-gold-hover);
+  --color-fci-gold-dim: var(--fci-gold-dim);
+  --color-fci-earth: var(--fci-earth);
+  --color-fci-earth-rich: var(--fci-earth-rich);
+  --color-fci-space: var(--fci-space);
+  --color-fci-space-rich: var(--fci-space-rich);
+  --color-fci-violet: var(--fci-violet);
+  --color-fci-foreground: var(--fci-foreground);
+  --color-fci-muted: var(--fci-muted);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cinzel), ui-serif, Georgia, serif;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--fci-base);
+  color: var(--fci-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Resplandores suaves (órbita / nodo) */
+.fci-glow-gold {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--fci-gold) 25%, transparent);
+}
+.fci-glow-earth {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--fci-earth) 35%, transparent);
+}
+.fci-glow-space {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--fci-violet) 30%, transparent);
+}
+
+/* —— Animaciones (scroll + hero) —— */
+@keyframes fci-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.25rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Fondo del hero: movimiento lento (órbita / deriva) */
+@keyframes fci-hero-drift {
+  0% {
+    transform: scale(1.1) translate3d(0.3%, 0, 0);
+  }
+  100% {
+    transform: scale(1.2) translate3d(-2.2%, 0.7%, 0);
+  }
+}
+
+.fci-hero-drift {
+  position: absolute;
+  inset: -7%;
+  animation: fci-hero-drift 30s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.fci-hero-drift .fci-hero-img {
+  will-change: transform;
+  filter: saturate(1.22) contrast(1.08) brightness(1.05);
+}
+
+/* Brillo sutil (espacio) + pulso un poco más visible */
+@keyframes fci-hero-stars-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.82;
+  }
+}
+
+.fci-hero-stars {
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.1px 1.1px at 8% 15%, rgba(255, 252, 240, 0.75), transparent),
+    radial-gradient(1.3px 1.3px at 18% 45%, rgba(200, 230, 255, 0.6), transparent),
+    radial-gradient(1.1px 1.1px at 32% 22%, rgba(255, 248, 220, 0.7), transparent),
+    radial-gradient(1.1px 1.1px at 48% 60%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1.2px 1.2px at 62% 12%, rgba(230, 215, 255, 0.6), transparent),
+    radial-gradient(1.1px 1.1px at 78% 38%, rgba(255, 250, 235, 0.7), transparent),
+    radial-gradient(1.3px 1.3px at 88% 22%, rgba(200, 220, 255, 0.65), transparent),
+    radial-gradient(1.1px 1.1px at 15% 72%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.1px 1.1px at 40% 88%, rgba(255, 240, 200, 0.65), transparent),
+    radial-gradient(1.1px 1.1px at 72% 78%, rgba(255, 250, 235, 0.65), transparent),
+    radial-gradient(1.2px 1.2px at 92% 65%, rgba(200, 220, 255, 0.55), transparent);
+  background-size: 100% 100%;
+  mix-blend-mode: screen;
+  animation: fci-hero-stars-pulse 4.5s ease-in-out infinite;
+}
+
+/* Puntos cálidos (ciudad / luces) — parpadeo individual */
+@keyframes fci-hero-twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.7);
+    filter: brightness(0.75) blur(0.3px);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: brightness(1.45) blur(0);
+  }
+  70% {
+    opacity: 0.5;
+    transform: scale(0.9);
+    filter: brightness(1) blur(0.2px);
+  }
+}
+
+.fci-hero-lights {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.fci-hero-light {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 235, 180, 0.95) 0%,
+    rgba(255, 200, 120, 0.4) 45%,
+    transparent 70%
+  );
+  box-shadow:
+    0 0 4px rgba(255, 220, 150, 0.9),
+    0 0 14px rgba(255, 190, 90, 0.55);
+  animation: fci-hero-twinkle 2.6s ease-in-out infinite;
+}
+
+.fci-hero-light:nth-child(odd) {
+  animation-duration: 2.1s;
+}
+.fci-hero-light:nth-child(3n) {
+  animation-duration: 3.1s;
+}
+.fci-hero-light:nth-child(1) {
+  animation-delay: 0s;
+}
+.fci-hero-light:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.fci-hero-light:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.fci-hero-light:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.fci-hero-light:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.fci-hero-light:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.fci-hero-light:nth-child(7) {
+  animation-delay: 1.1s;
+}
+.fci-hero-light:nth-child(8) {
+  animation-delay: 0.25s;
+}
+.fci-hero-light:nth-child(9) {
+  animation-delay: 1.35s;
+}
+.fci-hero-light:nth-child(10) {
+  animation-delay: 0.65s;
+}
+.fci-hero-light:nth-child(11) {
+  animation-delay: 1.5s;
+}
+.fci-hero-light:nth-child(12) {
+  animation-delay: 0.85s;
+}
+
+.fci-hero-anim > * {
+  opacity: 0;
+  animation: fci-fade-up 0.7s ease-out both;
+}
+
+.fci-hero-anim > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.fci-hero-anim > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.fci-hero-anim > *:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.fci-hero-anim > *:nth-child(4) {
+  animation-delay: 0.28s;
+}
+.fci-hero-anim > *:nth-child(5) {
+  animation-delay: 0.36s;
+}
+
+.fci-reveal {
+  opacity: 0;
+  transform: translate3d(0, 1.5rem, 0);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+  will-change: opacity, transform;
+}
+
+.fci-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Imágenes de secciones: misma deriva lenta del hero, variantes y ritmos */
+@keyframes fci-brand-drift {
+  0% {
+    transform: scale(1.1) translate3d(0.25%, 0, 0);
+  }
+  100% {
+    transform: scale(1.15) translate3d(-1.1%, 0.4%, 0);
+  }
+}
+
+.fci-brand-drift {
+  animation: fci-brand-drift 36s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.fci-brand-drift--rev {
+  animation-direction: alternate-reverse;
+}
+
+.fci-brand-drift--pub1 {
+  animation-duration: 40s;
+}
+
+.fci-brand-drift--pub2 {
+  animation-duration: 47s;
+  animation-direction: alternate-reverse;
+}
+
+.fci-brand-drift--pub3 {
+  animation-duration: 43s;
+}
+
+.fci-brand-drift__img {
+  filter: saturate(1.12) contrast(1.05) brightness(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fci-brand-drift {
+    animation: none;
+    transform: none;
+  }
+
+  .fci-brand-drift__img {
+    filter: none;
+  }
+
+  .fci-hero-drift {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: none;
+    transform: none;
+  }
+
+  .fci-hero-drift .fci-hero-img {
+    filter: none;
+  }
+
+  .fci-hero-stars {
+    animation: none;
+    opacity: 0.45;
+  }
+
+  .fci-hero-light {
+    animation: none !important;
+    opacity: 0.5;
+  }
+
+  .fci-hero-anim > * {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .fci-reveal,
+  .fci-reveal-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
