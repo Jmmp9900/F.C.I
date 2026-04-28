@@ -1,6 +1,10 @@
 import { ArrowRight, Compass, GraduationCap, LineChart, Search } from "lucide-react";
 import Link from "next/link";
 import { BrandImageDrift } from "./BrandImageDrift";
+import {
+  getWhatsAppChatHref,
+  isWhatsAppChatHref,
+} from "../lib/whatsapp";
 
 const tiles = [
   { icon: Compass, label: "Consultoría" },
@@ -28,10 +32,24 @@ function IconRow() {
 }
 
 export function SplitDomains() {
+  const whatsappHref = getWhatsAppChatHref();
+  const whatsAppExternal = isWhatsAppChatHref(whatsappHref);
+
   return (
     <section className="border-t border-white/5 py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="relative grid gap-0 md:grid-cols-2">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+          Dos dominios, una sola lógica
+        </p>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-fci-muted text-balance sm:text-base">
+          Los mismos fenómenos que han definido el poder en la Tierra —
+          competencia, cooperación, seguridad, regulación y economía — se
+          proyectan también en el espacio exterior. La Fundación analiza estos
+          procesos en ambos dominios para acompañar a organizaciones en su
+          posicionamiento estratégico.
+        </p>
+
+        <div className="relative mt-14 grid gap-0 md:grid-cols-2">
           {/* Divisor central */}
           <div
             className="pointer-events-none absolute left-1/2 top-0 z-10 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-fci-gold/0 via-fci-gold/60 to-fci-gold/0 md:block"
@@ -64,16 +82,18 @@ export function SplitDomains() {
               <p className="inline-block rounded-sm bg-fci-earth px-3 py-1 font-serif text-sm font-semibold uppercase tracking-widest text-fci-foreground">
                 Tierra
               </p>
-              <p className="mt-3 text-sm text-fci-muted">
-                Geopolítica, geoeconomía y gobernanza con foco en decisiones
-                presentes.
+              <p className="mt-3 text-sm leading-relaxed text-fci-muted">
+                Gobernanza mundial, geopolítica y geoeconomía: dinámicas de
+                poder, cooperación y competencia en el sistema internacional,
+                acceso a mercados y decisiones en entornos complejos e
+                interconectados.
               </p>
               <IconRow />
               <Link
-                href="#"
+                href="#servicios"
                 className="mt-6 inline-flex items-center gap-2 border border-fci-foreground/30 px-4 py-2.5 text-sm font-medium text-fci-foreground transition hover:border-fci-gold hover:text-fci-gold"
               >
-                Explorar dominio Tierra
+                Ver líneas de servicio
                 <ArrowRight className="size-4" />
               </Link>
             </div>
@@ -100,16 +120,17 @@ export function SplitDomains() {
               <p className="inline-block rounded-sm bg-fci-space px-3 py-1 font-serif text-sm font-semibold uppercase tracking-widest text-fci-foreground">
                 Espacio
               </p>
-              <p className="mt-3 text-sm text-fci-muted">
-                Astropolítica, New Space e inteligencia estratégica del entorno
-                orbital.
+              <p className="mt-3 text-sm leading-relaxed text-fci-muted">
+                Gobernanza espacial, astropolítica y economía del espacio: cómo
+                la geopolítica y la economía global se extienden al espacio
+                exterior —diplomacia espacial, regulación y sector New Space.
               </p>
               <IconRow />
               <Link
-                href="#"
+                href="#servicios"
                 className="mt-6 inline-flex items-center gap-2 border border-fci-foreground/30 px-4 py-2.5 text-sm font-medium text-fci-foreground transition hover:border-fci-gold hover:text-fci-gold"
               >
-                Explorar dominio Espacio
+                Ver líneas de servicio
                 <ArrowRight className="size-4" />
               </Link>
             </div>
@@ -121,7 +142,10 @@ export function SplitDomains() {
             Un mismo equipo. Dos dominios. Una visión integrada.
           </p>
           <Link
-            href="#"
+            href={whatsappHref}
+            {...(whatsAppExternal
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-fci-gold-dim via-fci-gold to-fci-gold-hover px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-fci-void fci-glow-gold transition hover:brightness-110"
           >
             Agendar consultoría

@@ -137,10 +137,21 @@ export function NosotrosSection() {
               </p>
               <div className="mt-3 h-px w-28 bg-fci-gold/80" />
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-fci-muted sm:text-base">
-                Somos la Fundación Consultores Internacionales. Operamos en dos
-                dominios estratégicos —la Tierra y el Espacio— para acompañar a
-                empresas, gobiernos y particulares en las decisiones que
-                configuran el sistema internacional en expansión.
+                Somos la Fundación Consultores Internacionales: más de{" "}
+                <span className="text-fci-foreground/95">15 años</span>{" "}
+                acompañando a actores públicos, privados y académicos ante los
+                cambios del sistema planetario, con ciencia, tecnología e
+                innovación. Somos pioneros en abordar la exploración y
+                economía del espacio exterior como nueva frontera estratégica.
+              </p>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-fci-muted sm:text-base">
+                Desde <span className="text-fci-foreground/95">2012</span>{" "}
+                facilitamos internacionalización y alianzas; hoy integramos la
+                dimensión espacial para posicionar a nuestros aliados en un
+                sistema global más tecnológico y en expansión.{" "}
+                <span className="italic text-fci-gold/90">
+                  Ideas, iniciativas y proyectos spin-in / spin-off.
+                </span>
               </p>
 
               <div className="mt-6 grid grid-cols-3 gap-3 text-center">

@@ -9,6 +9,8 @@ import { ServicesGrid } from "./components/ServicesGrid";
 import { MethodologyStrip } from "./components/MethodologyStrip";
 import { EducacionTeaser } from "./components/EducacionTeaser";
 import { PublicationsTeaser } from "./components/PublicationsTeaser";
+import { NexusTeaser } from "./components/NexusTeaser";
+import { FciConnectTeaser } from "./components/FciConnectTeaser";
 export default function Home() {
   return (
     <SitePageLayout>
@@ -33,6 +35,12 @@ export default function Home() {
         </Reveal>
         <Reveal>
           <EducacionTeaser />
+        </Reveal>
+        <Reveal delayMs={25}>
+          <NexusTeaser />
+        </Reveal>
+        <Reveal delayMs={25}>
+          <FciConnectTeaser />
         </Reveal>
         <Reveal delayMs={20}>
           <PublicationsTeaser />

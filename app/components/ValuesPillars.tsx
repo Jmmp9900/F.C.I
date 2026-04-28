@@ -19,8 +19,9 @@ export function ValuesPillars() {
           Cómo pensamos el poder
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-fci-muted text-balance">
-          Integración de análisis, prospectiva e impacto en los dos dominios
-          del poder: Tierra y Espacio.
+          Conectamos conocimiento global con progreso local: proyectos que
+          transforman realidades en la Tierra y exploran el espacio como motor de
+          innovación y adaptación.
         </p>
         <ul className="mt-10 flex flex-wrap items-stretch justify-center gap-3 sm:gap-4">
           {items.map(({ icon: Icon, label }) => (

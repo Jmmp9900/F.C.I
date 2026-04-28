@@ -1,30 +1,30 @@
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, BookOpen, Orbit, Satellite, Search } from "lucide-react";
+import { BookOpen, Briefcase, LineChart, Orbit, Satellite, Search } from "lucide-react";
 import Link from "next/link";
 
 const tierra = [
   {
     n: "01",
-    title: "Consultoría",
-    text: "Acompañamiento en decisiones en entornos internacionales complejos.",
-    icon: Search,
+    title: "Consultoría estratégica",
+    text: "Decisiones en entornos internacionales complejos; geopolítica, geoeconomía y la dimensión espacio como escenario emergente.",
+    icon: Briefcase,
   },
   {
     n: "02",
-    title: "Capacitación",
-    text: "Formación ejecutiva y sensibilización en lineamientos de política.",
+    title: "Capacitación y sensibilización",
+    text: "Cursos y talleres para interpretar el sistema global y tomar decisiones en Tierra y en el espacio exterior.",
     icon: BookOpen,
   },
   {
     n: "03",
-    title: "Investigación",
-    text: "Estudios y diagnósticos con marco lógico y enfoque comparado.",
-    icon: Orbit,
+    title: "Investigación e innovación",
+    text: "Informes estratégicos, policy papers, diagnósticos institucionales y estudios sobre tendencias globales y economía del espacio.",
+    icon: LineChart,
   },
   {
     n: "04",
-    title: "Proyectos",
-    text: "Formulación y seguimiento de iniciativas de cooperación.",
+    title: "Gestión de proyectos",
+    text: "Formulación con metodologías internacionales, planes de internacionalización y apoyo en implementación y cooperación.",
     icon: Search,
   },
 ] as const;
@@ -32,26 +32,26 @@ const tierra = [
 const espacio = [
   {
     n: "01",
-    title: "Consultoría",
-    text: "Astropolítica, New Space y economía del sector satelital.",
+    title: "Consultoría estratégica",
+    text: "Astropolítica, New Space y dinámicas competitivas del sector espacial integradas al análisis global.",
     icon: Satellite,
   },
   {
     n: "02",
-    title: "Capacitación",
-    text: "Cursos y talleres en seguridad y gobernanza del espacio.",
+    title: "Capacitación y sensibilización",
+    text: "Programas formativos sobre gobernanza espacial, diplomacia y economía del espacio.",
     icon: BookOpen,
   },
   {
     n: "03",
-    title: "Investigación",
-    text: "Inteligencia y prospectiva en órbita y cadenas de valor.",
+    title: "Investigación e innovación",
+    text: "Prospectiva orbital, economía New Space e iniciativas aplicadas a políticas y sector privado.",
     icon: Orbit,
   },
   {
     n: "04",
-    title: "Gestión",
-    text: "Alineación con estándares y escenarios de riesgo espacial.",
+    title: "Gestión de proyectos",
+    text: "Iniciativas en tecnología y sector espacial, acceso a cooperación y financiamiento internacional.",
     icon: Search,
   },
 ] as const;
@@ -86,7 +86,7 @@ function ServiceCard({ n, title, text, icon: Icon, variant }: CardProps) {
         </div>
       </div>
       <Link
-        href="#"
+        href="#contacto"
         className="shrink-0 self-end text-sm font-medium text-fci-gold sm:self-center"
       >
         Explorar →
@@ -109,8 +109,9 @@ export function ServicesGrid() {
           Nuestros servicios
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-fci-muted text-balance">
-          Cuatro líneas de servicio. Dos dominios estratégicos. Una visión
-          integrada.
+          Cuatro líneas de servicio alineadas al documento institucional:
+          consultoría, formación, investigación y proyectos —aplicadas en Tierra
+          y en el espacio con una misma lógica estratégica.
         </p>
 
         <div className="relative mt-12 grid gap-8 md:grid-cols-2">
@@ -121,7 +122,7 @@ export function ServicesGrid() {
           />
           <div>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-fci-earth/50 bg-fci-earth/15 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-fci-foreground">
-              Tierra — Geopolítica · Geoeconomía
+              Tierra — Gobernanza · Geopolítica · Geoeconomía
             </div>
             <ul className="space-y-3">
               {tierra.map((c) => (
@@ -131,7 +132,7 @@ export function ServicesGrid() {
           </div>
           <div>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-fci-violet/40 bg-fci-space/20 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-fci-foreground">
-              Espacio — Astropolítica · New Space
+              Espacio — Gobernanza espacial · Astropolítica · New Space
             </div>
             <ul className="space-y-3">
               {espacio.map((c) => (

@@ -1,0 +1,16 @@
+Copia de seguridad lógica del sitio ANTES de la integración visual de contenido FCI 2025.
+
+Commit guardado:
+  7a180bb  chore: snapshot antes integracion contenido FCI 2025
+
+Rama de respaldo (apunta al mismo commit):
+  backup/pre-integracion-contenido-fci
+
+Cómo volver exactamente a ese estado (descarta cambios posteriores en la rama actual):
+  git reset --hard 7a180bb
+
+O solo revisar archivos sin mover la rama:
+  git checkout 7a180bb -- app
+
+Si algo salió mal después de más commits, también puedes:
+  git checkout backup/pre-integracion-contenido-fci

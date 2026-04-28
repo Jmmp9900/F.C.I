@@ -83,11 +83,18 @@ export function HeroHome() {
           Poder global.
         </h1>
         <div className="mx-auto mt-6 h-px w-24 bg-fci-gold/80" />
-        <p className="mx-auto mt-6 max-w-2xl text-balance text-base text-fci-muted sm:text-lg">
+        <p className="mx-auto mt-6 max-w-3xl text-balance font-serif text-lg italic text-fci-foreground/95 sm:text-xl">
+          Analizamos el poder global… en dos dominios:{" "}
+          <span className="text-fci-gold">Tierra y Espacio</span>.
+        </p>
+        <p className="mx-auto mt-4 max-w-2xl text-balance text-base text-fci-muted sm:text-lg">
           Geopolítica. Economía. Seguridad. Espacio. Decisiones hoy, poder
           mañana.
         </p>
-        <p className="mx-auto mt-3 max-w-3xl font-serif text-sm uppercase leading-relaxed tracking-[0.2em] text-fci-gold/90 sm:text-base">
+        <p className="mx-auto mt-3 font-serif text-xs uppercase tracking-[0.35em] text-fci-gold/85 sm:text-sm">
+          Rompiendo fronteras
+        </p>
+        <p className="mx-auto mt-5 max-w-3xl font-serif text-sm uppercase leading-relaxed tracking-[0.2em] text-fci-gold/90 sm:text-base">
           Estrategia global para un mundo en expansión
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
