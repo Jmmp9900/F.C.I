@@ -290,6 +290,103 @@ body {
   filter: saturate(1.12) contrast(1.05) brightness(1.03);
 }
 
+@keyframes fci-orbit-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.02);
+  }
+}
+
+@keyframes fci-planet-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 34px rgba(118, 139, 255, 0.28);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    box-shadow: 0 0 52px rgba(118, 139, 255, 0.4);
+    transform: translate3d(0, -3px, 0) scale(1.015);
+  }
+}
+
+@keyframes fci-nosotros-stars {
+  0%,
+  100% {
+    opacity: 0.38;
+  }
+  50% {
+    opacity: 0.68;
+  }
+}
+
+@keyframes fci-stat-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.fci-nosotros-stars {
+  background-image:
+    radial-gradient(1.1px 1.1px at 10% 20%, rgba(255, 248, 230, 0.6), transparent),
+    radial-gradient(1.2px 1.2px at 24% 58%, rgba(198, 225, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 42% 28%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.1px 1.1px at 65% 14%, rgba(208, 216, 255, 0.52), transparent),
+    radial-gradient(1.1px 1.1px at 84% 36%, rgba(162, 237, 212, 0.5), transparent),
+    radial-gradient(1px 1px at 91% 72%, rgba(255, 246, 215, 0.52), transparent);
+  mix-blend-mode: screen;
+  animation: fci-nosotros-stars 5s ease-in-out infinite;
+}
+
+.fci-orbit-ring {
+  transform-origin: center;
+  animation: fci-orbit-rotate 70s linear infinite;
+}
+
+.fci-orbit-ring--earth {
+  animation-duration: 62s;
+}
+
+.fci-orbit-ring--space {
+  animation-duration: 84s;
+  animation-direction: reverse;
+}
+
+.fci-orbit-ring--inner {
+  animation-duration: 54s;
+}
+
+.fci-planet-wrap {
+  animation: fci-planet-pulse 7.5s ease-in-out infinite;
+}
+
+.fci-planet-img {
+  filter: saturate(1.26) contrast(1.1) brightness(1.08);
+}
+
+.fci-nosotros-stat {
+  animation: fci-stat-float 6s ease-in-out infinite;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fci-nosotros-stat:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.fci-nosotros-stat:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.fci-nosotros-stat:hover {
+  border-color: color-mix(in srgb, var(--fci-gold) 55%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--fci-gold) 22%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fci-brand-drift {
     animation: none;
@@ -334,5 +431,13 @@ body {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .fci-orbit-ring,
+  .fci-planet-wrap,
+  .fci-nosotros-stars,
+  .fci-nosotros-stat {
+    animation: none !important;
+    transform: none !important;
   }
 }

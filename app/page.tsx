@@ -4,7 +4,7 @@ import { HeroHome } from "./components/HeroHome";
 import { ValuesPillars } from "./components/ValuesPillars";
 import { SplitDomains } from "./components/SplitDomains";
 import { StatsBar } from "./components/StatsBar";
-import { AboutTeaser } from "./components/AboutTeaser";
+import { NosotrosSection } from "./components/NosotrosSection";
 import { ServicesGrid } from "./components/ServicesGrid";
 import { MethodologyStrip } from "./components/MethodologyStrip";
 import { EducacionTeaser } from "./components/EducacionTeaser";
@@ -23,7 +23,7 @@ export default function Home() {
           <StatsBar />
         </Reveal>
         <Reveal delayMs={30}>
-          <AboutTeaser />
+          <NosotrosSection />
         </Reveal>
         <Reveal>
           <ServicesGrid />

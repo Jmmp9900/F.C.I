@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { brandImage } from "../lib/brand-assets";
+import {
+  getWhatsAppChatHref,
+  isWhatsAppChatHref,
+} from "../lib/whatsapp";
 import { HeroParallaxLayer } from "./HeroParallaxLayer";
 
 const heroCityLights: { left: string; top: string; size: number }[] = [
@@ -19,6 +23,9 @@ const heroCityLights: { left: string; top: string; size: number }[] = [
 ];
 
 export function HeroHome() {
+  const whatsappHref = getWhatsAppChatHref();
+  const whatsAppExternal = isWhatsAppChatHref(whatsappHref);
+
   return (
     <section
       id="inicio"
@@ -85,11 +92,17 @@ export function HeroHome() {
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="#nosotros"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-fci-violet px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-white fci-glow-space transition hover:brightness-110"
+            href={whatsappHref}
+            {...(whatsAppExternal
+              ? {
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                }
+              : {})}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#9d66ff] px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_8px_28px_rgba(157,102,255,0.35)] outline-none transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-[#c9a8ff] focus-visible:ring-offset-2 focus-visible:ring-offset-fci-base/80"
           >
-            Conoce más
-            <ArrowRight className="size-4" />
+            Contáctanos
+            <ArrowRight className="size-4" aria-hidden />
           </a>
           <a
             href="#publicaciones"
