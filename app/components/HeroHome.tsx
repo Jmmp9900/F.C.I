@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { brandImage } from "../lib/brand-assets";
 import {
   getWhatsAppChatHref,
@@ -22,14 +24,15 @@ const heroCityLights: { left: string; top: string; size: number }[] = [
   { left: "68%", top: "65%", size: 3 },
 ];
 
-export function HeroHome() {
+export async function HeroHome() {
+  const t = await getTranslations("Hero");
   const whatsappHref = getWhatsAppChatHref();
   const whatsAppExternal = isWhatsAppChatHref(whatsappHref);
 
   return (
     <section
       id="inicio"
-      className="relative min-h-[22rem] overflow-hidden sm:min-h-[28rem]"
+      className="relative min-h-[26rem] overflow-hidden sm:min-h-[32rem] md:min-h-[36rem]"
     >
       <div className="absolute inset-0 bg-fci-void" aria-hidden />
       <HeroParallaxLayer className="absolute inset-0 z-0">
@@ -79,44 +82,49 @@ export function HeroHome() {
       </div>
 
       <div className="fci-hero-anim relative z-10 mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-28">
-        <h1 className="font-serif text-3xl font-semibold leading-tight tracking-wide text-fci-foreground sm:text-4xl md:text-5xl">
-          Poder global.
+        <h1 className="font-serif text-3xl font-semibold uppercase leading-tight tracking-[0.12em] text-fci-foreground sm:text-4xl md:text-5xl">
+          {t("h1")}
         </h1>
         <div className="mx-auto mt-6 h-px w-24 bg-fci-gold/80" />
-        <p className="mx-auto mt-6 max-w-3xl text-balance font-serif text-lg italic text-fci-foreground/95 sm:text-xl">
-          Analizamos el poder global… en dos dominios:{" "}
-          <span className="text-fci-gold">Tierra y Espacio</span>.
-        </p>
-        <p className="mx-auto mt-4 max-w-2xl text-balance text-base text-fci-muted sm:text-lg">
-          Geopolítica. Economía. Seguridad. Espacio. Decisiones hoy, poder
-          mañana.
+        <p className="mx-auto mt-6 max-w-3xl text-balance font-serif text-sm uppercase italic leading-relaxed tracking-[0.14em] text-fci-foreground/95 sm:text-base md:text-lg">
+          {t.rich("lead", {
+            gold: (chunks) => (
+              <span className="text-fci-gold">{chunks}</span>
+            ),
+          })}
         </p>
         <p className="mx-auto mt-3 font-serif text-xs uppercase tracking-[0.35em] text-fci-gold/85 sm:text-sm">
-          Rompiendo fronteras
+          {t("kicker")}
         </p>
         <p className="mx-auto mt-5 max-w-3xl font-serif text-sm uppercase leading-relaxed tracking-[0.2em] text-fci-gold/90 sm:text-base">
-          Estrategia global para un mundo en expansión
+          {t("line2")}
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href={whatsappHref}
-            {...(whatsAppExternal
-              ? {
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                }
-              : {})}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#9d66ff] px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_8px_28px_rgba(157,102,255,0.35)] outline-none transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-[#c9a8ff] focus-visible:ring-offset-2 focus-visible:ring-offset-fci-base/80"
+          {whatsAppExternal ? (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-fci-earth-rich via-fci-earth to-teal-700 px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_8px_28px_rgba(38,115,74,0.45)] outline-none transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-fci-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-fci-base/80"
+            >
+              {t("ctaContact")}
+              <ArrowRight className="size-4" aria-hidden />
+            </a>
+          ) : (
+            <Link
+              href="/contacto"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-fci-earth-rich via-fci-earth to-teal-700 px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_8px_28px_rgba(38,115,74,0.45)] outline-none transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-fci-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-fci-base/80"
+            >
+              {t("ctaContact")}
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
+          )}
+          <Link
+            href="/blog"
+            className="rounded-md text-sm font-medium text-fci-gold underline-offset-4 outline-none transition hover:underline focus-visible:ring-2 focus-visible:ring-fci-gold/55 focus-visible:ring-offset-2 focus-visible:ring-offset-fci-base/80"
           >
-            Contáctanos
-            <ArrowRight className="size-4" aria-hidden />
-          </a>
-          <a
-            href="#publicaciones"
-            className="text-sm font-medium text-fci-gold underline-offset-4 hover:underline"
-          >
-            Ver publicaciones
-          </a>
+            {t("ctaPublications")}
+          </Link>
         </div>
       </div>
     </section>

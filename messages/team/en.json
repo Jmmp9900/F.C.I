@@ -1,0 +1,76 @@
+{
+  "teamMembers": [
+    {
+      "id": 1,
+      "dominio": "ambos",
+      "nombre": "Dra. Elena Vargas",
+      "cargo": "Executive President",
+      "resumen": "Institutional strategy and international representation.",
+      "credencial": "PhD LSE · Former Foreign Ministry",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": 2,
+      "dominio": "tierra",
+      "nombre": "Dr. Marcus Chen",
+      "cargo": "Director of Geopolitics",
+      "resumen": "Political risk, scenarios, and regional analysis.",
+      "credencial": "PhD Georgetown",
+      "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": 3,
+      "dominio": "tierra",
+      "nombre": "Dra. Sofía Aguilar",
+      "cargo": "Director of Geoeconomics",
+      "resumen": "Trade, value chains, and strategic investment.",
+      "credencial": "PhD Sciences Po",
+      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": 4,
+      "dominio": "ambos",
+      "nombre": "Gral. (r) Rafael Medina",
+      "cargo": "Senior Security Advisor",
+      "resumen": "Defense, resilience, and inter-agency coordination.",
+      "credencial": "Former Military Attaché",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": 5,
+      "dominio": "tierra",
+      "nombre": "Dra. Amara Okonkwo",
+      "cargo": "Head of Multilateral Governance",
+      "resumen": "International cooperation and technical diplomacy.",
+      "credencial": "PhD Oxford · Former UN",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": 6,
+      "dominio": "espacio",
+      "nombre": "Dr. Thomas Berger",
+      "cargo": "Director of Astropolitics",
+      "resumen": "Space law, satellites, and orbital competition.",
+      "credencial": "PhD MIT · Former ESA",
+      "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": 7,
+      "dominio": "espacio",
+      "nombre": "Dra. Yuki Tanaka",
+      "cargo": "Lead, New Space Economy",
+      "resumen": "Business models and expansion of the space sector.",
+      "credencial": "PhD Tokyo · Former JAXA",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": 8,
+      "dominio": "ambos",
+      "nombre": "Dr. Javier Restrepo",
+      "cargo": "Director of Research & Innovation",
+      "resumen": "Bridging science and policy for public decisions.",
+      "credencial": "PhD Harvard",
+      "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&q=80"
+    }
+  ]
+}

@@ -11,8 +11,8 @@ export type BrandImageDriftVariant =
   | "pub3";
 
 const variantClass: Record<BrandImageDriftVariant, string> = {
-  "split-earth": "",
-  "split-space": "fci-brand-drift--rev",
+  "split-earth": "fci-brand-drift--split fci-brand-drift--earth-hud",
+  "split-space": "fci-brand-drift--split fci-brand-drift--rev",
   about: "fci-brand-drift--rev",
   educacion: "",
   pub1: "fci-brand-drift--pub1",
@@ -39,10 +39,12 @@ export function BrandImageDrift({
   imageClassName = "",
 }: BrandImageDriftProps) {
   const mod = variantClass[variant];
+  const earthHudImg = variant === "split-earth" ? " fci-earth-hud-img" : "";
+  const spaceHudImg = variant === "split-space" ? " fci-space-hud-img" : "";
   return (
     <div className="absolute inset-0 overflow-hidden">
       <div
-        className={`absolute inset-[-6%] fci-brand-drift${mod ? ` ${mod}` : ""}`.trim()}
+        className={`absolute inset-[-10%] fci-brand-drift${mod ? ` ${mod}` : ""}`.trim()}
       >
         <Image
           src={brandImage(k)}
@@ -50,7 +52,7 @@ export function BrandImageDrift({
           fill
           quality={quality}
           sizes={sizes}
-          className={`fci-brand-drift__img object-cover${imageClassName ? ` ${imageClassName}` : ""}`.trim()}
+          className={`fci-brand-drift__img object-cover${earthHudImg}${spaceHudImg}${imageClassName ? ` ${imageClassName}` : ""}`.trim()}
         />
       </div>
     </div>

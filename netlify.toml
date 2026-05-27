@@ -1,0 +1,69 @@
+# =============================================================================
+#  Netlify — Configuración del sitio FCI
+# =============================================================================
+#
+#  Esta configuración cubre:
+#   - Build con `next build` y plugin oficial de Next.js (SSR + ISR + edge).
+#   - Node 24 (la versión que usa el proyecto con Volta).
+#   - `--legacy-peer-deps` requerido por la combinación Payload 3 + React 19.
+#   - Timeouts y headers para que Payload y el sitio funcionen correctamente.
+#
+#  No se requiere `next.config.ts` con `output: "standalone"`. El plugin
+#  `@netlify/plugin-nextjs` se encarga del adapter automáticamente.
+# =============================================================================
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Node 24 (alineado con `volta.node` en package.json).
+  NODE_VERSION = "24"
+  # Payload requiere legacy-peer-deps por el rango de React 19.
+  NPM_FLAGS = "--legacy-peer-deps"
+  # Evita avisos de telemetría de Next.js en el build de CI.
+  NEXT_TELEMETRY_DISABLED = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# -----------------------------------------------------------------------------
+# Headers de seguridad globales
+# -----------------------------------------------------------------------------
+# `next.config.ts` ya añade los headers en el flujo HTTP de Next.js, pero
+# Netlify aplica estos también a archivos estáticos servidos directo desde su
+# CDN (sin pasar por la función). Cinturón y tirantes.
+# -----------------------------------------------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-DNS-Prefetch-Control = "on"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), usb=(), payment=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# Cache largo para los assets versionados que Next.js publica bajo /_next/static
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# -----------------------------------------------------------------------------
+# Funciones (Payload API + admin)
+# -----------------------------------------------------------------------------
+# Las rutas críticas de Payload pueden tardar más que un endpoint normal
+# (importación de configuración, generación de import map, queries pesadas).
+# Netlify Free tier permite hasta 60s en funciones síncronas — usamos eso
+# para evitar 504 en operaciones largas de admin (subida de imágenes grandes,
+# migraciones, seeding via API, etc.).
+# -----------------------------------------------------------------------------
+
+[functions]
+  # Aumenta el bundle máximo (sharp + drizzle + pg pesan bastante).
+  node_bundler = "esbuild"
+
+# Si en algún punto Payload se queda corto con 60s, puedes mover endpoints
+# pesados a Background Functions (15 min). Por ahora 60s alcanza.

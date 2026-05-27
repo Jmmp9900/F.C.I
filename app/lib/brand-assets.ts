@@ -7,7 +7,7 @@ export const USE_LOCAL_BRAND_IMAGES = true;
 /** Respaldo si se desactiva local; URLs anteriores (1516307367426, 1523961131990, 1457364559154) devolvían 404. */
 /* URLs remotas: parámetros altos (w, q) para buena resolución si se usa REMOTE. */
 const REMOTE = {
-  hero: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=90&w=2560&auto=format&fit=crop",
+  hero: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=95&w=3840&auto=format&fit=crop",
   tierra: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=90&w=1920&auto=format&fit=crop",
   espacio: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?q=90&w=1920&auto=format&fit=crop",
   quienesSomos:
@@ -23,9 +23,9 @@ const REMOTE = {
 } as const;
 
 const LOCAL: Record<keyof typeof REMOTE, string> = {
-  hero: "/images/brand/hero-espacio.jpg",
-  tierra: "/images/brand/tierra.jpg",
-  espacio: "/images/brand/espacio.jpg",
+  hero: "/images/brand/hero-noche-orbita.png",
+  tierra: "/images/brand/tierra.png",
+  espacio: "/images/brand/espacio.png",
   quienesSomos: "/images/brand/quienes-somos.jpg",
   educacion: "/images/brand/educacion.jpg",
   publicacion1: "/images/brand/publicacion-1.jpg",

@@ -1,0 +1,304 @@
+{
+  "Metadata": {
+    "title": "I.C.F. | Governance · Geopolitics · Astropolitics",
+    "description": "Global strategy for an expanding world. Geopolitics, economy, security, and space."
+  },
+  "Common": {
+    "skipToContent": "Skip to content",
+    "brandAcronym": "I.C.F.",
+    "tagline": "Governance · Geopolitics · Astropolitics",
+    "earth": "Earth",
+    "space": "Space",
+    "both": "Both",
+    "social": {
+      "navLabel": "Social media",
+      "facebook": "Facebook (opens in a new tab)",
+      "instagram": "Instagram (opens in a new tab)",
+      "twitter": "X (Twitter) (opens in a new tab)",
+      "linkedin": "LinkedIn (opens in a new tab)",
+      "youtube": "YouTube (opens in a new tab)"
+    }
+  },
+  "Header": {
+    "nav": {
+      "inicio": "Home",
+      "nosotros": "About",
+      "publicaciones": "Posts",
+      "comunidad": "Community",
+      "contacto": "Contact"
+    },
+    "navAria": "Main",
+    "openMenu": "Open menu"
+  },
+  "Hero": {
+    "h1": "Global power.",
+    "lead": "We analyse global power… across two domains: <gold>Earth and Space</gold>.",
+    "kicker": "Breaking boundaries",
+    "line2": "Global strategy for an expanding world",
+    "ctaContact": "Contact us",
+    "ctaPublications": "View posts"
+  },
+  "ValuesPillars": {
+    "label": "Pillars",
+    "title": "How we think about power",
+    "introOpening": "We connect global knowledge with local progress:",
+    "introLine2": "Projects that transform realities on Earth and",
+    "introLine3": "explore space as a driver of innovation and adaptation.",
+    "iconsHint": "Hover a card (or focus it with the keyboard) to see each pillar's title and description.",
+    "items": {
+      "vision": {
+        "name": "Global vision",
+        "desc": "A read of the international environment and trends that inform decisions on Earth and in space."
+      },
+      "strategy": {
+        "name": "Strategy",
+        "desc": "Priorities, pathways, and partnerships to reach public, private, or territorial goals with strategic clarity."
+      },
+      "development": {
+        "name": "Development",
+        "desc": "Initiatives, capabilities, and delivery to make strategy workable over time with tangible impact."
+      },
+      "security": {
+        "name": "Security",
+        "desc": "Risk, rules, and trust in competitive, digital, and regulatory settings that demand rigour."
+      },
+      "expansion": {
+        "name": "Expansion",
+        "desc": "Growth into new markets and frontiers, integrating the space dimension of power and cooperation."
+      }
+    }
+  },
+  "SplitDomains": {
+    "eyebrow": "Two domains, one logic",
+    "introP1": "The same phenomena that have defined power on Earth: science, technology, competition, cooperation, security, regulation, policy, and economics — are now shifting into space.",
+    "introP2": "The Foundation analyses these processes across both domains to support organisations in their strategic positioning and entry into emerging markets.",
+    "hireService": "Hire your service",
+    "earthTitle": "Earth",
+    "earthBody": "Global Governance, Geopolitics and Geoeconomics, Cooperation and Competition in the International System",
+    "earthAlt": "Planet Earth at night, city lights and horizon",
+    "spaceTitle": "Space",
+    "spaceBody": "We bring space closer to people and organisations so they can be visionaries, pioneers, and active actors in building the new great frontier through the opportunities the space economy offers us.",
+    "spaceAlt": "Earth seen through space station windows",
+    "ctaLines": "About us",
+    "closing": "Two domains. One integrated vision.",
+    "ctaConsult": "Book a consultation"
+  },
+  "Nosotros": {
+    "whoHeading": "WHO WE ARE",
+    "whoSustainEyebrow": "Impact with a long-term view",
+    "whoP1": "We are the Fundación Consultores Internacionales: more than <years>15 years</years> accompanying public and private organisations, and people, to find their place and become active actors in the world system.",
+    "whoP2Lead": "Our focus is to facilitate the development of ideas and projects with impact on Earth or in Outer Space.",
+    "whoP2Accent1": "Research and Innovation applied to projects",
+    "whoP2Accent2": "Spin-in / Spin off.",
+    "globeAlt": "Planet Earth and orbit",
+    "equipoLabel": "TEAM",
+    "equipoTitle": "OUR TEAM",
+    "filters": {
+      "todos": "Both",
+      "tierra": "Earth",
+      "espacio": "Space"
+    },
+    "domain": {
+      "tierra": "Earth",
+      "espacio": "Space",
+      "ambos": "Both"
+    },
+    "emptyFilter": "No members for this filter.",
+    "carouselHintReduced": "Navigate manually with the arrows.",
+    "carouselHint": "Auto-advance every {seconds} s · Pauses on hover",
+    "carouselPrev": "Previous pair",
+    "carouselNext": "Next pair",
+    "carouselRole": "carousel",
+    "carouselRegion": "Team cards",
+    "carouselLive": "Pair {current} of {total}. The carousel returns to the start after the last pair.",
+    "dotsLabel": "Team slides (pairs)",
+    "dotShow": "Show pair {n} of {total}",
+    "linkedinAria": "LinkedIn of {name}",
+    "mailAria": "Email inquiry — footer ({name})"
+  },
+  "Educacion": {
+    "eyebrow": "Training and awareness",
+    "title": "We train leaders for both domains of power",
+    "body": "Courses, workshops, and academic articles focused on global governance, situational analysis, and astropolitics literacy.",
+    "stats": {
+      "programs": "Programmes",
+      "hours": "Hours",
+      "allies": "Partners"
+    },
+    "cta": "Explore programmes",
+    "imageAlt": "Education and internationalisation"
+  },
+  "Nexus": {
+    "eyebrow": "Platform · Applied intelligence",
+    "title": "NEXUS I.C.F.",
+    "body": "A technology platform that integrates artificial intelligence, machine learning, and cloud architectures to process, analyse, and connect strategic information in complex environments —with emphasis on curating and validating sources to reduce uncertainty and strengthen strategic decision-making.",
+    "footnote": "A hub integrating data, specialised knowledge, and cooperation networks — Earth and Space."
+  },
+  "FciConnect": {
+    "eyebrow": "Community · Digital presence",
+    "title": "I.C.F. Connect",
+    "intro": "A meeting point for networks, content, and contact — structure ready for when you define links and multimedia.",
+    "links": {
+      "contact": {
+        "label": "Contact",
+        "hint": "Write to us or WhatsApp"
+      },
+      "blog": {
+        "label": "Blog / Posts",
+        "hint": "Analysis and documents"
+      },
+      "social": {
+        "label": "Social",
+        "hint": "Links coming soon"
+      },
+      "gallery": {
+        "label": "Gallery",
+        "hint": "Coming soon"
+      }
+    }
+  },
+  "Publications": {
+    "eyebrow": "Posts",
+    "title": "Analysis and strategic intelligence",
+    "intro": "Documents for both domains of global power: Earth and Space.",
+    "domainEarth": "Earth",
+    "domainSpace": "Space",
+    "detail": "View details",
+    "viewAll": "View all posts",
+    "empty": "No featured posts yet. Visit the blog to see all content.",
+    "items": [
+      {
+        "title": "Strategic report: country risk and regional connectivity",
+        "tag": "Strategic report",
+        "kind": "tierra",
+        "author": "I.C.F. Team",
+        "date": "Mar 2026"
+      },
+      {
+        "title": "Policy paper: New Space economy and emerging operators",
+        "tag": "Policy paper",
+        "kind": "espacio",
+        "author": "I.C.F. Team",
+        "date": "Feb 2026"
+      },
+      {
+        "title": "Assessment: governance and norms in low Earth orbit",
+        "tag": "Assessment",
+        "kind": "espacio",
+        "author": "I.C.F. Team",
+        "date": "Jan 2026"
+      }
+    ]
+  },
+  "Blog": {
+    "metaTitle": "Posts | I.C.F.",
+    "metaDescription": "Analysis, essays and strategic documents from the International Consultants Foundation.",
+    "pageTitle": "Posts",
+    "pageSubtitle": "Analysis, essays and documents for both domains of global power.",
+    "breadcrumbHome": "Home",
+    "breadcrumbBlog": "Posts",
+    "categoryLabel": "Category",
+    "tagLabel": "Tag",
+    "searchPlaceholder": "Search posts…",
+    "searchSubmit": "Search",
+    "searchClear": "Clear",
+    "filterByCategory": "Filter by category",
+    "filterByTag": "Filter by tag",
+    "clearFilters": "Clear filters",
+    "allCategories": "All categories",
+    "noResults": "No posts found with those criteria.",
+    "noResultsHint": "Try removing a filter or changing the search terms.",
+    "noPostsYet": "No posts available yet. Come back soon.",
+    "readMore": "Read post",
+    "publishedOn": "Published on {date}",
+    "updatedOn": "Updated on {date}",
+    "minRead": "{minutes} min read",
+    "back": "Back to posts",
+    "relatedTitle": "You might also like",
+    "relatedEmpty": "No related posts found.",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {page} of {total}",
+      "ariaLabel": "Posts pagination"
+    },
+    "filtered": {
+      "byCategory": "Posts in «{name}»",
+      "byTag": "Posts tagged «{name}»",
+      "bySearch": "Results for «{query}»"
+    },
+    "share": {
+      "label": "Share",
+      "copy": "Copy link",
+      "copied": "Link copied!"
+    }
+  },
+  "Newsletter": {
+    "title": "Strategic newsletter",
+    "subtitle": "Get analysis, essays and updates from I.C.F. Once a month, no spam.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@email.com",
+    "submit": "Subscribe",
+    "submitting": "Sending…",
+    "success": "Thanks! We'll send you a confirmation email shortly.",
+    "duplicate": "This email is already subscribed.",
+    "errors": {
+      "invalid_email": "Please enter a valid email.",
+      "server_error": "We couldn't process your subscription. Try again later."
+    },
+    "privacyHint": "We will never share your email. Read our privacy policy."
+  },
+  "ContactPage": {
+    "metaTitle": "Contact | I.C.F.",
+    "metaDescription": "Let's talk. Reach out for consulting, partnerships, press or general inquiries.",
+    "eyebrow": "Let's talk",
+    "title": "Contact us",
+    "intro": "Looking for consulting, a partnership, or info on our programs? Send us a message and we'll get back to you within 48 working hours.",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Jane Doe",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "organization": "Organization (optional)",
+      "organizationPlaceholder": "Your institution, company or team",
+      "subject": "Subject",
+      "subjectPlaceholder": "What would you like to discuss?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us briefly about your inquiry…",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "required": "Required field",
+      "errors": {
+        "invalid_name": "Please enter your full name.",
+        "invalid_email": "Please enter a valid email.",
+        "invalid_organization": "Organization name is too long.",
+        "invalid_subject": "Write a short subject.",
+        "invalid_message": "Message must be at least 10 characters.",
+        "server_error": "We couldn't send your message. Try again later."
+      }
+    },
+    "thanks": {
+      "metaTitle": "Thank you! | I.C.F.",
+      "title": "Message received!",
+      "body": "Thanks for writing to us. We'll reply to the email you provided within 48 working hours.",
+      "backHome": "Back to home",
+      "explore": "Meanwhile, explore our posts"
+    },
+    "alternativeContact": {
+      "title": "You can also reach us directly",
+      "emailLabel": "Institutional email",
+      "whatsappLabel": "WhatsApp",
+      "scheduleLabel": "Online scheduling"
+    }
+  },
+  "Footer": {
+    "tagline": "Governance · Geopolitics · Astropolitics",
+    "blurb": "Decide with clarity across both domains of power.",
+    "servicesAria": "Go to About",
+    "mailAria": "Email (go to footer)",
+    "copyright": "© {year} Fundación Consultores Internacionales"
+  },
+  "Floating": {
+    "ctaContact": "Contact us"
+  }
+}

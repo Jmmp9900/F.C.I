@@ -1,0 +1,304 @@
+{
+  "Metadata": {
+    "title": "F.C.I. | Gobernanza · Geopolítica · Astropolítica",
+    "description": "Estrategia global para un mundo en expansión. Geopolítica, economía, seguridad y espacio."
+  },
+  "Common": {
+    "skipToContent": "Saltar al contenido",
+    "brandAcronym": "F.C.I.",
+    "tagline": "Gobernanza · Geopolítica · Astropolítica",
+    "earth": "Tierra",
+    "space": "Espacio",
+    "both": "Ambos",
+    "social": {
+      "navLabel": "Redes sociales",
+      "facebook": "Facebook (se abre en una pestaña nueva)",
+      "instagram": "Instagram (se abre en una pestaña nueva)",
+      "twitter": "X (Twitter) (se abre en una pestaña nueva)",
+      "linkedin": "LinkedIn (se abre en una pestaña nueva)",
+      "youtube": "YouTube (se abre en una pestaña nueva)"
+    }
+  },
+  "Header": {
+    "nav": {
+      "inicio": "Inicio",
+      "nosotros": "Nosotros",
+      "publicaciones": "Publicaciones",
+      "comunidad": "Comunidad",
+      "contacto": "Contacto"
+    },
+    "navAria": "Principal",
+    "openMenu": "Abrir menú"
+  },
+  "Hero": {
+    "h1": "Poder global.",
+    "lead": "Analizamos el poder global… en dos dominios: <gold>Tierra y Espacio</gold>.",
+    "kicker": "Rompiendo fronteras",
+    "line2": "Estrategia global para un mundo en expansión",
+    "ctaContact": "Contáctanos",
+    "ctaPublications": "Ver publicaciones"
+  },
+  "ValuesPillars": {
+    "label": "Pilares",
+    "title": "Cómo pensamos el poder",
+    "introOpening": "Conectamos conocimiento global con progreso local:",
+    "introLine2": "Proyectos que transforman realidades en la Tierra y",
+    "introLine3": "exploran el espacio como motor de innovación y adaptación.",
+    "iconsHint": "Pasá el cursor sobre una tarjeta (o enfocala con el teclado) para ver el título y la descripción de cada pilar.",
+    "items": {
+      "vision": {
+        "name": "Visión global",
+        "desc": "Panorama del entorno internacional y tendencias que orientan decisiones en la Tierra y en el espacio."
+      },
+      "strategy": {
+        "name": "Estrategia",
+        "desc": "Prioridades, rutas y alianzas para alcanzar objetivos públicos, privados o territoriales con sentido de Estado."
+      },
+      "development": {
+        "name": "Desarrollo",
+        "desc": "Iniciativas, capacidades y gestión para hacer viable lo estratégico en el tiempo y con impacto medible."
+      },
+      "security": {
+        "name": "Seguridad",
+        "desc": "Riesgos, reglas y confianza en entornos competitivos, digitales y regulatorios cada vez más exigentes."
+      },
+      "expansion": {
+        "name": "Expansión",
+        "desc": "Crecimiento en nuevos mercados y fronteras, integrando la dimensión espacial del poder y la cooperación."
+      }
+    }
+  },
+  "SplitDomains": {
+    "eyebrow": "Dos dominios, una sola lógica",
+    "introP1": "Los mismos fenómenos que han definido el poder en la Tierra: ciencia, tecnología, competencia, cooperación, seguridad, regulación, política y economía — ahora se están trasladando al espacio.",
+    "introP2": "La Fundación analiza estos procesos en ambos dominios para acompañar a organizaciones en su posicionamiento estratégico e inserción en mercados emergentes.",
+    "hireService": "Contrata tu servicio",
+    "earthTitle": "Tierra",
+    "earthBody": "Gobernanza Mundial, Geopolítica y Geoeconomía, Cooperación y competencia en el Sistema Internacional",
+    "earthAlt": "Planeta Tierra de noche, luces de ciudades y horizonte",
+    "spaceTitle": "Espacio",
+    "spaceBody": "Aportamos y acercamos el Espacio a las personas y organizaciones para que sean visionarios, pioneros y actores activos de la construcción de la nueva gran frontera a través de las oportunidades que nos brinda la Economía Espacial.",
+    "spaceAlt": "Vista de la Tierra a través de ventanales de estación espacial",
+    "ctaLines": "Conócenos",
+    "closing": "Dos dominios. Una visión integrada.",
+    "ctaConsult": "Agendar consultoría"
+  },
+  "Nosotros": {
+    "whoHeading": "QUIÉNES SOMOS",
+    "whoSustainEyebrow": "Impacto con visión de futuro",
+    "whoP1": "Somos la Fundación Consultores Internacionales: más de <years>15 años</years> acompañando a organizaciones públicas y privadas, y a personas a insertarse y convertirse en actores activos del sistema mundo.",
+    "whoP2Lead": "Nuestro enfoque es facilitar el desarrollo de ideas y proyectos con impacto en la tierra o el Espacio Exterior.",
+    "whoP2Accent1": "Investigación e Innovación aplicada a proyectos",
+    "whoP2Accent2": "Spin-in / Spin off.",
+    "globeAlt": "Planeta Tierra y órbita",
+    "equipoLabel": "EQUIPO",
+    "equipoTitle": "NUESTRO EQUIPO",
+    "filters": {
+      "todos": "Ambos",
+      "tierra": "Tierra",
+      "espacio": "Espacio"
+    },
+    "domain": {
+      "tierra": "Tierra",
+      "espacio": "Espacio",
+      "ambos": "Ambos"
+    },
+    "emptyFilter": "No hay miembros para este filtro.",
+    "carouselHintReduced": "Paseo manual con las flechas.",
+    "carouselHint": "Avance automático cada {seconds} s · Pausa al pasar el ratón",
+    "carouselPrev": "Pareja anterior",
+    "carouselNext": "Siguiente pareja",
+    "carouselRole": "carrusel",
+    "carouselRegion": "Tarjetas del equipo",
+    "carouselLive": "Pareja {current} de {total}. El carrusel vuelve al inicio tras la última pareja.",
+    "dotsLabel": "Diapositivas del equipo (parejas)",
+    "dotShow": "Mostrar pareja {n} de {total}",
+    "linkedinAria": "LinkedIn de {name}",
+    "mailAria": "Consulta por correo — pie de página ({name})"
+  },
+  "Educacion": {
+    "eyebrow": "Capacitación y sensibilización",
+    "title": "Formamos líderes para ambos dominios del poder",
+    "body": "Cursos, talleres y artículos académicos con enfoque en gobernanza global, análisis coyuntural y literacidad en astropolítica.",
+    "stats": {
+      "programs": "Programas",
+      "hours": "Horas",
+      "allies": "Aliados"
+    },
+    "cta": "Explorar programas",
+    "imageAlt": "Educación e internacionalización"
+  },
+  "Nexus": {
+    "eyebrow": "Plataforma · Inteligencia aplicada",
+    "title": "NEXUS FCI",
+    "body": "Herramienta tecnológica que integra inteligencia artificial, aprendizaje automático y arquitecturas en la nube para procesar, analizar y articular información estratégica en entornos complejos —con énfasis en la curaduría y validación de fuentes para reducir incertidumbre y fortalecer la toma de decisiones estratégicas.",
+    "footnote": "Nodo de integración entre datos, conocimiento especializado y redes de cooperación —Tierra y Espacio."
+  },
+  "FciConnect": {
+    "eyebrow": "Comunidad · Presencia digital",
+    "title": "FCI Connect",
+    "intro": "Punto de encuentro para redes, contenidos y contacto —estructura lista para cuando definan enlaces y material multimedia.",
+    "links": {
+      "contact": {
+        "label": "Contacto",
+        "hint": "Escríbenos o WhatsApp"
+      },
+      "blog": {
+        "label": "Blog / Publicaciones",
+        "hint": "Análisis y documentos"
+      },
+      "social": {
+        "label": "Redes",
+        "hint": "Próximamente enlaces"
+      },
+      "gallery": {
+        "label": "Galería",
+        "hint": "Próximamente"
+      }
+    }
+  },
+  "Publications": {
+    "eyebrow": "Publicaciones",
+    "title": "Análisis e inteligencia estratégica",
+    "intro": "Documentos para los dos dominios del poder global: Tierra y Espacio.",
+    "domainEarth": "Tierra",
+    "domainSpace": "Espacio",
+    "detail": "Ver detalle",
+    "viewAll": "Ver todas las publicaciones",
+    "empty": "Aún no hay publicaciones destacadas. Visita el blog para ver todo el contenido.",
+    "items": [
+      {
+        "title": "Informe estratégico: riesgo país y conectividad regional",
+        "tag": "Informe estratégico",
+        "kind": "tierra",
+        "author": "Equipo F.C.I.",
+        "date": "Mar 2026"
+      },
+      {
+        "title": "Policy paper: economía New Space y operadores emergentes",
+        "tag": "Policy paper",
+        "kind": "espacio",
+        "author": "Equipo F.C.I.",
+        "date": "Feb 2026"
+      },
+      {
+        "title": "Diagnóstico: gobernanza y normas en órbita baja",
+        "tag": "Diagnóstico",
+        "kind": "espacio",
+        "author": "Equipo F.C.I.",
+        "date": "Ene 2026"
+      }
+    ]
+  },
+  "Blog": {
+    "metaTitle": "Publicaciones | F.C.I.",
+    "metaDescription": "Análisis, ensayos y documentos estratégicos de la Fundación Consultores Internacionales.",
+    "pageTitle": "Publicaciones",
+    "pageSubtitle": "Análisis, ensayos y documentos para los dos dominios del poder global.",
+    "breadcrumbHome": "Inicio",
+    "breadcrumbBlog": "Publicaciones",
+    "categoryLabel": "Categoría",
+    "tagLabel": "Etiqueta",
+    "searchPlaceholder": "Buscar publicaciones…",
+    "searchSubmit": "Buscar",
+    "searchClear": "Limpiar",
+    "filterByCategory": "Filtrar por categoría",
+    "filterByTag": "Filtrar por etiqueta",
+    "clearFilters": "Quitar filtros",
+    "allCategories": "Todas las categorías",
+    "noResults": "No encontramos publicaciones con esos criterios.",
+    "noResultsHint": "Prueba quitando algún filtro o cambiando los términos de búsqueda.",
+    "noPostsYet": "Aún no hay publicaciones disponibles. Vuelve pronto.",
+    "readMore": "Leer publicación",
+    "publishedOn": "Publicado el {date}",
+    "updatedOn": "Actualizado el {date}",
+    "minRead": "{minutes} min de lectura",
+    "back": "Volver a publicaciones",
+    "relatedTitle": "También te puede interesar",
+    "relatedEmpty": "No encontramos publicaciones relacionadas.",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "page": "Página {page} de {total}",
+      "ariaLabel": "Paginación de publicaciones"
+    },
+    "filtered": {
+      "byCategory": "Publicaciones en «{name}»",
+      "byTag": "Publicaciones etiquetadas con «{name}»",
+      "bySearch": "Resultados para «{query}»"
+    },
+    "share": {
+      "label": "Compartir",
+      "copy": "Copiar enlace",
+      "copied": "¡Enlace copiado!"
+    }
+  },
+  "Newsletter": {
+    "title": "Boletín estratégico",
+    "subtitle": "Recibe análisis, ensayos y novedades de F.C.I. Una vez al mes, sin spam.",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.com",
+    "submit": "Suscribirme",
+    "submitting": "Enviando…",
+    "success": "¡Gracias! Te enviaremos un correo para confirmar tu suscripción.",
+    "duplicate": "Este correo ya está suscrito.",
+    "errors": {
+      "invalid_email": "Ingresa un correo electrónico válido.",
+      "server_error": "No pudimos procesar tu suscripción. Intenta más tarde."
+    },
+    "privacyHint": "Nunca compartiremos tu correo. Lee nuestra política de privacidad."
+  },
+  "ContactPage": {
+    "metaTitle": "Contacto | F.C.I.",
+    "metaDescription": "Conversemos. Escríbenos para consultorías, alianzas, prensa o información general.",
+    "eyebrow": "Conversemos",
+    "title": "Contáctanos",
+    "intro": "¿Quieres una consultoría, una alianza, o información sobre nuestros programas? Escríbenos y te respondemos en menos de 48 horas hábiles.",
+    "form": {
+      "name": "Nombre completo",
+      "namePlaceholder": "Juan Pérez",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu@correo.com",
+      "organization": "Organización (opcional)",
+      "organizationPlaceholder": "Tu institución, empresa o equipo",
+      "subject": "Asunto",
+      "subjectPlaceholder": "¿De qué quieres conversar?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos brevemente sobre tu consulta…",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando…",
+      "required": "Campo obligatorio",
+      "errors": {
+        "invalid_name": "Ingresa tu nombre completo.",
+        "invalid_email": "Ingresa un correo electrónico válido.",
+        "invalid_organization": "El nombre de la organización es muy largo.",
+        "invalid_subject": "Escribe un asunto breve.",
+        "invalid_message": "El mensaje debe tener al menos 10 caracteres.",
+        "server_error": "No pudimos enviar tu mensaje. Intenta más tarde."
+      }
+    },
+    "thanks": {
+      "metaTitle": "¡Gracias! | F.C.I.",
+      "title": "¡Mensaje recibido!",
+      "body": "Gracias por escribirnos. Te responderemos al correo que dejaste en máximo 48 horas hábiles.",
+      "backHome": "Volver al inicio",
+      "explore": "Mientras tanto, explora nuestras publicaciones"
+    },
+    "alternativeContact": {
+      "title": "También puedes contactarnos directamente",
+      "emailLabel": "Correo institucional",
+      "whatsappLabel": "WhatsApp",
+      "scheduleLabel": "Agenda en línea"
+    }
+  },
+  "Footer": {
+    "tagline": "Gobernanza · Geopolítica · Astropolítica",
+    "blurb": "Decide con claridad en ambos dominios del poder.",
+    "servicesAria": "Ir a nosotros",
+    "mailAria": "Correo (ir al pie)",
+    "copyright": "© {year} Fundación Consultores Internacionales"
+  },
+  "Floating": {
+    "ctaContact": "Contáctanos"
+  }
+}

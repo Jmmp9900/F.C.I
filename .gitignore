@@ -35,8 +35,16 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
-# vercel
+# hosting platforms (caches locales de CLIs)
 .vercel
+.netlify
 
 # typescript
 *.tsbuildinfo
+
+# payload
+/payload.db
+/payload.db-journal
+/payload-types.ts
+/public/uploads/
+/media/

@@ -30,7 +30,7 @@ export function HeroParallaxLayer({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const offset = Math.min(y * 0.18, 56);
+  const offset = Math.min(y * 0.4, 84);
 
   return (
     <div

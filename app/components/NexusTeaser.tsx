@@ -1,6 +1,9 @@
 import { Cpu, Network } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-export function NexusTeaser() {
+export async function NexusTeaser() {
+  const t = await getTranslations("Nexus");
+
   return (
     <section
       id="nexus-fci"
@@ -18,23 +21,17 @@ export function NexusTeaser() {
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
-                Plataforma · Inteligencia aplicada
+                {t("eyebrow")}
               </p>
               <h2 className="mt-2 font-serif text-2xl text-fci-foreground sm:text-3xl">
-                NEXUS FCI
+                {t("title")}
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-fci-muted sm:text-base">
-                Herramienta tecnológica que integra inteligencia artificial,
-                aprendizaje automático y arquitecturas en la nube para
-                procesar, analizar y articular información estratégica en
-                entornos complejos —con énfasis en la curaduría y validación de
-                fuentes para reducir incertidumbre y fortalecer decisiones en
-                geopolítica, desarrollo internacional y economía del espacio.
+              <p className="mt-4 text-sm leading-relaxed text-balance text-fci-muted sm:text-base">
+                {t("body")}
               </p>
-              <p className="mt-3 flex items-center gap-2 text-xs text-fci-muted sm:text-sm">
+              <p className="mt-3 flex items-start gap-2.5 text-xs leading-relaxed text-balance text-fci-muted sm:text-sm">
                 <Cpu className="size-4 shrink-0 text-fci-gold" aria-hidden />
-                Nodo de integración entre datos, conocimiento especializado y
-                redes de cooperación —Tierra y Espacio.
+                {t("footnote")}
               </p>
             </div>
           </div>

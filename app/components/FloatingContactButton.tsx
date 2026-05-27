@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import {
   getWhatsAppChatHref,
@@ -10,6 +11,7 @@ import {
 const SCROLL_SHOW_PX = 140;
 
 export function FloatingContactButton() {
+  const t = useTranslations("Floating");
   const [visible, setVisible] = useState(false);
   const whatsappHref = getWhatsAppChatHref();
   const whatsAppExternal = isWhatsAppChatHref(whatsappHref);
@@ -45,10 +47,9 @@ export function FloatingContactButton() {
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0"
       }`}
-      aria-hidden={!visible}
-      tabIndex={visible ? 0 : -1}
+      inert={!visible}
     >
-      Contáctanos
+      {t("ctaContact")}
       <ArrowRight className="size-4 shrink-0" aria-hidden />
     </a>
   );

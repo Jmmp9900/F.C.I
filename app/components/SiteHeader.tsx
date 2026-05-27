@@ -1,71 +1,156 @@
 import { Globe, Menu } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import { LocaleSwitcher } from "./LocaleSwitcher";
+import { SocialNav } from "./SocialNav";
 
-const nav = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#publicaciones", label: "Publicaciones" },
-  { href: "#contacto", label: "Contacto" },
-] as const;
+type NavKey = "inicio" | "nosotros" | "publicaciones" | "comunidad" | "contacto";
+
+const navKeys: readonly NavKey[] = [
+  "inicio",
+  "nosotros",
+  "publicaciones",
+  "comunidad",
+  "contacto",
+];
+
+/** Anchors del home para las secciones que viven dentro de la propia home. */
+const hashFor: Record<"inicio" | "nosotros" | "comunidad", string> = {
+  inicio: "#inicio",
+  nosotros: "#nosotros",
+  comunidad: "#comunidad",
+};
 
 const navLinkClass =
-  "rounded-md px-3 py-2 text-xs font-medium uppercase tracking-wide text-fci-foreground/90 transition duration-200 hover:text-fci-gold";
+  "rounded-md px-3 py-2 text-xs font-medium uppercase tracking-[0.12em] text-fci-foreground/90 transition duration-200 hover:text-fci-gold";
 
-export function SiteHeader() {
+const navLinkMobileClass =
+  "block rounded-lg px-3 py-2.5 text-xs font-medium uppercase tracking-wide text-fci-foreground/90 transition hover:bg-white/[0.06] hover:text-fci-gold";
+
+function NavItem({
+  navKey,
+  label,
+  className,
+}: {
+  navKey: NavKey;
+  label: string;
+  className: string;
+}) {
+  /* `publicaciones` y `contacto` son páginas con URL traducida (next-intl).
+     El resto son anchors a secciones del home. */
+  if (navKey === "publicaciones") {
+    return (
+      <Link href="/blog" className={className}>
+        {label}
+      </Link>
+    );
+  }
+  if (navKey === "contacto") {
+    return (
+      <Link href="/contacto" className={className}>
+        {label}
+      </Link>
+    );
+  }
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-fci-void/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-        <div className="min-w-0">
+    <a href={hashFor[navKey]} className={className}>
+      {label}
+    </a>
+  );
+}
+
+export async function SiteHeader() {
+  const t = await getTranslations("Header");
+  const tc = await getTranslations("Common");
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-fci-void/90 backdrop-blur-md">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+        {/* Fila 1: marca + acciones (móvil/tablet/escritorio) */}
+        <div className="flex items-center justify-between gap-4 py-3.5 lg:border-b lg:border-white/[0.08] lg:py-4">
           <a
             href="#inicio"
-            className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2"
+            className="min-w-0 shrink focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2"
           >
             <p className="font-serif text-xl font-semibold tracking-wide text-fci-foreground sm:text-2xl">
-              F.C.I.
+              {tc("brandAcronym")}
             </p>
-            <p className="text-[10px] font-medium uppercase leading-tight tracking-wider text-fci-gold sm:text-xs">
-              Gobernanza · Geopolítica · Astropolítica
+            <p className="mt-0.5 max-w-[min(100%,22rem)] text-[10px] font-medium uppercase leading-snug tracking-[0.18em] text-fci-gold/95 sm:text-[11px] lg:text-xs">
+              {tc("tagline")}
             </p>
           </a>
-        </div>
 
-        <nav
-          className="hidden items-center gap-1 md:flex"
-          aria-label="Principal"
-        >
-          {nav.map((item) => (
-            <a key={item.label} href={item.href} className={navLinkClass}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <span className="hidden items-center gap-1.5 text-fci-muted sm:flex">
-            <Globe className="size-4 text-fci-gold" strokeWidth={1.5} />
-            <span className="text-sm font-medium">ES</span>
-          </span>
-          <details className="group relative z-[60] md:hidden">
-            <summary className="list-none cursor-pointer rounded-md p-2 text-fci-foreground marker:content-none [&::-webkit-details-marker]:hidden">
-              <span className="sr-only">Abrir menú</span>
-              <Menu className="size-6" aria-hidden />
-            </summary>
-            <div className="absolute right-0 top-full z-[60] mt-2 w-52 rounded-md border border-white/10 bg-fci-void/95 p-2 shadow-lg backdrop-blur-md">
-              <ul className="flex flex-col gap-0.5" role="list">
-                {nav.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      className="block rounded-sm px-3 py-2 text-xs font-medium uppercase tracking-wide text-fci-foreground/90 transition hover:bg-white/5 hover:text-fci-gold"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div className="flex shrink-0 items-center gap-3 sm:gap-4 lg:gap-6">
+            {/* Redes: solo escritorio (segunda fila lleva el menú; aquí no compiten por ancho) */}
+            <div className="hidden items-center lg:flex">
+              <SocialNav variant="header" className="gap-2" />
             </div>
-          </details>
+            <span
+              className="hidden h-9 w-px shrink-0 bg-gradient-to-b from-transparent via-white/20 to-transparent lg:block"
+              aria-hidden
+            />
+
+            <div className="flex items-center gap-2 rounded-full border border-white/[0.1] bg-fci-base/30 px-2.5 py-1 text-fci-muted shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:gap-2 sm:px-3 sm:py-1.5">
+              <Globe
+                className="size-4 shrink-0 text-fci-gold/90"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+              <LocaleSwitcher />
+            </div>
+
+            <details className="group relative z-[60] lg:hidden">
+              <summary className="list-none cursor-pointer rounded-lg p-2 text-fci-foreground transition hover:bg-white/[0.06] marker:content-none [&::-webkit-details-marker]:hidden">
+                <span className="sr-only">{t("openMenu")}</span>
+                <Menu className="size-6" aria-hidden />
+              </summary>
+              <div className="absolute right-0 top-full z-[60] mt-2 w-[min(100vw-2rem,18rem)] rounded-xl border border-white/10 bg-fci-void/95 p-2 shadow-xl backdrop-blur-md">
+                <ul className="flex flex-col gap-0.5" role="list">
+                  {navKeys.map((key) => (
+                    <li key={key}>
+                      <NavItem
+                        navKey={key}
+                        label={t(`nav.${key}`)}
+                        className={navLinkMobileClass}
+                      />
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-3 space-y-3 border-t border-white/10 px-1 pt-3">
+                  <div className="rounded-lg border border-white/[0.08] bg-fci-base/35 px-2 py-3">
+                    <SocialNav className="gap-1.5" />
+                  </div>
+                  <div className="flex items-center justify-center gap-2 pb-1 text-fci-muted">
+                    <Globe
+                      className="size-4 shrink-0 text-fci-gold/90"
+                      strokeWidth={1.5}
+                      aria-hidden
+                    />
+                    <LocaleSwitcher />
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
         </div>
+
+        {/* Fila 2: menú principal a ancho completo (solo lg+) — sin solapes con redes */}
+        <nav
+          aria-label={t("navAria")}
+          className="hidden w-full justify-center py-3 lg:flex lg:py-3.5"
+        >
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8 lg:flex-nowrap lg:gap-x-10 xl:gap-x-12">
+            {navKeys.map((key) => (
+              <li key={key}>
+                <NavItem
+                  navKey={key}
+                  label={t(`nav.${key}`)}
+                  className={navLinkClass}
+                />
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </header>
   );

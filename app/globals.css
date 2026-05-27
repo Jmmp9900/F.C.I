@@ -2,20 +2,22 @@
 
 /* F.C.I. — tokens de marca (fondo profundo, oro, Tierra, Espacio) */
 :root {
-  --fci-void: #02050c;
-  --fci-base: #060a12;
-  --fci-surface: #0d1420;
-  --fci-navy: #080f1e;
-  --fci-gold: #d4b56e;
-  --fci-gold-hover: #e8c86b;
-  --fci-gold-dim: #b8954a;
-  --fci-earth: #1f5c3a;
-  --fci-earth-rich: #1d5034;
+  /* Fondo: azul medianoche (~#0b192e) + capas armonizadas */
+  --fci-void: #0b192e;
+  --fci-base: #0e2239;
+  --fci-surface: #1a2d45;
+  --fci-navy: #122337;
+  /* Oro más amarillo y saturado (legible sobre void/base) */
+  --fci-gold: #e2bd3a;
+  --fci-gold-hover: #f0d256;
+  --fci-gold-dim: #c9a028;
+  --fci-earth: #2f8f5e;
+  --fci-earth-rich: #26734a;
   --fci-space: #4a1c78;
   --fci-space-rich: #5a2a92;
   --fci-violet: #9458ff;
-  --fci-foreground: #fafbfc;
-  --fci-muted: #a8b0c0;
+  --fci-foreground: #f8fafc;
+  --fci-muted: #bcc6d6;
 }
 
 @theme inline {
@@ -36,6 +38,28 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cinzel), ui-serif, Georgia, serif;
+
+  /* Escala global (ligeramente mayor que antes) */
+  --text-xs: 1rem;
+  --text-xs--line-height: calc(1.35 / 1);
+  --text-sm: 1.125rem;
+  --text-sm--line-height: calc(1.35 / 1.125);
+  --text-base: 1.25rem;
+  --text-base--line-height: calc(1.5 / 1.25);
+  --text-lg: 1.3125rem;
+  --text-lg--line-height: calc(1.75 / 1.3125);
+  --text-xl: 1.5rem;
+  --text-xl--line-height: calc(1.75 / 1.5);
+  --text-2xl: 1.9375rem;
+  --text-2xl--line-height: calc(2 / 1.9375);
+  --text-3xl: 2.4375rem;
+  --text-3xl--line-height: calc(2.25 / 2.4375);
+  --text-4xl: 3.0625rem;
+  --text-4xl--line-height: calc(2.5 / 3.0625);
+  --text-5xl: 4rem;
+  --text-5xl--line-height: 1.08;
+  --text-6xl: 4.75rem;
+  --text-6xl--line-height: 1.08;
 }
 
 @utility text-balance {
@@ -53,9 +77,41 @@ html {
 }
 
 body {
-  background: var(--fci-base);
+  background:
+    radial-gradient(
+      120% 85% at 50% 0%,
+      color-mix(in srgb, var(--fci-navy) 30%, transparent) 0%,
+      transparent 58%
+    ),
+    var(--fci-base);
   color: var(--fci-foreground);
   font-family: var(--font-sans);
+}
+
+/* Accesibilidad: primer enlace para saltar navegación repetida */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 0;
+  z-index: 100;
+  padding: 0.65rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: var(--fci-gold);
+  color: var(--fci-void);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transform: translateY(-120%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  outline: 2px solid color-mix(in srgb, var(--fci-gold) 70%, white);
+  outline-offset: 2px;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
 }
 
 /* Resplandores suaves (órbita / nodo) */
@@ -81,26 +137,26 @@ body {
   }
 }
 
-/* Fondo del hero: movimiento lento (órbita / deriva) */
+/* Fondo del hero: deriva orbital (velocidad en .fci-hero-drift) */
 @keyframes fci-hero-drift {
   0% {
-    transform: scale(1.1) translate3d(0.3%, 0, 0);
+    transform: scale(1.035) translate3d(0.35%, 0, 0);
   }
   100% {
-    transform: scale(1.2) translate3d(-2.2%, 0.7%, 0);
+    transform: scale(1.11) translate3d(-1.35%, 0.5%, 0);
   }
 }
 
 .fci-hero-drift {
   position: absolute;
-  inset: -7%;
-  animation: fci-hero-drift 30s ease-in-out infinite alternate;
+  inset: -4%;
+  animation: fci-hero-drift 5s ease-in-out infinite alternate;
   will-change: transform;
 }
 
 .fci-hero-drift .fci-hero-img {
   will-change: transform;
-  filter: saturate(1.22) contrast(1.08) brightness(1.05);
+  filter: saturate(1.06) contrast(1.05) brightness(1.02);
 }
 
 /* Brillo sutil (espacio) + pulso un poco más visible */
@@ -157,7 +213,7 @@ body {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   mix-blend-mode: screen;
 }
 
@@ -166,13 +222,13 @@ body {
   border-radius: 9999px;
   background: radial-gradient(
     circle,
-    rgba(255, 235, 180, 0.95) 0%,
-    rgba(255, 200, 120, 0.4) 45%,
-    transparent 70%
+    rgba(255, 232, 190, 0.95) 0%,
+    rgba(232, 176, 93, 0.45) 48%,
+    transparent 72%
   );
   box-shadow:
-    0 0 4px rgba(255, 220, 150, 0.9),
-    0 0 14px rgba(255, 190, 90, 0.55);
+    0 0 5px rgba(255, 214, 140, 0.95),
+    0 0 16px rgba(226, 189, 58, 0.5);
   animation: fci-hero-twinkle 2.6s ease-in-out infinite;
 }
 
@@ -240,6 +296,14 @@ body {
   animation-delay: 0.36s;
 }
 
+.fci-hero-anim > *:nth-child(6) {
+  animation-delay: 0.44s;
+}
+
+.fci-hero-anim > *:nth-child(7) {
+  animation-delay: 0.52s;
+}
+
 .fci-reveal {
   opacity: 0;
   transform: translate3d(0, 1.5rem, 0);
@@ -269,7 +333,40 @@ body {
   will-change: transform;
 }
 
-.fci-brand-drift--rev {
+/* Paneles Tierra / Espacio (SplitDomains): deriva más rápida y visible */
+@keyframes fci-brand-drift-split {
+  0% {
+    transform: scale(1.04) translate3d(0.25%, 0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate3d(-1.1%, 0.35%, 0);
+  }
+}
+
+.fci-brand-drift--split {
+  animation: fci-brand-drift-split 13s ease-in-out infinite alternate;
+}
+
+/* Tierra (mapa HUD): deriva un poco más amplia, ritmo distinto */
+@keyframes fci-brand-drift-split-hud {
+  0% {
+    transform: scale(1.05) translate3d(0.35%, 0, 0);
+  }
+  100% {
+    transform: scale(1.12) translate3d(-1.25%, 0.45%, 0);
+  }
+}
+
+.fci-brand-drift--earth-hud.fci-brand-drift--split {
+  animation: fci-brand-drift-split-hud 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.fci-brand-drift--split.fci-brand-drift--rev {
+  animation-direction: alternate-reverse;
+}
+
+.fci-brand-drift--rev:not(.fci-brand-drift--split) {
   animation-direction: alternate-reverse;
 }
 
@@ -288,6 +385,235 @@ body {
 
 .fci-brand-drift__img {
   filter: saturate(1.12) contrast(1.05) brightness(1.03);
+}
+
+@keyframes fci-earth-hud-img-glow {
+  0%,
+  100% {
+    filter: brightness(1.03) saturate(1.08) contrast(1.04);
+  }
+  50% {
+    filter: brightness(1.08) saturate(1.14) contrast(1.07);
+  }
+}
+
+.fci-earth-hud-img {
+  animation: fci-earth-hud-img-glow 5.8s ease-in-out infinite;
+  will-change: filter;
+}
+
+/* Rejilla + barrido tipo consola sobre el panel Tierra */
+@keyframes fci-earth-hud-grid-pulse {
+  0%,
+  100% {
+    opacity: 0.14;
+    background-position:
+      0 0,
+      0 0;
+  }
+  50% {
+    opacity: 0.26;
+    background-position:
+      12px 7px,
+      -9px 5px;
+  }
+}
+
+@keyframes fci-earth-hud-scan {
+  0% {
+    transform: translate3d(0, -120%, 0);
+  }
+  100% {
+    transform: translate3d(0, 420%, 0);
+  }
+}
+
+.fci-split-earth-hud-grid {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 11px,
+      color-mix(in srgb, var(--fci-cyan, #22d3ee) 14%, transparent) 11px,
+      color-mix(in srgb, var(--fci-cyan, #22d3ee) 14%, transparent) 12px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 11px,
+      color-mix(in srgb, var(--fci-cyan, #22d3ee) 11%, transparent) 11px,
+      color-mix(in srgb, var(--fci-cyan, #22d3ee) 11%, transparent) 12px
+    );
+  background-position:
+    0 0,
+    0 0;
+  mix-blend-mode: screen;
+  animation: fci-earth-hud-grid-pulse 6.5s ease-in-out infinite;
+}
+
+.fci-split-earth-hud-scan-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 26%;
+  top: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--fci-cyan, #22d3ee) 18%, transparent) 42%,
+    color-mix(in srgb, var(--fci-gold) 10%, transparent) 50%,
+    color-mix(in srgb, var(--fci-cyan, #22d3ee) 14%, transparent) 58%,
+    transparent 100%
+  );
+  opacity: 0.55;
+  animation: fci-earth-hud-scan 10s linear infinite;
+  will-change: transform;
+}
+
+/* Panel Espacio (SplitDomains): pulso en imagen + campo estelar + malla y brillo */
+@keyframes fci-space-hud-img-glow {
+  0%,
+  100% {
+    filter: brightness(1.02) saturate(1.12) contrast(1.04);
+  }
+  50% {
+    filter: brightness(1.09) saturate(1.22) contrast(1.07);
+  }
+}
+
+.fci-space-hud-img {
+  animation: fci-space-hud-img-glow 6.8s ease-in-out infinite;
+  will-change: filter;
+}
+
+@keyframes fci-split-space-stars-twinkle {
+  0%,
+  100% {
+    opacity: 0.32;
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  35% {
+    opacity: 0.52;
+    background-position:
+      3px 2px,
+      -2px 4px,
+      5px -3px,
+      -4px 1px,
+      2px 5px,
+      -3px -2px,
+      4px 3px,
+      -1px -4px;
+  }
+  68% {
+    opacity: 0.4;
+    background-position:
+      -2px 3px,
+      4px -1px,
+      -3px 5px,
+      2px -2px,
+      -5px 2px,
+      1px 4px,
+      -2px -3px,
+      3px 1px;
+  }
+}
+
+.fci-split-space-stars {
+  background-image:
+    radial-gradient(1.1px 1.1px at 10% 18%, rgba(210, 235, 255, 0.75), transparent),
+    radial-gradient(1.2px 1.2px at 24% 72%, rgba(255, 252, 240, 0.55), transparent),
+    radial-gradient(1px 1px at 44% 28%, rgba(255, 255, 255, 0.62), transparent),
+    radial-gradient(1.1px 1.1px at 58% 82%, rgba(180, 210, 255, 0.58), transparent),
+    radial-gradient(1.2px 1.2px at 72% 14%, rgba(230, 220, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 86% 48%, rgba(200, 255, 248, 0.52), transparent),
+    radial-gradient(1.1px 1.1px at 18% 52%, rgba(255, 248, 220, 0.5), transparent),
+    radial-gradient(1px 1px at 92% 88%, rgba(190, 220, 255, 0.55), transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  mix-blend-mode: screen;
+  animation: fci-split-space-stars-twinkle 5.4s ease-in-out infinite;
+}
+
+@keyframes fci-split-space-plexus-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fci-split-space-plexus-opacity {
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.17;
+  }
+}
+
+.fci-split-space-plexus {
+  transform-origin: 42% 38%;
+  background:
+    repeating-conic-gradient(
+      from 0deg at 42% 40%,
+      transparent 0deg 13deg,
+      color-mix(in srgb, var(--fci-violet, #7c3aed) 26%, transparent) 13deg 14deg,
+      transparent 14deg 26deg,
+      color-mix(in srgb, #22d3ee 22%, transparent) 26deg 27deg,
+      transparent 27deg 44deg,
+      color-mix(in srgb, var(--fci-violet, #7c3aed) 18%, transparent) 44deg 45deg,
+      transparent 45deg 360deg
+    ),
+    radial-gradient(
+      ellipse 65% 50% at 48% 42%,
+      transparent 42%,
+      color-mix(in srgb, var(--fci-violet, #7c3aed) 10%, transparent) 100%
+    );
+  mix-blend-mode: screen;
+  animation:
+    fci-split-space-plexus-rotate 110s linear infinite,
+    fci-split-space-plexus-opacity 12s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes fci-split-space-shimmer-bg {
+  0% {
+    background-position: -30% 50%;
+    opacity: 0.35;
+  }
+  50% {
+    background-position: 130% 50%;
+    opacity: 0.75;
+  }
+  100% {
+    background-position: -30% 50%;
+    opacity: 0.35;
+  }
+}
+
+.fci-split-space-shimmer {
+  background: linear-gradient(
+    102deg,
+    transparent 0%,
+    transparent 38%,
+    color-mix(in srgb, #22d3ee 28%, transparent) 49%,
+    color-mix(in srgb, var(--fci-violet, #7c3aed) 22%, transparent) 54%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  mix-blend-mode: screen;
+  animation: fci-split-space-shimmer-bg 20s ease-in-out infinite;
 }
 
 @keyframes fci-orbit-rotate {
@@ -318,16 +644,6 @@ body {
   }
   50% {
     opacity: 0.68;
-  }
-}
-
-@keyframes fci-stat-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
   }
 }
 
@@ -369,32 +685,82 @@ body {
   filter: saturate(1.26) contrast(1.1) brightness(1.08);
 }
 
-.fci-nosotros-stat {
-  animation: fci-stat-float 6s ease-in-out infinite;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+/* Mockup Nosotros: rejilla orbital sobre el globo + brillo Tierra */
+.fci-globe-grid-overlay {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 13px,
+      color-mix(in srgb, var(--fci-violet) 35%, transparent) 13px,
+      color-mix(in srgb, var(--fci-violet) 35%, transparent) 14px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 13px,
+      color-mix(in srgb, var(--fci-violet) 28%, transparent) 13px,
+      color-mix(in srgb, var(--fci-violet) 28%, transparent) 14px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.55;
 }
 
-.fci-nosotros-stat:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.fci-nosotros-stat:nth-child(3) {
-  animation-delay: 1s;
-}
-
-.fci-nosotros-stat:hover {
-  border-color: color-mix(in srgb, var(--fci-gold) 55%, transparent);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--fci-gold) 22%, transparent);
+.fci-globe-green-glow {
+  background: radial-gradient(
+    circle at 15% 45%,
+    color-mix(in srgb, var(--fci-earth) 55%, transparent) 0%,
+    transparent 55%
+  );
+  mix-blend-mode: screen;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fci-brand-drift {
+  .fci-brand-drift,
+  .fci-brand-drift--split,
+  .fci-brand-drift--earth-hud.fci-brand-drift--split {
     animation: none;
     transform: none;
   }
 
-  .fci-brand-drift__img {
+  .fci-brand-drift__img,
+  .fci-earth-hud-img,
+  .fci-space-hud-img {
+    animation: none;
     filter: none;
+  }
+
+  .fci-split-earth-hud-grid,
+  .fci-split-earth-hud-scan-bar {
+    animation: none;
+    opacity: 0.18;
+  }
+
+  .fci-split-earth-hud-grid {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  .fci-split-earth-hud-scan-bar {
+    transform: translate3d(0, 40%, 0);
+    opacity: 0;
+  }
+
+  .fci-split-space-stars,
+  .fci-split-space-plexus,
+  .fci-split-space-shimmer {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0.35;
+  }
+
+  .fci-split-space-plexus {
+    opacity: 0.1;
+  }
+
+  .fci-split-space-shimmer {
+    opacity: 0;
   }
 
   .fci-hero-drift {
@@ -435,9 +801,207 @@ body {
 
   .fci-orbit-ring,
   .fci-planet-wrap,
-  .fci-nosotros-stars,
-  .fci-nosotros-stat {
+  .fci-nosotros-stars {
     animation: none !important;
     transform: none !important;
   }
 }
+
+/* ============================================================================
+ * Blog · Renderizado del rich text Lexical
+ * ============================================================================
+ * Sustituye a `@tailwindcss/typography`. Hereda paleta `--fci-*` y tipografía
+ * Cinzel/Inter del resto del sitio. Lo aplica el componente `PostBody` con la
+ * clase `.post-body` envolviendo al output del componente <RichText/>.
+ */
+
+.post-body {
+  color: var(--fci-foreground);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.post-body > * + * {
+  margin-top: 1.25em;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  font-family: var(--font-serif);
+  color: var(--fci-foreground);
+  line-height: 1.25;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  letter-spacing: 0.01em;
+}
+
+.post-body h1 {
+  font-size: 1.875rem;
+}
+
+.post-body h2 {
+  font-size: 1.625rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.4em;
+}
+
+.post-body h3 {
+  font-size: 1.375rem;
+}
+
+.post-body h4 {
+  font-size: 1.125rem;
+  color: var(--fci-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.post-body p {
+  color: var(--fci-foreground);
+}
+
+.post-body strong,
+.post-body b {
+  color: var(--fci-foreground);
+  font-weight: 600;
+}
+
+.post-body em,
+.post-body i {
+  font-style: italic;
+}
+
+.post-body a {
+  color: var(--fci-gold);
+  text-decoration: underline;
+  text-decoration-color: rgba(226, 189, 58, 0.4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 200ms ease;
+}
+
+.post-body a:hover {
+  text-decoration-color: var(--fci-gold);
+}
+
+.post-body ul,
+.post-body ol {
+  padding-left: 1.5em;
+  color: var(--fci-foreground);
+}
+
+.post-body ul {
+  list-style: disc;
+}
+
+.post-body ol {
+  list-style: decimal;
+}
+
+.post-body li {
+  margin-top: 0.4em;
+}
+
+.post-body li::marker {
+  color: var(--fci-gold);
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--fci-gold);
+  padding: 0.4em 0 0.4em 1.2em;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: var(--fci-muted);
+  background: rgba(226, 189, 58, 0.04);
+}
+
+.post-body blockquote p {
+  color: var(--fci-muted);
+}
+
+.post-body code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--fci-gold);
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.post-body pre {
+  background: var(--fci-void);
+  color: var(--fci-foreground);
+  padding: 1em 1.2em;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.post-body pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.post-body img {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 100%;
+  height: auto;
+}
+
+.post-body figure {
+  margin: 1.5em 0;
+}
+
+.post-body figcaption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--fci-muted);
+  margin-top: 0.6em;
+}
+
+.post-body hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2em 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.post-body th,
+.post-body td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6em 0.9em;
+  text-align: left;
+}
+
+.post-body th {
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 600;
+  color: var(--fci-gold);
+}
+
+/* line-clamp helpers (las `PostCard` y `PublicationsTeaser` lo usan) */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+

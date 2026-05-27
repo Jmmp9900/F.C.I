@@ -1,62 +1,46 @@
 import Link from "next/link";
 import { Images, Mail, Newspaper, Share2 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-const links = [
-  {
-    href: "#contacto",
-    label: "Contacto",
-    icon: Mail,
-    hint: "Escríbenos o WhatsApp",
-  },
-  {
-    href: "#publicaciones",
-    label: "Blog / Publicaciones",
-    icon: Newspaper,
-    hint: "Análisis y documentos",
-  },
-  {
-    href: "#contacto",
-    label: "Redes",
-    icon: Share2,
-    hint: "Próximamente enlaces",
-  },
-  {
-    href: "#contacto",
-    label: "Galería",
-    icon: Images,
-    hint: "Próximamente",
-  },
-] as const;
+const linkDefs = [
+  { key: "contact" as const, href: "#contacto", icon: Mail },
+  { key: "blog" as const, href: "#publicaciones", icon: Newspaper },
+  { key: "social" as const, href: "#contacto", icon: Share2 },
+  { key: "gallery" as const, href: "#contacto", icon: Images },
+];
 
-export function FciConnectTeaser() {
+export async function FciConnectTeaser() {
+  const t = await getTranslations("FciConnect");
+
   return (
     <section
-      id="connect"
+      id="comunidad"
       className="scroll-mt-24 border-t border-white/5 py-14 sm:py-20"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
-          Comunidad · Presencia digital
+          {t("eyebrow")}
         </p>
         <h2 className="mt-2 text-center font-serif text-2xl text-fci-foreground sm:text-3xl">
-          FCI Connect
+          {t("title")}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-fci-muted text-balance">
-          Punto de encuentro para redes, contenidos y contacto —estructura lista
-          para cuando defináis enlaces y material multimedia.
+          {t("intro")}
         </p>
         <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {links.map(({ href, label, icon: Icon, hint }) => (
-            <li key={label}>
+          {linkDefs.map(({ href, key, icon: Icon }) => (
+            <li key={key}>
               <Link
                 href={href}
                 className="flex flex-col gap-2 rounded-xl border border-white/10 bg-fci-surface/40 p-4 transition hover:border-fci-gold/35 hover:bg-fci-surface/60"
               >
                 <span className="flex items-center gap-2 font-medium text-fci-foreground">
                   <Icon className="size-5 text-fci-gold" strokeWidth={1.25} />
-                  {label}
+                  {t(`links.${key}.label`)}
                 </span>
-                <span className="text-xs text-fci-muted">{hint}</span>
+                <span className="text-xs text-fci-muted">
+                  {t(`links.${key}.hint`)}
+                </span>
               </Link>
             </li>
           ))}
