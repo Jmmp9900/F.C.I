@@ -275,7 +275,7 @@ export async function getAllPostSlugs(locale: Locale): Promise<string[]> {
     limit: 1000,
     pagination: false,
   });
-  return result.docs.map((d) => (d as { slug: string }).slug);
+  return (result.docs as unknown as PostDoc[]).map((d) => d.slug);
 }
 
 /* -------------------------------------------------------------------------- */
