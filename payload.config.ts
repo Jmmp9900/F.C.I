@@ -15,6 +15,7 @@ import { NewsletterSubscribers } from "./collections/NewsletterSubscribers";
 import { Posts } from "./collections/Posts";
 import { Tags } from "./collections/Tags";
 import { Users } from "./collections/Users";
+import { migrations } from "./migrations";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -45,6 +46,7 @@ const db = isPostgres
           ? false
           : { rejectUnauthorized: false },
       },
+      prodMigrations: migrations,
     })
   : sqliteAdapter({
       client: { url: dbUri },
@@ -75,9 +77,17 @@ const hasR2 = Boolean(process.env.R2_BUCKET);
  * sitios consuman la API REST/GraphQL del cliente. En dev quedan abiertas
  * para no estorbar (ngrok, IPs LAN, etc.).
  */
+function publicSiteUrl(): string | undefined {
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.URL ??
+    process.env.DEPLOY_PRIME_URL
+  )?.replace(/\/$/, "");
+}
+
 function corsOrigins(): string[] | "*" {
   if (process.env.NODE_ENV !== "production") return "*";
-  const site = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  const site = publicSiteUrl();
   const extras = process.env.PAYLOAD_CORS_EXTRA?.split(",")
     .map((s) => s.trim())
     .filter(Boolean) ?? [];

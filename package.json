@@ -13,6 +13,8 @@
     "payload": "payload",
     "generate:types": "payload generate:types",
     "generate:importmap": "payload generate:importmap",
+    "migrate": "payload migrate",
+    "migrate:create": "payload migrate:create",
     "seed": "payload run scripts/seed.ts",
     "git:time-travel": "git-time-travel",
     "git:time-travel:1": "git-time-travel -c 1",

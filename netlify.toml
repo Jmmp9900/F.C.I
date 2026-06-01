@@ -13,15 +13,15 @@
 # =============================================================================
 
 [build]
-  command = "npm run build"
+  # Instalación explícita: Netlify a veces ignora NPM_FLAGS en el primer deploy.
+  command = "npm install --legacy-peer-deps && npx payload migrate && npm run build"
   publish = ".next"
 
 [build.environment]
-  # Node 24 (alineado con `volta.node` en package.json).
-  NODE_VERSION = "24"
-  # Payload requiere legacy-peer-deps por el rango de React 19.
+  # Node 22 — mejor soporte en Netlify que 24 para builds pesados (Payload + sharp).
+  NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
-  # Evita avisos de telemetría de Next.js en el build de CI.
+  NPM_CONFIG_LEGACY_PEER_DEPS = "true"
   NEXT_TELEMETRY_DISABLED = "1"
 
 [[plugins]]

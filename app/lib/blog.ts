@@ -51,7 +51,8 @@ async function rawGetPosts({
   tagSlug,
   search,
 }: GetPostsOptions): Promise<PaginatedResult<PostDoc>> {
-  const payload = await getPayload();
+  try {
+    const payload = await getPayload();
 
   const whereClauses: Where[] = [{ status: { equals: "published" } }];
 
@@ -114,6 +115,10 @@ async function rawGetPosts({
   });
 
   return result as unknown as PaginatedResult<PostDoc>;
+  } catch (err) {
+    console.error("[blog] getPosts failed:", (err as Error).message);
+    return emptyPage(page, limit);
+  }
 }
 
 /** Lista paginada de posts publicados con filtros opcionales. Cacheada por tag. */
