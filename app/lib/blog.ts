@@ -1,5 +1,6 @@
 import "server-only";
 import { unstable_cache as cache } from "next/cache";
+import type { Where } from "payload";
 
 import { getPayload } from "./payload";
 import type {
@@ -52,9 +53,7 @@ async function rawGetPosts({
 }: GetPostsOptions): Promise<PaginatedResult<PostDoc>> {
   const payload = await getPayload();
 
-  const whereClauses: Record<string, unknown>[] = [
-    { status: { equals: "published" } },
-  ];
+  const whereClauses: Where[] = [{ status: { equals: "published" } }];
 
   if (featured) {
     whereClauses.push({ featured: { equals: true } });
@@ -100,6 +99,9 @@ async function rawGetPosts({
     });
   }
 
+  const where: Where =
+    whereClauses.length === 1 ? whereClauses[0] : { and: whereClauses };
+
   const result = await payload.find({
     collection: "posts",
     locale,
@@ -108,7 +110,7 @@ async function rawGetPosts({
     page,
     limit,
     sort: "-publishedAt",
-    where: whereClauses.length === 1 ? whereClauses[0] : { and: whereClauses },
+    where,
   });
 
   return result as unknown as PaginatedResult<PostDoc>;
@@ -239,7 +241,7 @@ export async function getRelatedPosts(
     return [];
   }
 
-  const orClauses: Record<string, unknown>[] = [];
+  const orClauses: Where[] = [];
   if (categoryIds.length) orClauses.push({ categories: { in: categoryIds } });
   if (tagIds.length) orClauses.push({ tags: { in: tagIds } });
 

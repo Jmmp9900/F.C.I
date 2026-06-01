@@ -3,8 +3,8 @@ import { revalidateTag } from "next/cache";
 
 const safeRevalidate = () => {
   try {
-    revalidateTag("tags:list");
-    revalidateTag("posts:list");
+    revalidateTag("tags:list", { expire: 0 });
+    revalidateTag("posts:list", { expire: 0 });
   } catch (err) {
     console.warn("[Tags] revalidate skipped:", (err as Error).message);
   }

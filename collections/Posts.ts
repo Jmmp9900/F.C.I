@@ -4,16 +4,16 @@ import { revalidatePath, revalidateTag } from "next/cache";
 /** Invalida los listados cacheados y la página específica del post. */
 const revalidateAfterChange: CollectionAfterChangeHook = ({ doc, previousDoc }) => {
   try {
-    revalidateTag("posts:list");
-    revalidateTag("posts:featured");
+    revalidateTag("posts:list", { expire: 0 });
+    revalidateTag("posts:featured", { expire: 0 });
     if (doc?.slug) {
-      revalidateTag(`post:${doc.slug}`);
+      revalidateTag(`post:${doc.slug}`, { expire: 0 });
       /* `revalidatePath` necesita un patrón de ruta; usamos la versión con
          el path canónico que cubre /[locale]/blog/[slug] para ambos idiomas. */
       revalidatePath(`/[locale]/blog/${doc.slug}`, "page");
     }
     if (previousDoc?.slug && previousDoc.slug !== doc?.slug) {
-      revalidateTag(`post:${previousDoc.slug}`);
+      revalidateTag(`post:${previousDoc.slug}`, { expire: 0 });
     }
     revalidatePath("/[locale]/blog", "page");
     revalidatePath("/[locale]", "page");
@@ -26,9 +26,9 @@ const revalidateAfterChange: CollectionAfterChangeHook = ({ doc, previousDoc }) 
 
 const revalidateAfterDelete: CollectionAfterDeleteHook = ({ doc }) => {
   try {
-    revalidateTag("posts:list");
-    revalidateTag("posts:featured");
-    if (doc?.slug) revalidateTag(`post:${doc.slug}`);
+    revalidateTag("posts:list", { expire: 0 });
+    revalidateTag("posts:featured", { expire: 0 });
+    if (doc?.slug) revalidateTag(`post:${doc.slug}`, { expire: 0 });
     revalidatePath("/[locale]/blog", "page");
     revalidatePath("/[locale]", "page");
   } catch (err) {
