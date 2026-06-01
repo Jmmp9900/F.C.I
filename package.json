@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 127.0.0.1",
     "urls": "node scripts/print-show-urls.mjs",
     "ngrok": "node scripts/ngrok-run.mjs",
     "build": "payload generate:importmap && next build",

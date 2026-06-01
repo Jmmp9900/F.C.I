@@ -1,7 +1,11 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import { withPayload } from "@payloadcms/next/withPayload";
 
+const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 /** Dominios ngrok fijos + patrones opcionales (p. ej. dominio reservado de pago). Ver `ngrok.env.example`. */
@@ -31,6 +35,14 @@ function r2CustomHost(): string | null {
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  /* Evita que el tracer de módulos suba hasta `C:\Users\Roy\` cuando hay un
+     package.json/lockfile suelto en el home del usuario. */
+  outputFileTracingRoot: projectRoot,
+  /* Evita que Turbopack tome `C:\Users\Roy\package-lock.json` como raíz del
+     monorepo cuando hay un lockfile suelto fuera del proyecto. */
+  turbopack: {
+    root: projectRoot,
+  },
   allowedDevOrigins: [
     "*.ngrok-free.app",
     "*.ngrok-free.dev",
