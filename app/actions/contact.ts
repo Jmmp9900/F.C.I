@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { getPayload } from "../lib/payload";
+import { clientIpFromHeaders, rateLimit } from "../lib/rate-limit";
 import { getPathname } from "@/i18n/navigation";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -72,19 +73,28 @@ export async function submitContact(
     return { status: "error", message: "invalid_message", fields };
   }
 
+  const hdrs = await headers();
+  const ip = clientIpFromHeaders(hdrs);
+  const { allowed } = rateLimit(`contact:${ip}`, {
+    limit: 5,
+    windowMs: 60_000,
+  });
+  if (!allowed) {
+    return { status: "error", message: "server_error", fields };
+  }
+
   const isLikelyBot =
     Boolean(honeypot) ||
     (renderedAt > 0 && Date.now() - renderedAt < 2000);
 
   try {
     const payload = await getPayload();
-    const hdrs = await headers();
     const userAgent = hdrs.get("user-agent") ?? "";
-    const forwardedFor = hdrs.get("x-forwarded-for") ?? "";
-    const ipAddress = forwardedFor.split(",")[0]?.trim() || "";
+    const ipAddress = ip === "unknown" ? "" : ip;
 
     await payload.create({
       collection: "contacts",
+      overrideAccess: true,
       data: {
         name,
         email,

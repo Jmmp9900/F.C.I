@@ -40,20 +40,16 @@ export function NewsletterForm({ variant = "compact" }: Props) {
   const message =
     state.status === "ok"
       ? t("success")
-      : state.status === "duplicate"
-        ? t("duplicate")
-        : state.status === "error"
-          ? t(`errors.${state.message ?? "server_error"}` as "errors.server_error")
-          : null;
+      : state.status === "error"
+        ? t(`errors.${state.message ?? "server_error"}` as "errors.server_error")
+        : null;
 
   const messageTone =
     state.status === "ok"
       ? "text-fci-gold"
-      : state.status === "duplicate"
-        ? "text-fci-foreground"
-        : state.status === "error"
-          ? "text-red-300"
-          : "text-fci-muted";
+      : state.status === "error"
+        ? "text-red-300"
+        : "text-fci-muted";
 
   if (variant === "card") {
     return (

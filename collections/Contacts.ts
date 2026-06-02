@@ -1,14 +1,13 @@
 import type { CollectionConfig } from "payload";
 
+import { adminOnly, staffOnlyFieldAccess } from "./access";
+
 /**
  * Mensajes recibidos desde el formulario público de contacto.
  *
- * - `create` abierto para que cualquier visitante pueda escribir desde
- *   la página `/contacto` (sin necesidad de cuenta).
+ * - `create` cerrado en REST/GraphQL: solo la server action `submitContact`
+ *   crea registros con `overrideAccess: true`.
  * - `read`/`update`/`delete` restringidos al equipo (`req.user`).
- *
- * Cuando integremos SMTP (Resend, SendGrid, etc.) añadiremos un hook
- * `afterChange` que envíe el aviso al admin con los datos del mensaje.
  */
 export const Contacts: CollectionConfig = {
   slug: "contacts",
@@ -20,9 +19,9 @@ export const Contacts: CollectionConfig = {
   },
   access: {
     read: ({ req }) => Boolean(req.user),
-    create: () => true,
-    update: ({ req }) => Boolean(req.user),
-    delete: ({ req }) => req.user?.role === "admin",
+    create: () => false,
+    update: adminOnly,
+    delete: adminOnly,
   },
   fields: [
     {
@@ -76,6 +75,7 @@ export const Contacts: CollectionConfig = {
         { label: "Spam", value: "spam" },
         { label: "Archivado", value: "archived" },
       ],
+      access: staffOnlyFieldAccess,
       admin: {
         position: "sidebar",
       },
@@ -83,6 +83,7 @@ export const Contacts: CollectionConfig = {
     {
       name: "internalNotes",
       type: "textarea",
+      access: staffOnlyFieldAccess,
       admin: {
         description: "Notas internas (no visibles para el remitente).",
       },
@@ -90,11 +91,13 @@ export const Contacts: CollectionConfig = {
     {
       name: "userAgent",
       type: "text",
+      access: staffOnlyFieldAccess,
       admin: { readOnly: true, hidden: true },
     },
     {
       name: "ipAddress",
       type: "text",
+      access: staffOnlyFieldAccess,
       admin: { readOnly: true, hidden: true },
     },
   ],

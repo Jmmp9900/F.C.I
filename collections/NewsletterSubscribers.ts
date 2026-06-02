@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { adminOnly, staffOnlyFieldAccess } from "./access";
+
 export const NewsletterSubscribers: CollectionConfig = {
   slug: "newsletter-subscribers",
   admin: {
@@ -8,10 +10,10 @@ export const NewsletterSubscribers: CollectionConfig = {
   },
   access: {
     read: ({ req }) => Boolean(req.user),
-    /** Cualquiera puede suscribirse desde el sitio público. */
-    create: () => true,
-    update: ({ req }) => Boolean(req.user),
-    delete: ({ req }) => req.user?.role === "admin",
+    /** Solo la server action `subscribeNewsletter` (overrideAccess). */
+    create: () => false,
+    update: adminOnly,
+    delete: adminOnly,
   },
   fields: [
     {
@@ -41,11 +43,13 @@ export const NewsletterSubscribers: CollectionConfig = {
         { label: "Confirmado", value: "confirmed" },
         { label: "Cancelado", value: "unsubscribed" },
       ],
+      access: staffOnlyFieldAccess,
     },
     {
       name: "subscribedAt",
       type: "date",
       defaultValue: () => new Date(),
+      access: staffOnlyFieldAccess,
       admin: { readOnly: true },
     },
   ],

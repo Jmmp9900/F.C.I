@@ -35,16 +35,25 @@ const dbUri = process.env.DATABASE_URI ?? "file:./payload.db";
 const isPostgres =
   dbUri.startsWith("postgres://") || dbUri.startsWith("postgresql://");
 
+const payloadSecret = process.env.PAYLOAD_SECRET;
+if (process.env.NODE_ENV === "production" && !payloadSecret) {
+  throw new Error(
+    "PAYLOAD_SECRET es obligatorio en producción. Configúralo en Netlify → Environment variables.",
+  );
+}
+
 const db = isPostgres
   ? postgresAdapter({
       pool: {
         connectionString: dbUri,
-        /* Neon, Supabase y la mayoría de Postgres gestionados requieren SSL.
-           Si se conecta a un Postgres local sin SSL, override con `?sslmode=disable`
-           en la propia URI o seteando `DATABASE_NO_SSL=1` aquí. */
-        ssl: process.env.DATABASE_NO_SSL === "1"
-          ? false
-          : { rejectUnauthorized: false },
+        /* Neon exige TLS. `rejectUnauthorized: true` por defecto; si falla la
+           cadena de certificados, define DATABASE_SSL_REJECT_UNAUTHORIZED=0. */
+        ssl:
+          process.env.DATABASE_NO_SSL === "1"
+            ? false
+            : process.env.DATABASE_SSL_REJECT_UNAUTHORIZED === "0"
+              ? { rejectUnauthorized: false }
+              : { rejectUnauthorized: true },
       },
       prodMigrations: migrations,
     })
@@ -114,7 +123,7 @@ export default buildConfig({
     NewsletterSubscribers,
     Contacts,
   ],
-  secret: process.env.PAYLOAD_SECRET || "CHANGE-ME-IN-PRODUCTION",
+  secret: payloadSecret ?? "dev-only-insecure-secret",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
@@ -134,6 +143,10 @@ export default buildConfig({
     },
   },
   cors: corsOrigins(),
+  graphQL: {
+    disablePlaygroundInProduction: true,
+    disableIntrospectionInProduction: true,
+  },
   plugins: [
     s3Storage({
       enabled: hasR2,

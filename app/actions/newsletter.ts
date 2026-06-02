@@ -1,6 +1,9 @@
 "use server";
 
+import { headers } from "next/headers";
+
 import { getPayload } from "../lib/payload";
+import { clientIpFromHeaders, rateLimit } from "../lib/rate-limit";
 
 /**
  * Validación mínima de email sin dependencias externas (zod aún no instalado).
@@ -13,7 +16,7 @@ import { getPayload } from "../lib/payload";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export type NewsletterState = {
-  status: "idle" | "ok" | "error" | "duplicate";
+  status: "idle" | "ok" | "error";
   message?: string;
 };
 
@@ -45,6 +48,16 @@ export async function subscribeNewsletter(
     return { status: "error", message: "invalid_email" };
   }
 
+  const hdrs = await headers();
+  const ip = clientIpFromHeaders(hdrs);
+  const { allowed } = rateLimit(`newsletter:${ip}`, {
+    limit: 3,
+    windowMs: 60_000,
+  });
+  if (!allowed) {
+    return { status: "ok" };
+  }
+
   try {
     const payload = await getPayload();
 
@@ -56,11 +69,13 @@ export async function subscribeNewsletter(
     });
 
     if (existing.docs.length > 0) {
-      return { status: "duplicate" };
+      /* No revelar si el email ya existe (anti-enumeración). */
+      return { status: "ok" };
     }
 
     await payload.create({
       collection: "newsletter-subscribers",
+      overrideAccess: true,
       data: {
         email,
         locale,
