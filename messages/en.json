@@ -209,6 +209,8 @@
     "noResults": "No posts found with those criteria.",
     "noResultsHint": "Try removing a filter or changing the search terms.",
     "noPostsYet": "No posts available yet. Come back soon.",
+    "postNotFound": "This post does not exist or is no longer available.",
+    "postNotFoundHint": "It may have been moved or removed from the site.",
     "readMore": "Read post",
     "publishedOn": "Published on {date}",
     "updatedOn": "Updated on {date}",

@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { getPayload } from "../lib/payload";
-import { clientIpFromHeaders, rateLimit } from "../lib/rate-limit";
+import { clientIpFromHeaders, rateLimit } from "@/lib/rate-limit";
 import { getPathname } from "@/i18n/navigation";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;

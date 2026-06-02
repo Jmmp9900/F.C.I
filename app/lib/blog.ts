@@ -3,6 +3,7 @@ import { unstable_cache as cache } from "next/cache";
 import type { Where } from "payload";
 
 import { getPayload } from "./payload";
+import { isValidSlug } from "./blog-slug";
 import type {
   CategoryDoc,
   Locale,
@@ -54,67 +55,67 @@ async function rawGetPosts({
   try {
     const payload = await getPayload();
 
-  const whereClauses: Where[] = [{ status: { equals: "published" } }];
+    const whereClauses: Where[] = [{ status: { equals: "published" } }];
 
-  if (featured) {
-    whereClauses.push({ featured: { equals: true } });
-  }
-
-  if (categorySlug) {
-    const cat = await payload.find({
-      collection: "categories",
-      where: { slug: { equals: categorySlug } },
-      locale,
-      limit: 1,
-      depth: 0,
-    });
-    const categoryId = cat.docs[0]?.id;
-    if (!categoryId) {
-      return emptyPage(page, limit);
+    if (featured) {
+      whereClauses.push({ featured: { equals: true } });
     }
-    whereClauses.push({ categories: { in: [categoryId] } });
-  }
 
-  if (tagSlug) {
-    const tag = await payload.find({
-      collection: "tags",
-      where: { slug: { equals: tagSlug } },
-      locale,
-      limit: 1,
-      depth: 0,
-    });
-    const tagId = tag.docs[0]?.id;
-    if (!tagId) {
-      return emptyPage(page, limit);
+    if (categorySlug) {
+      const cat = await payload.find({
+        collection: "categories",
+        where: { slug: { equals: categorySlug } },
+        locale,
+        limit: 1,
+        depth: 0,
+      });
+      const categoryId = cat.docs[0]?.id;
+      if (!categoryId) {
+        return emptyPage(page, limit);
+      }
+      whereClauses.push({ categories: { in: [categoryId] } });
     }
-    whereClauses.push({ tags: { in: [tagId] } });
-  }
 
-  if (search && search.trim().length > 0) {
-    const term = search.trim();
-    whereClauses.push({
-      or: [
-        { title: { like: term } },
-        { excerpt: { like: term } },
-      ],
+    if (tagSlug) {
+      const tag = await payload.find({
+        collection: "tags",
+        where: { slug: { equals: tagSlug } },
+        locale,
+        limit: 1,
+        depth: 0,
+      });
+      const tagId = tag.docs[0]?.id;
+      if (!tagId) {
+        return emptyPage(page, limit);
+      }
+      whereClauses.push({ tags: { in: [tagId] } });
+    }
+
+    if (search && search.trim().length > 0) {
+      const term = search.trim();
+      whereClauses.push({
+        or: [
+          { title: { like: term } },
+          { excerpt: { like: term } },
+        ],
+      });
+    }
+
+    const where: Where =
+      whereClauses.length === 1 ? whereClauses[0] : { and: whereClauses };
+
+    const result = await payload.find({
+      collection: "posts",
+      locale,
+      fallbackLocale: "es",
+      depth: 2,
+      page,
+      limit,
+      sort: "-publishedAt",
+      where,
     });
-  }
 
-  const where: Where =
-    whereClauses.length === 1 ? whereClauses[0] : { and: whereClauses };
-
-  const result = await payload.find({
-    collection: "posts",
-    locale,
-    fallbackLocale: "es",
-    depth: 2,
-    page,
-    limit,
-    sort: "-publishedAt",
-    where,
-  });
-
-  return result as unknown as PaginatedResult<PostDoc>;
+    return result as unknown as PaginatedResult<PostDoc>;
   } catch (err) {
     console.error("[blog] getPosts failed:", (err as Error).message);
     return emptyPage(page, limit);
@@ -142,21 +143,28 @@ export async function getPostBySlug(
   slug: string,
   locale: Locale,
 ): Promise<PostDoc | null> {
-  const payload = await getPayload();
-  const result = await payload.find({
-    collection: "posts",
-    where: {
-      and: [
-        { slug: { equals: slug } },
-        { status: { equals: "published" } },
-      ],
-    },
-    locale,
-    fallbackLocale: "es",
-    depth: 2,
-    limit: 1,
-  });
-  return (result.docs[0] as unknown as PostDoc) ?? null;
+  if (!isValidSlug(slug)) return null;
+
+  try {
+    const payload = await getPayload();
+    const result = await payload.find({
+      collection: "posts",
+      where: {
+        and: [
+          { slug: { equals: slug } },
+          { status: { equals: "published" } },
+        ],
+      },
+      locale,
+      fallbackLocale: "es",
+      depth: 2,
+      limit: 1,
+    });
+    return (result.docs[0] as unknown as PostDoc) ?? null;
+  } catch (err) {
+    console.error("[blog] getPostBySlug failed:", (err as Error).message);
+    return null;
+  }
 }
 
 /** Categoría por slug. */
@@ -164,15 +172,22 @@ export async function getCategoryBySlug(
   slug: string,
   locale: Locale,
 ): Promise<CategoryDoc | null> {
-  const payload = await getPayload();
-  const result = await payload.find({
-    collection: "categories",
-    where: { slug: { equals: slug } },
-    locale,
-    fallbackLocale: "es",
-    limit: 1,
-  });
-  return (result.docs[0] as unknown as CategoryDoc) ?? null;
+  if (!isValidSlug(slug)) return null;
+
+  try {
+    const payload = await getPayload();
+    const result = await payload.find({
+      collection: "categories",
+      where: { slug: { equals: slug } },
+      locale,
+      fallbackLocale: "es",
+      limit: 1,
+    });
+    return (result.docs[0] as unknown as CategoryDoc) ?? null;
+  } catch (err) {
+    console.error("[blog] getCategoryBySlug failed:", (err as Error).message);
+    return null;
+  }
 }
 
 /** Tag por slug. */
@@ -180,30 +195,42 @@ export async function getTagBySlug(
   slug: string,
   locale: Locale,
 ): Promise<TagDoc | null> {
-  const payload = await getPayload();
-  const result = await payload.find({
-    collection: "tags",
-    where: { slug: { equals: slug } },
-    locale,
-    fallbackLocale: "es",
-    limit: 1,
-  });
-  return (result.docs[0] as unknown as TagDoc) ?? null;
+  if (!isValidSlug(slug)) return null;
+
+  try {
+    const payload = await getPayload();
+    const result = await payload.find({
+      collection: "tags",
+      where: { slug: { equals: slug } },
+      locale,
+      fallbackLocale: "es",
+      limit: 1,
+    });
+    return (result.docs[0] as unknown as TagDoc) ?? null;
+  } catch (err) {
+    console.error("[blog] getTagBySlug failed:", (err as Error).message);
+    return null;
+  }
 }
 
 /** Lista de todas las categorías (para selects y filtros). */
 export const getAllCategories = cache(
   async (locale: Locale): Promise<CategoryDoc[]> => {
-    const payload = await getPayload();
-    const result = await payload.find({
-      collection: "categories",
-      locale,
-      fallbackLocale: "es",
-      limit: 100,
-      sort: "name",
-      depth: 0,
-    });
-    return result.docs as unknown as CategoryDoc[];
+    try {
+      const payload = await getPayload();
+      const result = await payload.find({
+        collection: "categories",
+        locale,
+        fallbackLocale: "es",
+        limit: 100,
+        sort: "name",
+        depth: 0,
+      });
+      return result.docs as unknown as CategoryDoc[];
+    } catch (err) {
+      console.error("[blog] getAllCategories failed:", (err as Error).message);
+      return [];
+    }
   },
   ["blog:getAllCategories"],
   { tags: [BLOG_TAGS.categories], revalidate: 300 },
@@ -212,16 +239,21 @@ export const getAllCategories = cache(
 /** Lista de todas las tags. */
 export const getAllTags = cache(
   async (locale: Locale): Promise<TagDoc[]> => {
-    const payload = await getPayload();
-    const result = await payload.find({
-      collection: "tags",
-      locale,
-      fallbackLocale: "es",
-      limit: 200,
-      sort: "name",
-      depth: 0,
-    });
-    return result.docs as unknown as TagDoc[];
+    try {
+      const payload = await getPayload();
+      const result = await payload.find({
+        collection: "tags",
+        locale,
+        fallbackLocale: "es",
+        limit: 200,
+        sort: "name",
+        depth: 0,
+      });
+      return result.docs as unknown as TagDoc[];
+    } catch (err) {
+      console.error("[blog] getAllTags failed:", (err as Error).message);
+      return [];
+    }
   },
   ["blog:getAllTags"],
   { tags: [BLOG_TAGS.tags], revalidate: 300 },
@@ -233,54 +265,64 @@ export async function getRelatedPosts(
   locale: Locale,
   limit = 3,
 ): Promise<PostDoc[]> {
-  const payload = await getPayload();
+  try {
+    const payload = await getPayload();
 
-  const categoryIds = (currentPost.categories ?? [])
-    .map((c) => (typeof c === "object" && c !== null ? c.id : c))
-    .filter(Boolean);
-  const tagIds = (currentPost.tags ?? [])
-    .map((t) => (typeof t === "object" && t !== null ? t.id : t))
-    .filter(Boolean);
+    const categoryIds = (currentPost.categories ?? [])
+      .map((c) => (typeof c === "object" && c !== null ? c.id : c))
+      .filter(Boolean);
+    const tagIds = (currentPost.tags ?? [])
+      .map((t) => (typeof t === "object" && t !== null ? t.id : t))
+      .filter(Boolean);
 
-  if (categoryIds.length === 0 && tagIds.length === 0) {
+    if (categoryIds.length === 0 && tagIds.length === 0) {
+      return [];
+    }
+
+    const orClauses: Where[] = [];
+    if (categoryIds.length) orClauses.push({ categories: { in: categoryIds } });
+    if (tagIds.length) orClauses.push({ tags: { in: tagIds } });
+
+    const result = await payload.find({
+      collection: "posts",
+      locale,
+      fallbackLocale: "es",
+      depth: 1,
+      limit,
+      sort: "-publishedAt",
+      where: {
+        and: [
+          { id: { not_equals: currentPost.id } },
+          { status: { equals: "published" } },
+          { or: orClauses },
+        ],
+      },
+    });
+
+    return result.docs as unknown as PostDoc[];
+  } catch (err) {
+    console.error("[blog] getRelatedPosts failed:", (err as Error).message);
     return [];
   }
-
-  const orClauses: Where[] = [];
-  if (categoryIds.length) orClauses.push({ categories: { in: categoryIds } });
-  if (tagIds.length) orClauses.push({ tags: { in: tagIds } });
-
-  const result = await payload.find({
-    collection: "posts",
-    locale,
-    fallbackLocale: "es",
-    depth: 1,
-    limit,
-    sort: "-publishedAt",
-    where: {
-      and: [
-        { id: { not_equals: currentPost.id } },
-        { status: { equals: "published" } },
-        { or: orClauses },
-      ],
-    },
-  });
-
-  return result.docs as unknown as PostDoc[];
 }
 
 /** Todos los slugs publicados (para sitemap / generateStaticParams). */
 export async function getAllPostSlugs(locale: Locale): Promise<string[]> {
-  const payload = await getPayload();
-  const result = await payload.find({
-    collection: "posts",
-    where: { status: { equals: "published" } },
-    locale,
-    depth: 0,
-    limit: 1000,
-    pagination: false,
-  });
-  return (result.docs as unknown as PostDoc[]).map((d) => d.slug);
+  try {
+    const payload = await getPayload();
+    const result = await payload.find({
+      collection: "posts",
+      where: { status: { equals: "published" } },
+      locale,
+      depth: 0,
+      limit: 1000,
+      pagination: false,
+    });
+    return (result.docs as unknown as PostDoc[]).map((d) => d.slug);
+  } catch (err) {
+    console.error("[blog] getAllPostSlugs failed:", (err as Error).message);
+    return [];
+  }
 }
 
 /* -------------------------------------------------------------------------- */

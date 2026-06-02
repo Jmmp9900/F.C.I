@@ -3,11 +3,11 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { getAllCategories, getAllPostSlugs, getAllTags } from "./lib/blog";
 
+import { getPublicSiteUrl } from "./lib/site-url";
+
 export const dynamic = "force-dynamic";
 
-const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-).replace(/\/$/, "");
+const SITE_URL = getPublicSiteUrl();
 
 type Url = MetadataRoute.Sitemap[number];
 

@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 
 import { getPayload } from "../lib/payload";
-import { clientIpFromHeaders, rateLimit } from "../lib/rate-limit";
+import { clientIpFromHeaders, rateLimit } from "@/lib/rate-limit";
 
 /**
  * Validación mínima de email sin dependencias externas (zod aún no instalado).

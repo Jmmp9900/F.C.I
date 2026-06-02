@@ -209,6 +209,8 @@
     "noResults": "No encontramos publicaciones con esos criterios.",
     "noResultsHint": "Prueba quitando algún filtro o cambiando los términos de búsqueda.",
     "noPostsYet": "Aún no hay publicaciones disponibles. Vuelve pronto.",
+    "postNotFound": "Esta publicación no existe o ya no está disponible.",
+    "postNotFoundHint": "Puede haber sido movida o retirada del sitio.",
     "readMore": "Leer publicación",
     "publishedOn": "Publicado el {date}",
     "updatedOn": "Actualizado el {date}",

@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { SetHtmlLang } from "../../components/SetHtmlLang";
 
+import { getPublicSiteUrl } from "../../lib/site-url";
+
 const locales = routing.locales;
 
 type Props = {
@@ -17,12 +19,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.URL ??
-  process.env.DEPLOY_PRIME_URL ??
-  "http://localhost:3000"
-).replace(/\/$/, "");
+const SITE_URL = getPublicSiteUrl();
 
 export async function generateMetadata({
   params,

@@ -10,6 +10,7 @@ import {
   getCategoryBySlug,
   getPosts,
 } from "../../../../../lib/blog";
+import { isValidSlug } from "../../../../../lib/blog-slug";
 import type { Locale } from "../../../../../lib/blog-types";
 
 type Props = {
@@ -20,8 +21,10 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
+  if (!isValidSlug(slug)) notFound();
+
   const category = await getCategoryBySlug(slug, locale);
-  if (!category) return { title: "404", robots: { index: false } };
+  if (!category) notFound();
 
   const t = await getTranslations({ locale, namespace: "Blog" });
   const title = t("filtered.byCategory", { name: category.name });
@@ -36,6 +39,8 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
   setRequestLocale(locale);
+
+  if (!isValidSlug(slug)) notFound();
 
   const category = await getCategoryBySlug(slug, locale);
   if (!category) notFound();

@@ -15,6 +15,8 @@ import {
   getPostBySlug,
   getRelatedPosts,
 } from "../../../../lib/blog";
+import { isValidSlug } from "../../../../lib/blog-slug";
+import { getPublicSiteUrl } from "../../../../lib/site-url";
 import {
   type Locale,
   getMediaAlt,
@@ -26,9 +28,10 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-).replace(/\/$/, "");
+/** Siempre render dinámico: consulta Payload en runtime (Neon). */
+export const dynamic = "force-dynamic";
+
+export const dynamicParams = true;
 
 /**
  * Pre-genera las rutas estáticas para todos los posts publicados en ambos
@@ -55,11 +58,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
-  const post = await getPostBySlug(slug, locale);
 
-  if (!post) {
-    return { title: "404", robots: { index: false } };
-  }
+  if (!isValidSlug(slug)) notFound();
+
+  const post = await getPostBySlug(slug, locale);
+  if (!post) notFound();
+
+  const SITE_URL = getPublicSiteUrl();
 
   const cover = isMediaDoc(post.cover) ? post.cover : null;
   const ogImage = cover ? getMediaUrl(cover, "hero") : null;
@@ -106,9 +111,12 @@ export default async function PostDetailPage({ params }: Props) {
   const locale = localeParam as Locale;
   setRequestLocale(locale);
 
+  if (!isValidSlug(slug)) notFound();
+
   const post = await getPostBySlug(slug, locale);
   if (!post) notFound();
 
+  const SITE_URL = getPublicSiteUrl();
   const t = await getTranslations("Blog");
 
   const cover = isMediaDoc(post.cover) ? post.cover : null;

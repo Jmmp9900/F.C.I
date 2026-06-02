@@ -1,5 +1,3 @@
-import "server-only";
-
 type Bucket = { count: number; resetAt: number };
 
 const buckets = new Map<string, Bucket>();
@@ -12,9 +10,8 @@ function pruneExpired(now: number): void {
 }
 
 /**
- * Rate limit in-memory por clave (p. ej. IP + acción).
- * En serverless es best-effort (por instancia de función); complementar con
- * WAF/Cloudflare en producción para cobertura global.
+ * Rate limit in-memory por clave. Best-effort en serverless (por instancia).
+ * Complementar con WAF/Cloudflare en producción.
  */
 export function rateLimit(
   key: string,

@@ -7,6 +7,7 @@ import { BlogPagination } from "../../../../../components/blog/BlogPagination";
 import { EmptyState } from "../../../../../components/blog/EmptyState";
 import { PostCard } from "../../../../../components/blog/PostCard";
 import { getPosts, getTagBySlug } from "../../../../../lib/blog";
+import { isValidSlug } from "../../../../../lib/blog-slug";
 import type { Locale } from "../../../../../lib/blog-types";
 
 type Props = {
@@ -17,8 +18,10 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
+  if (!isValidSlug(slug)) notFound();
+
   const tag = await getTagBySlug(slug, locale);
-  if (!tag) return { title: "404", robots: { index: false } };
+  if (!tag) notFound();
 
   const t = await getTranslations({ locale, namespace: "Blog" });
   return {
@@ -31,6 +34,8 @@ export default async function TagPage({ params, searchParams }: Props) {
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
   setRequestLocale(locale);
+
+  if (!isValidSlug(slug)) notFound();
 
   const tag = await getTagBySlug(slug, locale);
   if (!tag) notFound();

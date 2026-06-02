@@ -11,7 +11,8 @@ export default async function PostNotFound() {
     <SitePageLayout>
       <section className="py-24">
         <EmptyState
-          title={t("noPostsYet")}
+          title={t("postNotFound")}
+          hint={t("postNotFoundHint")}
           action={
             <Link
               href="/blog"

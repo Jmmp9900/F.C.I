@@ -346,6 +346,8 @@ async function findOrCreatePost(
     .map((s) => ctx.tagsById[s])
     .filter((v): v is string | number => v !== undefined);
 
+  const coverId = ctx.coverId as number;
+
   const created = await payload.create({
     collection: "posts",
     locale: "es",
@@ -353,7 +355,7 @@ async function findOrCreatePost(
       slug: post.slug,
       title: post.title.es,
       excerpt: post.excerpt.es,
-      cover: ctx.coverId,
+      cover: coverId,
       body: makeBody(post.bodyBlocks.es),
       categories: categoryIds,
       tags: tagIds,
