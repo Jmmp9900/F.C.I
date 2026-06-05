@@ -1,6 +1,6 @@
 import { Globe, Menu } from "lucide-react";
-import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { getLocale, getTranslations } from "next-intl/server";
+import { getPathname, Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { SocialNav } from "./SocialNav";
 
@@ -14,11 +14,11 @@ const navKeys: readonly NavKey[] = [
   "contacto",
 ];
 
-/** Anchors del home para las secciones que viven dentro de la propia home. */
-const hashFor: Record<"inicio" | "nosotros" | "comunidad", string> = {
-  inicio: "#inicio",
-  nosotros: "#nosotros",
-  comunidad: "#comunidad",
+/** Secciones del home (anchors). Desde otras páginas hay que ir a `/` + hash. */
+const homeSectionHash: Record<"inicio" | "nosotros" | "comunidad", string> = {
+  inicio: "inicio",
+  nosotros: "nosotros",
+  comunidad: "comunidad",
 };
 
 const navLinkClass =
@@ -31,13 +31,15 @@ function NavItem({
   navKey,
   label,
   className,
+  homePath,
 }: {
   navKey: NavKey;
   label: string;
   className: string;
+  homePath: string;
 }) {
   /* `publicaciones` y `contacto` son páginas con URL traducida (next-intl).
-     El resto son anchors a secciones del home. */
+     El resto son secciones del home: URL absoluta `/es#…`, no `#…` relativo. */
   if (navKey === "publicaciones") {
     return (
       <Link href="/blog" className={className}>
@@ -53,7 +55,10 @@ function NavItem({
     );
   }
   return (
-    <a href={hashFor[navKey]} className={className}>
+    <a
+      href={`${homePath}#${homeSectionHash[navKey]}`}
+      className={className}
+    >
       {label}
     </a>
   );
@@ -62,6 +67,8 @@ function NavItem({
 export async function SiteHeader() {
   const t = await getTranslations("Header");
   const tc = await getTranslations("Common");
+  const locale = await getLocale();
+  const homePath = getPathname({ locale, href: "/" });
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-fci-void/90 backdrop-blur-md">
@@ -69,7 +76,7 @@ export async function SiteHeader() {
         {/* Fila 1: marca + acciones (móvil/tablet/escritorio) */}
         <div className="flex items-center justify-between gap-4 py-3.5 lg:border-b lg:border-white/[0.08] lg:py-4">
           <a
-            href="#inicio"
+            href={`${homePath}#inicio`}
             className="min-w-0 shrink focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2"
           >
             <p className="font-serif text-xl font-semibold tracking-wide text-fci-foreground sm:text-2xl">
@@ -112,6 +119,7 @@ export async function SiteHeader() {
                         navKey={key}
                         label={t(`nav.${key}`)}
                         className={navLinkMobileClass}
+                        homePath={homePath}
                       />
                     </li>
                   ))}
@@ -146,6 +154,7 @@ export async function SiteHeader() {
                   navKey={key}
                   label={t(`nav.${key}`)}
                   className={navLinkClass}
+                  homePath={homePath}
                 />
               </li>
             ))}

@@ -1,7 +1,7 @@
 import { Mail, Share2 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
-import { Link } from "@/i18n/navigation";
+import { getPathname, Link } from "@/i18n/navigation";
 import { NewsletterForm } from "./NewsletterForm";
 import { SocialNav } from "./SocialNav";
 import { socialIconButtonClass } from "./social-icon-button";
@@ -9,6 +9,8 @@ import { socialIconButtonClass } from "./social-icon-button";
 export async function SiteFooter() {
   const t = await getTranslations("Footer");
   const tc = await getTranslations("Common");
+  const locale = await getLocale();
+  const homePath = getPathname({ locale, href: "/" });
   const year = new Date().getFullYear();
 
   return (
@@ -49,7 +51,7 @@ export async function SiteFooter() {
                 aria-hidden
               />
               <a
-                href="#nosotros"
+                href={`${homePath}#nosotros`}
                 className={`${socialIconButtonClass} shrink-0`}
                 aria-label={t("servicesAria")}
               >
