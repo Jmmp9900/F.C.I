@@ -34,16 +34,13 @@ export async function ValuesPillars() {
         <p className="mx-auto mt-8 max-w-md text-center text-[11px] leading-relaxed text-fci-muted/80 sm:text-xs">
           {t("iconsHint")}
         </p>
-        <ul className="mt-6 flex flex-wrap items-stretch justify-center gap-4 sm:mt-8 sm:gap-5 lg:gap-6">
+        <ul className="mt-6 grid grid-cols-5 gap-2 sm:mt-8 sm:gap-3 md:gap-4 lg:gap-5">
           {iconKeys.map((key, i) => {
             const Icon = icons[i]!;
             const name = t(`items.${key}.name`);
             const desc = t(`items.${key}.desc`);
             return (
-              <li
-                key={key}
-                className="w-[calc(50%-0.5rem)] sm:w-[min(100%,14.5rem)] md:w-[min(100%,15.5rem)] lg:w-[calc(20%-0.8rem)] lg:max-w-[13rem] xl:max-w-[14rem]"
-              >
+              <li key={key} className="min-w-0">
                 <article
                   tabIndex={0}
                   aria-describedby={`pillar-${key}-desc`}
