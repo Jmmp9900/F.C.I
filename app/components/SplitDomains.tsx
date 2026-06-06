@@ -1,7 +1,7 @@
 import { ArrowRight, Compass } from "lucide-react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { BrandImageDrift } from "./BrandImageDrift";
+import { DomainHeroVideo } from "./DomainHeroVideo";
 import {
   getWhatsAppChatHref,
   isWhatsAppChatHref,
@@ -86,12 +86,10 @@ export async function SplitDomains() {
 
           <div className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-fci-earth/50 bg-gradient-to-br from-cyan-950/30 via-fci-earth/15 to-fci-void ring-1 ring-cyan-500/10 fci-glow-earth md:rounded-r-none md:border-r-0">
             <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-64 md:h-80 lg:h-96">
-              <BrandImageDrift
-                k="tierra"
-                alt={t("earthAlt")}
-                sizes="(min-width: 768px) 50vw, 100vw"
-                quality={93}
-                variant="split-earth"
+              <DomainHeroVideo
+                src="/videos/tierra-relaciones-sociales.mov"
+                poster="/images/brand/tierra.png"
+                ariaLabel={t("earthAlt")}
               />
               <div
                 className="pointer-events-none absolute inset-0 z-[8] fci-split-earth-hud-grid"
@@ -136,12 +134,10 @@ export async function SplitDomains() {
 
           <div className="relative mt-6 flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-fci-space/40 bg-gradient-to-br from-fci-space/25 to-fci-void fci-glow-space md:mt-0 md:rounded-l-none">
             <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-64 md:h-80 lg:h-96">
-              <BrandImageDrift
-                k="espacio"
-                alt={t("spaceAlt")}
-                sizes="(min-width: 768px) 50vw, 100vw"
-                quality={93}
-                variant="split-space"
+              <DomainHeroVideo
+                src="/videos/espacio-transicion.mov"
+                poster="/images/brand/espacio.png"
+                ariaLabel={t("spaceAlt")}
               />
               <div
                 className="pointer-events-none absolute inset-0 z-[7] fci-split-space-stars"
