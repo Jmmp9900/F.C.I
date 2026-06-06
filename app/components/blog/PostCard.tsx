@@ -63,7 +63,7 @@ export async function PostCard({ post, locale, priority = false }: Props) {
         {dateLabel ? (
           <time
             dateTime={post.publishedAt ?? undefined}
-            className="text-[0.7rem] font-semibold uppercase tracking-[0.15em] text-fci-gold"
+            className="text-xs font-semibold uppercase tracking-[0.15em] text-fci-gold"
           >
             {dateLabel}
           </time>

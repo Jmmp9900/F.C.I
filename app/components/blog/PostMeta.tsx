@@ -53,12 +53,12 @@ export async function PostMeta({ post, locale, linked = true }: Props) {
                       pathname: "/blog/categoria/[slug]",
                       params: { slug: cat.slug },
                     }}
-                    className="inline-flex items-center rounded-full border border-fci-gold/30 px-2.5 py-0.5 text-[0.7rem] uppercase tracking-wider text-fci-gold transition hover:border-fci-gold hover:bg-fci-gold/10"
+                    className="inline-flex items-center rounded-full border border-fci-gold/30 px-2.5 py-0.5 text-xs uppercase tracking-wider text-fci-gold transition hover:border-fci-gold hover:bg-fci-gold/10"
                   >
                     {cat.name}
                   </Link>
                 ) : (
-                  <span className="inline-flex items-center rounded-full border border-fci-gold/30 px-2.5 py-0.5 text-[0.7rem] uppercase tracking-wider text-fci-gold">
+                  <span className="inline-flex items-center rounded-full border border-fci-gold/30 px-2.5 py-0.5 text-xs uppercase tracking-wider text-fci-gold">
                     {cat.name}
                   </span>
                 )}

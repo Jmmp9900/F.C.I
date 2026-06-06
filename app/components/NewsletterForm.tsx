@@ -147,7 +147,7 @@ function Form({
           {message}
         </p>
       ) : (
-        <p className="mt-2 text-[0.7rem] text-fci-muted/70">
+        <p className="mt-2 text-xs text-fci-muted/70">
           {t("privacyHint")}
         </p>
       )}

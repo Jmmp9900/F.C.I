@@ -31,7 +31,7 @@ export async function ValuesPillars() {
           <p className="text-balance">{t("introLine2")}</p>
           <p className="text-balance">{t("introLine3")}</p>
         </div>
-        <p className="mx-auto mt-8 max-w-md text-center text-[11px] leading-relaxed text-fci-muted/80 sm:text-xs">
+        <p className="mx-auto mt-8 max-w-md text-center text-xs leading-relaxed text-fci-muted/80 sm:text-sm">
           {t("iconsHint")}
         </p>
         <ul className="mt-6 grid grid-cols-5 gap-2 sm:mt-8 sm:gap-3 md:gap-4 lg:gap-5">
@@ -67,13 +67,13 @@ export async function ValuesPillars() {
                     >
                       <h3
                         id={`pillar-${key}-title`}
-                        className="text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-fci-gold sm:text-[11px]"
+                        className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-fci-gold sm:text-sm"
                       >
                         {name}
                       </h3>
                       <p
                         id={`pillar-${key}-desc`}
-                        className="mt-2 text-center text-[11px] leading-snug text-fci-muted/95 sm:text-xs sm:leading-relaxed"
+                        className="mt-2 text-center text-xs leading-snug text-fci-muted/95 sm:text-sm sm:leading-relaxed"
                       >
                         {desc}
                       </p>

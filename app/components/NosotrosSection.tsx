@@ -97,7 +97,7 @@ function TeamMemberArticle({
               {member.nombre}
             </h4>
             <span
-              className={`shrink-0 whitespace-nowrap rounded-full border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide sm:px-2.5 sm:text-xs ${domainBadgeClass(member.dominio)}`}
+              className={`shrink-0 whitespace-nowrap rounded-full border px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide sm:px-2.5 sm:text-sm ${domainBadgeClass(member.dominio)}`}
             >
               {domainLabel}
             </span>
@@ -217,7 +217,7 @@ export function NosotrosSection() {
                 <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-md border border-emerald-400/25 bg-emerald-950/50 text-emerald-300/95 shadow-[0_0_20px_rgba(52,211,153,0.12)]">
                   <Leaf className="size-[1.15rem]" strokeWidth={1.5} aria-hidden />
                 </span>
-                <p className="min-w-0 text-[11px] font-semibold uppercase leading-snug tracking-[0.18em] text-emerald-100/90 sm:text-xs sm:tracking-[0.2em]">
+                <p className="min-w-0 text-xs font-semibold uppercase leading-snug tracking-[0.18em] text-emerald-100/90 sm:text-sm sm:tracking-[0.2em]">
                   {t("whoSustainEyebrow")}
                 </p>
               </div>

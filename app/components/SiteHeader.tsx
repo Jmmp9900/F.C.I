@@ -93,7 +93,7 @@ export async function SiteHeader() {
             <p className="font-serif text-xl font-semibold tracking-wide text-fci-foreground sm:text-2xl">
               {tc("brandAcronym")}
             </p>
-            <p className="mt-0.5 max-w-[min(100%,22rem)] text-[10px] font-medium uppercase leading-snug tracking-[0.18em] text-fci-gold/95 sm:text-[11px] lg:text-xs">
+            <p className="mt-0.5 max-w-[min(100%,22rem)] text-xs font-medium uppercase leading-snug tracking-[0.18em] text-fci-gold/95 sm:text-sm lg:text-base">
               {tc("tagline")}
             </p>
           </a>

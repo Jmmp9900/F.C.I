@@ -39,26 +39,26 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cinzel), ui-serif, Georgia, serif;
 
-  /* Escala global (ligeramente mayor que antes) */
-  --text-xs: 1rem;
-  --text-xs--line-height: calc(1.35 / 1);
-  --text-sm: 1.125rem;
-  --text-sm--line-height: calc(1.35 / 1.125);
-  --text-base: 1.25rem;
-  --text-base--line-height: calc(1.5 / 1.25);
-  --text-lg: 1.3125rem;
-  --text-lg--line-height: calc(1.75 / 1.3125);
-  --text-xl: 1.5rem;
-  --text-xl--line-height: calc(1.75 / 1.5);
-  --text-2xl: 1.9375rem;
-  --text-2xl--line-height: calc(2 / 1.9375);
-  --text-3xl: 2.4375rem;
-  --text-3xl--line-height: calc(2.25 / 2.4375);
-  --text-4xl: 3.0625rem;
-  --text-4xl--line-height: calc(2.5 / 3.0625);
-  --text-5xl: 4rem;
+  /* Escala global (+1 paso respecto a la anterior) */
+  --text-xs: 1.125rem;
+  --text-xs--line-height: calc(1.35 / 1.125);
+  --text-sm: 1.3125rem;
+  --text-sm--line-height: calc(1.4 / 1.3125);
+  --text-base: 1.5rem;
+  --text-base--line-height: calc(1.55 / 1.5);
+  --text-lg: 1.625rem;
+  --text-lg--line-height: calc(1.75 / 1.625);
+  --text-xl: 1.875rem;
+  --text-xl--line-height: calc(1.75 / 1.875);
+  --text-2xl: 2.375rem;
+  --text-2xl--line-height: calc(2 / 2.375);
+  --text-3xl: 3rem;
+  --text-3xl--line-height: calc(2.25 / 3);
+  --text-4xl: 3.75rem;
+  --text-4xl--line-height: calc(2.5 / 3.75);
+  --text-5xl: 4.75rem;
   --text-5xl--line-height: 1.08;
-  --text-6xl: 4.75rem;
+  --text-6xl: 5.625rem;
   --text-6xl--line-height: 1.08;
 }
 
@@ -98,7 +98,7 @@ body {
   border-radius: 0 0 0.5rem 0.5rem;
   background: var(--fci-gold);
   color: var(--fci-void);
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   font-weight: 600;
   transform: translateY(-120%);
   transition: transform 0.2s ease;
@@ -817,8 +817,8 @@ body {
 
 .post-body {
   color: var(--fci-foreground);
-  font-size: 1.0625rem;
-  line-height: 1.75;
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
 }
 
 .post-body > * + * {
@@ -838,21 +838,21 @@ body {
 }
 
 .post-body h1 {
-  font-size: 1.875rem;
+  font-size: var(--text-3xl);
 }
 
 .post-body h2 {
-  font-size: 1.625rem;
+  font-size: var(--text-2xl);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding-bottom: 0.4em;
 }
 
 .post-body h3 {
-  font-size: 1.375rem;
+  font-size: var(--text-xl);
 }
 
 .post-body h4 {
-  font-size: 1.125rem;
+  font-size: var(--text-lg);
   color: var(--fci-gold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -936,7 +936,7 @@ body {
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   overflow-x: auto;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   line-height: 1.6;
 }
 
@@ -960,7 +960,7 @@ body {
 
 .post-body figcaption {
   text-align: center;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--fci-muted);
   margin-top: 0.6em;
 }
@@ -974,7 +974,7 @@ body {
 .post-body table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
 }
 
 .post-body th,
