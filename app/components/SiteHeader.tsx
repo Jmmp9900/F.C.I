@@ -4,10 +4,17 @@ import { getPathname, Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { SocialNav } from "./SocialNav";
 
-type NavKey = "inicio" | "nosotros" | "publicaciones" | "comunidad" | "contacto";
+type NavKey =
+  | "inicio"
+  | "servicios"
+  | "nosotros"
+  | "publicaciones"
+  | "comunidad"
+  | "contacto";
 
 const navKeys: readonly NavKey[] = [
   "inicio",
+  "servicios",
   "nosotros",
   "publicaciones",
   "comunidad",
@@ -15,8 +22,12 @@ const navKeys: readonly NavKey[] = [
 ];
 
 /** Secciones del home (anchors). Desde otras páginas hay que ir a `/` + hash. */
-const homeSectionHash: Record<"inicio" | "nosotros" | "comunidad", string> = {
+const homeSectionHash: Record<
+  "inicio" | "servicios" | "nosotros" | "comunidad",
+  string
+> = {
   inicio: "inicio",
+  servicios: "servicios",
   nosotros: "nosotros",
   comunidad: "comunidad",
 };

@@ -45,7 +45,10 @@ export async function SplitDomains() {
   const whatsappHref = getWhatsAppChatHref();
   const whatsAppExternal = isWhatsAppChatHref(whatsappHref);
   return (
-    <section className="border-t border-white/5 py-16 sm:py-24">
+    <section
+      id="servicios"
+      className="scroll-mt-24 border-t border-white/5 py-16 sm:py-24"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
           {t("eyebrow")}

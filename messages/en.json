@@ -22,6 +22,7 @@
   "Header": {
     "nav": {
       "inicio": "Home",
+      "servicios": "Services",
       "nosotros": "About",
       "publicaciones": "Posts",
       "comunidad": "Community",
