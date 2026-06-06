@@ -3,6 +3,7 @@ import { Reveal } from "../../components/Reveal";
 import { HeroHome } from "../../components/HeroHome";
 import { ValuesPillars } from "../../components/ValuesPillars";
 import { SplitDomains } from "../../components/SplitDomains";
+import { EconomyTransitionInfographic } from "../../components/EconomyTransitionInfographic";
 import { NosotrosSection } from "../../components/NosotrosSection";
 import { EducacionTeaser } from "../../components/EducacionTeaser";
 import { PublicationsTeaser } from "../../components/PublicationsTeaser";
@@ -18,6 +19,9 @@ export default function Home() {
       </Reveal>
       <Reveal delayMs={40}>
         <SplitDomains />
+      </Reveal>
+      <Reveal delayMs={35}>
+        <EconomyTransitionInfographic />
       </Reveal>
       <Reveal delayMs={30}>
         <NosotrosSection />

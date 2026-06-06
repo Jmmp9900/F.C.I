@@ -84,6 +84,51 @@
     "closing": "Dos dominios. Una visión integrada.",
     "ctaConsult": "Agendar consultoría"
   },
+  "EconomyTransition": {
+    "eyebrow": "De la Tierra al espacio",
+    "title": "Transición de sectores económicos",
+    "intro": "Los sectores que sostienen la economía en la Tierra alimentan las áreas emergentes de la economía espacial: datos, infraestructura, recursos, movilidad, actividades humanas e innovación.",
+    "imageAlt": "Infografía: sectores económicos terrestres conectados con áreas emergentes de la economía espacial alrededor de la Tierra",
+    "earthColumnTitle": "Sectores en la Tierra",
+    "spaceColumnTitle": "Áreas emergentes en el espacio",
+    "earth": {
+      "agriculture": "Agricultura",
+      "energy": "Energía",
+      "transport": "Transporte y logística",
+      "communications": "Comunicaciones",
+      "finance": "Finanzas y seguros",
+      "manufacturing": "Manufactura",
+      "mining": "Minería y recursos",
+      "science": "Ciencia e investigación",
+      "tourism": "Turismo y servicios"
+    },
+    "space": {
+      "satellite": {
+        "title": "Servicios satelitales",
+        "subtitle": "Datos, conectividad, observación de la Tierra"
+      },
+      "infrastructure": {
+        "title": "Infraestructura espacial",
+        "subtitle": "Órbita, lunar, cislunar"
+      },
+      "resources": {
+        "title": "Recursos espaciales",
+        "subtitle": "Recursos lunares y asteroides"
+      },
+      "transportation": {
+        "title": "Transporte espacial",
+        "subtitle": "Lanzamiento y movilidad en el espacio"
+      },
+      "human": {
+        "title": "Actividades humanas en el espacio",
+        "subtitle": "Turismo, hábitats, exploración"
+      },
+      "manufacturing": {
+        "title": "Manufactura e innovación espacial",
+        "subtitle": "Materiales avanzados, I+D"
+      }
+    }
+  },
   "Nosotros": {
     "whoHeading": "QUIÉNES SOMOS",
     "whoSustainEyebrow": "Impacto con visión de futuro",

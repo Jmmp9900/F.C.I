@@ -84,6 +84,51 @@
     "closing": "Two domains. One integrated vision.",
     "ctaConsult": "Book a consultation"
   },
+  "EconomyTransition": {
+    "eyebrow": "From Earth to space",
+    "title": "Transition of economic sectors",
+    "intro": "The sectors that sustain the economy on Earth feed the emergent areas of the space economy: data, infrastructure, resources, mobility, human activities, and innovation.",
+    "imageAlt": "Infographic: Earth economy sectors connected to emergent space economy areas around the planet",
+    "earthColumnTitle": "Sectors on Earth",
+    "spaceColumnTitle": "Emergent areas in space",
+    "earth": {
+      "agriculture": "Agriculture",
+      "energy": "Energy",
+      "transport": "Transport & Logistics",
+      "communications": "Communications",
+      "finance": "Finance & Insurance",
+      "manufacturing": "Manufacturing",
+      "mining": "Mining & Resources",
+      "science": "Science & Research",
+      "tourism": "Tourism & Services"
+    },
+    "space": {
+      "satellite": {
+        "title": "Satellite Services",
+        "subtitle": "Data, Connectivity, Earth Observation"
+      },
+      "infrastructure": {
+        "title": "Space Infrastructure",
+        "subtitle": "Orbit, Lunar, Cislunar"
+      },
+      "resources": {
+        "title": "Space Resources",
+        "subtitle": "Lunar & Asteroid Resources"
+      },
+      "transportation": {
+        "title": "Space Transportation",
+        "subtitle": "Launch & In-Space Mobility"
+      },
+      "human": {
+        "title": "Human Space Activities",
+        "subtitle": "Tourism, Habitats, Exploration"
+      },
+      "manufacturing": {
+        "title": "Space Manufacturing & Innovation",
+        "subtitle": "Advanced Materials, R&D"
+      }
+    }
+  },
   "Nosotros": {
     "whoHeading": "WHO WE ARE",
     "whoSustainEyebrow": "Impact with a long-term view",
