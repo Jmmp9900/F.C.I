@@ -11,50 +11,32 @@ function HireServiceButton({
   label,
   href,
   isExternal,
+  variant,
 }: {
   label: string;
   href: string;
   isExternal: boolean;
+  variant: "earth" | "space";
 }) {
   const externalProps = isExternal
     ? ({ target: "_blank", rel: "noopener noreferrer" } as const)
     : {};
 
-  return (
-    <div className="w-full">
-      <Link
-        href={href}
-        {...externalProps}
-        className="fci-glow-gold flex min-h-[3.25rem] w-full items-center justify-center rounded-lg bg-gradient-to-r from-fci-gold-dim via-fci-gold to-fci-gold-hover px-4 py-3 text-center text-xs font-semibold uppercase leading-snug tracking-wide text-fci-void text-balance shadow-[0_0_24px_rgba(226,189,58,0.22)] outline-none transition hover:brightness-110 active:brightness-[0.98] focus-visible:ring-2 focus-visible:ring-fci-gold-hover/80 focus-visible:ring-offset-2 focus-visible:ring-offset-fci-base sm:min-h-[3.5rem] sm:py-3.5 sm:text-sm"
-      >
-        {label}
-      </Link>
-    </div>
-  );
-}
-
-function DomainAnchorCta({
-  href,
-  label,
-  variant,
-}: {
-  href: string;
-  label: string;
-  variant: "earth" | "space";
-}) {
   const surface =
     variant === "earth"
       ? "border-cyan-400/30 bg-gradient-to-b from-cyan-500/[0.12] to-cyan-950/10 hover:border-cyan-300/50 hover:from-cyan-400/18"
       : "border-violet-400/30 bg-gradient-to-b from-violet-500/[0.14] to-violet-950/10 hover:border-violet-300/50 hover:from-violet-400/18";
 
   return (
-    <a
-      href={href}
-      className={`inline-flex w-full items-center justify-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium text-fci-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fci-gold/55 ${surface}`}
-    >
-      {label}
-      <ArrowRight className="size-4 shrink-0 text-fci-gold/90" strokeWidth={2} />
-    </a>
+    <div className="w-full">
+      <Link
+        href={href}
+        {...externalProps}
+        className={`inline-flex min-h-[3.25rem] w-full items-center justify-center rounded-lg border px-4 py-3 text-center text-sm font-medium leading-snug text-fci-foreground text-balance shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] outline-none transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fci-gold/55 sm:min-h-[3.5rem] sm:py-3.5 ${surface}`}
+      >
+        {label}
+      </Link>
+    </div>
   );
 }
 
@@ -117,15 +99,11 @@ export async function SplitDomains() {
               <p className="mt-3 text-sm leading-relaxed text-fci-muted">
                 {t("earthBody")}
               </p>
-              <div className="mt-auto flex w-full flex-col gap-4 pt-4">
+              <div className="mt-auto flex w-full flex-col pt-4">
                 <HireServiceButton
                   label={t("hireService")}
                   href={whatsappHref}
                   isExternal={whatsAppExternal}
-                />
-                <DomainAnchorCta
-                  href="#nosotros"
-                  label={t("ctaLines")}
                   variant="earth"
                 />
               </div>
@@ -166,15 +144,11 @@ export async function SplitDomains() {
               <p className="mt-3 text-sm leading-relaxed text-fci-muted">
                 {t("spaceBody")}
               </p>
-              <div className="mt-auto flex w-full flex-col gap-4 pt-4">
+              <div className="mt-auto flex w-full flex-col pt-4">
                 <HireServiceButton
                   label={t("hireService")}
                   href={whatsappHref}
                   isExternal={whatsAppExternal}
-                />
-                <DomainAnchorCta
-                  href="#nosotros"
-                  label={t("ctaLines")}
                   variant="space"
                 />
               </div>
