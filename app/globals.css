@@ -66,6 +66,27 @@
   text-wrap: balance;
 }
 
+/* Select nativo: contraste legible en listas desplegables (Windows/Chrome) */
+.fci-select {
+  color-scheme: dark;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23e2bd3a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.25rem;
+}
+
+.fci-select option {
+  background-color: var(--fci-navy);
+  color: var(--fci-foreground);
+}
+
+.fci-select option:checked,
+.fci-select option:hover {
+  background-color: var(--fci-surface);
+  color: var(--fci-gold);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -316,6 +337,21 @@ body {
 .fci-reveal-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
+}
+
+@keyframes fci-hero-carousel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fci-hero-carousel-item {
+  animation: fci-hero-carousel-in 0.55s ease-out both;
 }
 
 /* Imágenes de secciones: misma deriva lenta del hero, variantes y ritmos */

@@ -1,4 +1,5 @@
 import { Globe, Menu } from "lucide-react";
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getPathname, Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "./LocaleSwitcher";
@@ -88,14 +89,16 @@ export async function SiteHeader() {
         <div className="flex items-center justify-between gap-4 py-3.5 lg:border-b lg:border-white/[0.08] lg:py-4">
           <a
             href={`${homePath}#inicio`}
-            className="min-w-0 shrink focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2"
+            className="inline-flex min-w-0 shrink items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2"
           >
-            <p className="font-serif text-xl font-semibold tracking-wide text-fci-foreground sm:text-2xl">
-              {tc("brandAcronym")}
-            </p>
-            <p className="mt-0.5 max-w-[min(100%,22rem)] text-xs font-medium uppercase leading-snug tracking-[0.18em] text-fci-gold/95 sm:text-sm lg:text-base">
-              {tc("tagline")}
-            </p>
+            <Image
+              src="/images/brand/fci-logo.png"
+              alt={`${tc("brandAcronym")} — ${tc("tagline")}`}
+              width={320}
+              height={104}
+              priority
+              className="h-14 w-auto max-w-[min(100%,18rem)] object-contain object-left sm:h-16 sm:max-w-[20rem] lg:h-[4.75rem] lg:max-w-[22rem]"
+            />
           </a>
 
           <div className="flex shrink-0 items-center gap-3 sm:gap-4 lg:gap-6">

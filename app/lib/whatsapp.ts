@@ -1,14 +1,16 @@
+/** WhatsApp de la fundación (+57 320 8096446). */
+export const FOUNDATION_WHATSAPP_PHONE = "573208096446";
+
 /**
  * Enlace directo al chat de WhatsApp (`wa.me`).
  *
- * En `.env.local` define:
- * - `NEXT_PUBLIC_WHATSAPP_PHONE`: solo dígitos con código de país (ej. Colombia `573001234567`).
+ * En `.env.local` puedes sobreescribir:
+ * - `NEXT_PUBLIC_WHATSAPP_PHONE`: solo dígitos con código de país.
  * - Opcional `NEXT_PUBLIC_WHATSAPP_MESSAGE`: texto inicial del mensaje.
- *
- * Sin número configurado, el href cae en `#contacto` como respaldo.
  */
 export function getWhatsAppChatHref(): string {
-  const raw = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "";
+  const raw =
+    process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? FOUNDATION_WHATSAPP_PHONE;
   const digits = raw.replace(/\D/g, "");
   if (!digits) {
     return "#contacto";

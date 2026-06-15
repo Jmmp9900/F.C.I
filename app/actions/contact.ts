@@ -4,8 +4,10 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { getPayload } from "../lib/payload";
+import { isContactSubjectKey } from "../lib/contact-subjects";
 import { clientIpFromHeaders, rateLimit } from "@/lib/rate-limit";
 import { getPathname } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -16,6 +18,8 @@ export type ContactState = {
     name?: string;
     email?: string;
     organization?: string;
+    phone?: string;
+    country?: string;
     subject?: string;
     message?: string;
   };
@@ -25,7 +29,8 @@ const MAX = {
   name: 120,
   email: 200,
   organization: 160,
-  subject: 200,
+  phone: 40,
+  country: 120,
   message: 5000,
 };
 
@@ -49,13 +54,23 @@ export async function submitContact(
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const organization = String(formData.get("organization") ?? "").trim();
-  const subject = String(formData.get("subject") ?? "").trim();
+  const phone = String(formData.get("phone") ?? "").trim();
+  const country = String(formData.get("country") ?? "").trim();
+  const subjectKey = String(formData.get("subject") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
   const locale = (String(formData.get("locale") ?? "es") || "es") as "es" | "en";
   const honeypot = String(formData.get("website") ?? "");
   const renderedAt = Number(formData.get("renderedAt") ?? 0);
 
-  const fields = { name, email, organization, subject, message };
+  const fields = {
+    name,
+    email,
+    organization,
+    phone,
+    country,
+    subject: subjectKey,
+    message,
+  };
 
   if (!name || name.length > MAX.name) {
     return { status: "error", message: "invalid_name", fields };
@@ -66,9 +81,18 @@ export async function submitContact(
   if (organization.length > MAX.organization) {
     return { status: "error", message: "invalid_organization", fields };
   }
-  if (!subject || subject.length > MAX.subject) {
+  if (phone.length > MAX.phone) {
+    return { status: "error", message: "invalid_phone", fields };
+  }
+  if (country.length > MAX.country) {
+    return { status: "error", message: "invalid_country", fields };
+  }
+  if (!isContactSubjectKey(subjectKey)) {
     return { status: "error", message: "invalid_subject", fields };
   }
+
+  const t = await getTranslations({ locale, namespace: "ContactPage.form" });
+  const subject = t(`subjectOptions.${subjectKey}`);
   if (!message || message.length > MAX.message || message.length < 10) {
     return { status: "error", message: "invalid_message", fields };
   }
@@ -99,6 +123,8 @@ export async function submitContact(
         name,
         email,
         organization: organization || undefined,
+        phone: phone || undefined,
+        country: country || undefined,
         subject,
         message,
         locale,

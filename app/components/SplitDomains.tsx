@@ -2,6 +2,7 @@ import { ArrowRight, Compass } from "lucide-react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { DomainHeroVideo } from "./DomainHeroVideo";
+import { FoundationServices } from "./FoundationServices";
 import {
   getWhatsAppChatHref,
   isWhatsAppChatHref,
@@ -53,10 +54,9 @@ export async function SplitDomains() {
         <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
           {t("eyebrow")}
         </p>
-        <div className="mx-auto mt-4 max-w-3xl space-y-3 text-center text-sm leading-relaxed text-fci-muted text-balance sm:text-base">
-          <p>{t("introP1")}</p>
-          <p>{t("introP2")}</p>
-        </div>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-fci-muted text-balance sm:text-base">
+          {t("introP1")}
+        </p>
 
         <div className="relative mt-14 grid gap-0 md:grid-cols-2 md:items-stretch">
           <div
@@ -72,7 +72,7 @@ export async function SplitDomains() {
           <div className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-fci-earth/50 bg-gradient-to-br from-cyan-950/30 via-fci-earth/15 to-fci-void ring-1 ring-cyan-500/10 fci-glow-earth md:rounded-r-none md:border-r-0">
             <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-64 md:h-80 lg:h-96">
               <DomainHeroVideo
-                src="/videos/tierra-relaciones-sociales.mov"
+                src="/videos/tierra-relaciones-sociales.mp4"
                 poster="/images/brand/tierra.png"
                 ariaLabel={t("earthAlt")}
               />
@@ -116,7 +116,7 @@ export async function SplitDomains() {
           <div className="relative mt-6 flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-fci-space/40 bg-gradient-to-br from-fci-space/25 to-fci-void fci-glow-space md:mt-0 md:rounded-l-none">
             <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-64 md:h-80 lg:h-96">
               <DomainHeroVideo
-                src="/videos/espacio-transicion.mov"
+                src="/videos/tierra-espacio.mp4"
                 poster="/images/brand/espacio.png"
                 ariaLabel={t("spaceAlt")}
               />
@@ -158,6 +158,8 @@ export async function SplitDomains() {
             </div>
           </div>
         </div>
+
+        <FoundationServices />
 
         <div className="mt-12 text-center">
           <p className="font-serif text-lg text-balance text-fci-foreground sm:text-xl">

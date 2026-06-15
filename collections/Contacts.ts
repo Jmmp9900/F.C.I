@@ -13,7 +13,7 @@ export const Contacts: CollectionConfig = {
   slug: "contacts",
   admin: {
     useAsTitle: "subject",
-    defaultColumns: ["name", "email", "subject", "status", "createdAt"],
+    defaultColumns: ["name", "email", "phone", "country", "subject", "status", "createdAt"],
     description:
       "Mensajes enviados desde el formulario público en /contacto.",
   },
@@ -40,6 +40,16 @@ export const Contacts: CollectionConfig = {
       name: "organization",
       type: "text",
       maxLength: 160,
+    },
+    {
+      name: "phone",
+      type: "text",
+      maxLength: 40,
+    },
+    {
+      name: "country",
+      type: "text",
+      maxLength: 120,
     },
     {
       name: "subject",

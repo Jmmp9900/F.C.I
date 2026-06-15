@@ -16,7 +16,8 @@
       "instagram": "Instagram (opens in a new tab)",
       "twitter": "X (Twitter) (opens in a new tab)",
       "linkedin": "LinkedIn (opens in a new tab)",
-      "youtube": "YouTube (opens in a new tab)"
+      "youtube": "YouTube (opens in a new tab)",
+      "whatsapp": "WhatsApp (opens in a new tab)"
     }
   },
   "Header": {
@@ -35,7 +36,6 @@
     "h1": "Global power.",
     "lead": "We analyse global power… across two domains: <gold>Earth and Space</gold>.",
     "kicker": "Breaking boundaries",
-    "line2": "Global strategy for an expanding world",
     "ctaContact": "Contact us",
     "ctaPublications": "View posts"
   },
@@ -45,7 +45,6 @@
     "introOpening": "We connect global knowledge with local progress:",
     "introLine2": "Projects that transform realities on Earth and",
     "introLine3": "explore space as a driver of innovation and adaptation.",
-    "iconsHint": "Hover a card (or focus it with the keyboard) to see each pillar's title and description.",
     "items": {
       "vision": {
         "name": "Global vision",
@@ -72,10 +71,9 @@
   "SplitDomains": {
     "eyebrow": "Two domains, one logic",
     "introP1": "The same phenomena that have defined power on Earth: science, technology, competition, cooperation, security, regulation, policy, and economics — are now shifting into space.",
-    "introP2": "The Foundation analyses these processes across both domains to support organisations in their strategic positioning and entry into emerging markets.",
     "hireService": "Hire your service",
     "earthTitle": "Earth",
-    "earthBody": "Global Governance, Geopolitics and Geoeconomics, Cooperation and Competition in the International System",
+    "earthBody": "Global governance, geopolitics and geoeconomics. International agenda issues, security, cooperation, sustainable development and competition in the international system.",
     "earthAlt": "Planet Earth at night, city lights and horizon",
     "spaceTitle": "Space",
     "spaceBody": "We bring space closer to people and organisations so they can be visionaries, pioneers, and active actors in building the new great frontier through the opportunities the space economy offers us.",
@@ -83,6 +81,47 @@
     "ctaLines": "About us",
     "closing": "Two domains. One integrated vision.",
     "ctaConsult": "Book a consultation"
+  },
+  "FoundationServices": {
+    "eyebrow": "Services",
+    "title": "What the foundation offers",
+    "closeAria": "Close service details",
+    "items": {
+      "consulting": {
+        "title": "Strategic consulting",
+        "p1": "We support organisations in decision-making within complex international environments, integrating analysis of geopolitics, geoeconomics, and the new dynamics of global power — including space as an emerging arena.",
+        "p2": "We design strategies that help our partners position themselves, access opportunities, and anticipate risks in an increasingly competitive and constantly transforming international system."
+      },
+      "training": {
+        "title": "Training and awareness",
+        "p1": "Through courses, workshops, and specialised programmes, we bring companies, governments, and people closer to the opportunities offered by the world and its natural expansion into outer space, strengthening capabilities that improve their positioning in a global environment."
+      },
+      "research": {
+        "title": "Research, innovation, and analysis",
+        "p1": "We develop strategic products that help understand complex scenarios and guide decision-making in international contexts.",
+        "listIntro": "We produce:",
+        "bullets": [
+          "Strategic reports",
+          "Policy papers",
+          "Public policy and institutional diagnostics",
+          "Sector analyses",
+          "Studies on global trends and the space economy"
+        ],
+        "p3": "We also drive innovation initiatives focused on generating new applied knowledge and developing strategic solutions for public and private actors."
+      },
+      "projects": {
+        "title": "Project management and formulation",
+        "p1": "We design and support the structuring of initiatives with international and outer-space projection aimed at generating impact, access to opportunities, and strategic positioning.",
+        "listIntro": "We develop:",
+        "bullets": [
+          "Project formulation under international methodologies",
+          "Foreign action plans, internationalisation, and strategies for entry into the space economy",
+          "Strategies for access to cooperation and financing (Earth and Space)",
+          "Technology initiative design (startups and business growth)",
+          "Support in project implementation and management (Earth and Space)"
+        ]
+      }
+    }
   },
   "EconomyTransition": {
     "eyebrow": "From Earth to space",
@@ -178,7 +217,16 @@
     "eyebrow": "Platform · Applied intelligence",
     "title": "NEXUS I.C.F.",
     "body": "A technology platform that integrates artificial intelligence, machine learning, and cloud architectures to process, analyse, and connect strategic information in complex environments —with emphasis on curating and validating sources to reduce uncertainty and strengthen strategic decision-making.",
-    "footnote": "A hub integrating data, specialised knowledge, and cooperation networks — Earth and Space."
+    "footnote": "A hub integrating data, specialised knowledge, and cooperation networks — Earth and Space.",
+    "linkAria": "Go to the NEXUS I.C.F. page"
+  },
+  "NexusComingSoon": {
+    "metaTitle": "NEXUS I.C.F. | Coming soon",
+    "metaDescription": "NEXUS I.C.F. will be available soon. We are working to bring you a better future.",
+    "eyebrow": "NEXUS I.C.F.",
+    "title": "Coming soon",
+    "body": "We are working to bring you a better future. You will soon be able to access our applied intelligence platform.",
+    "backHome": "Back to home"
   },
   "FciConnect": {
     "eyebrow": "Community · Digital presence",
@@ -309,8 +357,19 @@
       "emailPlaceholder": "you@email.com",
       "organization": "Organization (optional)",
       "organizationPlaceholder": "Your institution, company or team",
+      "phone": "Phone number (optional)",
+      "phonePlaceholder": "+1 555 123 4567",
+      "country": "Country (optional)",
+      "countryPlaceholder": "United States",
       "subject": "Subject",
-      "subjectPlaceholder": "What would you like to discuss?",
+      "subjectPlaceholder": "Select a subject",
+      "subjectOptions": {
+        "schedule_advisory": "Schedule advisory session",
+        "hire_service": "Hire a service",
+        "collaboration": "Collaboration",
+        "custom_training": "Tailored professional training",
+        "other": "Other"
+      },
       "message": "Message",
       "messagePlaceholder": "Tell us briefly about your inquiry…",
       "submit": "Send message",
@@ -320,7 +379,9 @@
         "invalid_name": "Please enter your full name.",
         "invalid_email": "Please enter a valid email.",
         "invalid_organization": "Organization name is too long.",
-        "invalid_subject": "Write a short subject.",
+        "invalid_phone": "Phone number is too long.",
+        "invalid_country": "Country name is too long.",
+        "invalid_subject": "Please select a subject from the list.",
         "invalid_message": "Message must be at least 10 characters.",
         "server_error": "We couldn't send your message. Try again later."
       }

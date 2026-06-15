@@ -37,6 +37,10 @@ export const routing = defineRouting({
       es: "/contacto/gracias",
       en: "/contact/thanks",
     },
+    "/nexus": {
+      es: "/nexus",
+      en: "/nexus",
+    },
   },
 });
 

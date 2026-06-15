@@ -16,6 +16,7 @@
     "migrate": "payload migrate",
     "migrate:create": "payload migrate:create",
     "seed": "payload run scripts/seed.ts",
+    "optimize:hero-media": "node scripts/optimize-hero-media.mjs",
     "git:time-travel": "git-time-travel",
     "git:time-travel:1": "git-time-travel -c 1",
     "git:time-travel:all": "git-time-travel -a",
@@ -46,6 +47,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16.2.6",
+    "ffmpeg-static": "^5.3.0",
     "git-time-travel": "^2.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"

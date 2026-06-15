@@ -1,3 +1,5 @@
+import { getWhatsAppChatHref } from "./whatsapp";
+
 /** Enlaces oficiales (sitio anterior consultoresinternacionales.org). */
 export const SOCIAL_LINKS = [
   {
@@ -19,6 +21,12 @@ export const SOCIAL_LINKS = [
   {
     id: "youtube" as const,
     href: "https://www.youtube.com/channel/UCpsx9uHlXm4nmSEIP9d9kYw",
+  },
+  {
+    id: "whatsapp" as const,
+    get href() {
+      return getWhatsAppChatHref();
+    },
   },
 ] as const;
 

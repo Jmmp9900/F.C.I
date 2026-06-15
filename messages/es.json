@@ -16,7 +16,8 @@
       "instagram": "Instagram (se abre en una pestaña nueva)",
       "twitter": "X (Twitter) (se abre en una pestaña nueva)",
       "linkedin": "LinkedIn (se abre en una pestaña nueva)",
-      "youtube": "YouTube (se abre en una pestaña nueva)"
+      "youtube": "YouTube (se abre en una pestaña nueva)",
+      "whatsapp": "WhatsApp (se abre en una pestaña nueva)"
     }
   },
   "Header": {
@@ -35,7 +36,6 @@
     "h1": "Poder global.",
     "lead": "Analizamos el poder global… en dos dominios: <gold>Tierra y Espacio</gold>.",
     "kicker": "Rompiendo fronteras",
-    "line2": "Estrategia global para un mundo en expansión",
     "ctaContact": "Contáctanos",
     "ctaPublications": "Ver publicaciones"
   },
@@ -45,7 +45,6 @@
     "introOpening": "Conectamos conocimiento global con progreso local:",
     "introLine2": "Proyectos que transforman realidades en la Tierra y",
     "introLine3": "exploran el espacio como motor de innovación y adaptación.",
-    "iconsHint": "Pasá el cursor sobre una tarjeta (o enfocala con el teclado) para ver el título y la descripción de cada pilar.",
     "items": {
       "vision": {
         "name": "Visión global",
@@ -72,10 +71,9 @@
   "SplitDomains": {
     "eyebrow": "Dos dominios, una sola lógica",
     "introP1": "Los mismos fenómenos que han definido el poder en la Tierra: ciencia, tecnología, competencia, cooperación, seguridad, regulación, política y economía — ahora se están trasladando al espacio.",
-    "introP2": "La Fundación analiza estos procesos en ambos dominios para acompañar a organizaciones en su posicionamiento estratégico e inserción en mercados emergentes.",
     "hireService": "Contrata tu servicio",
     "earthTitle": "Tierra",
-    "earthBody": "Gobernanza Mundial, Geopolítica y Geoeconomía, Cooperación y competencia en el Sistema Internacional",
+    "earthBody": "Gobernanza mundial, geopolítica y geoeconomía. Asuntos de la agenda internacional, seguridad, cooperación, desarrollo sostenible y competencia en el sistema internacional.",
     "earthAlt": "Planeta Tierra de noche, luces de ciudades y horizonte",
     "spaceTitle": "Espacio",
     "spaceBody": "Aportamos y acercamos el Espacio a las personas y organizaciones para que sean visionarios, pioneros y actores activos de la construcción de la nueva gran frontera a través de las oportunidades que nos brinda la Economía Espacial.",
@@ -83,6 +81,47 @@
     "ctaLines": "Conócenos",
     "closing": "Dos dominios. Una visión integrada.",
     "ctaConsult": "Agendar consultoría"
+  },
+  "FoundationServices": {
+    "eyebrow": "Servicios",
+    "title": "Lo que ofrece la fundación",
+    "closeAria": "Cerrar detalle del servicio",
+    "items": {
+      "consulting": {
+        "title": "Consultoría estratégica",
+        "p1": "Acompañamos a organizaciones en la toma de decisiones en entornos internacionales complejos, integrando el análisis de la geopolítica, la geoeconomía y las nuevas dinámicas del poder global, incluyendo el espacio como escenario emergente.",
+        "p2": "Diseñamos estrategias que permiten a nuestros aliados posicionarse, acceder a oportunidades y anticipar riesgos en un sistema internacional cada vez más competitivo y en constante transformación."
+      },
+      "training": {
+        "title": "Capacitación y sensibilización",
+        "p1": "A través de cursos, talleres y programas especializados, acercamos a las empresas, gobiernos y personas a las oportunidades que ofrece el mundo y su expansión natural al espacio exterior, de esta manera fortalecemos capacidades que mejoran su posicionamiento en un entorno global."
+      },
+      "research": {
+        "title": "Investigación, innovación y análisis",
+        "p1": "Desarrollamos productos estratégicos que permiten comprender escenarios complejos y orientar la toma de decisiones en contextos internacionales.",
+        "listIntro": "Elaboramos:",
+        "bullets": [
+          "Informes estratégicos",
+          "Policy papers",
+          "Diagnósticos de políticas públicas e instituciones",
+          "Análisis sectoriales",
+          "Estudios sobre tendencias globales y economía del espacio"
+        ],
+        "p3": "Asimismo, impulsamos iniciativas de innovación orientadas a la generación de nuevo conocimiento aplicado y al desarrollo de soluciones estratégicas para actores públicos y privados."
+      },
+      "projects": {
+        "title": "Gestión y formulación de proyectos",
+        "p1": "Diseñamos y acompañamos la estructuración de iniciativas con proyección internacional y del espacio exterior orientadas a generar impacto, acceso a oportunidades y posicionamiento estratégico.",
+        "listIntro": "Desarrollamos:",
+        "bullets": [
+          "Formulación de proyectos bajo metodologías internacionales",
+          "Planes de acción exterior, internacionalización y estrategias de inserción a la economía espacial",
+          "Estrategias de acceso a cooperación y financiamiento (Tierra y Espacio)",
+          "Diseño de iniciativas en tecnología (startups y crecimiento de empresas)",
+          "Acompañamiento en la implementación y gestión de proyectos (Tierra y Espacio)"
+        ]
+      }
+    }
   },
   "EconomyTransition": {
     "eyebrow": "De la Tierra al espacio",
@@ -178,7 +217,16 @@
     "eyebrow": "Plataforma · Inteligencia aplicada",
     "title": "NEXUS FCI",
     "body": "Herramienta tecnológica que integra inteligencia artificial, aprendizaje automático y arquitecturas en la nube para procesar, analizar y articular información estratégica en entornos complejos —con énfasis en la curaduría y validación de fuentes para reducir incertidumbre y fortalecer la toma de decisiones estratégicas.",
-    "footnote": "Nodo de integración entre datos, conocimiento especializado y redes de cooperación —Tierra y Espacio."
+    "footnote": "Nodo de integración entre datos, conocimiento especializado y redes de cooperación —Tierra y Espacio.",
+    "linkAria": "Ir a la página de NEXUS FCI"
+  },
+  "NexusComingSoon": {
+    "metaTitle": "NEXUS FCI | Próximamente",
+    "metaDescription": "NEXUS FCI estará disponible pronto. Estamos trabajando para traerle un mejor futuro.",
+    "eyebrow": "NEXUS FCI",
+    "title": "Próximamente",
+    "body": "Estamos trabajando para traerle un mejor futuro. Muy pronto podrá acceder a nuestra plataforma de inteligencia aplicada.",
+    "backHome": "Volver al inicio"
   },
   "FciConnect": {
     "eyebrow": "Comunidad · Presencia digital",
@@ -309,8 +357,19 @@
       "emailPlaceholder": "tu@correo.com",
       "organization": "Organización (opcional)",
       "organizationPlaceholder": "Tu institución, empresa o equipo",
+      "phone": "Número de teléfono (opcional)",
+      "phonePlaceholder": "+57 300 123 4567",
+      "country": "País (opcional)",
+      "countryPlaceholder": "Colombia",
       "subject": "Asunto",
-      "subjectPlaceholder": "¿De qué quieres conversar?",
+      "subjectPlaceholder": "Selecciona un asunto",
+      "subjectOptions": {
+        "schedule_advisory": "Agendar asesoría",
+        "hire_service": "Contratar servicio",
+        "collaboration": "Colaboración",
+        "custom_training": "Formación profesional a medida",
+        "other": "Otro"
+      },
       "message": "Mensaje",
       "messagePlaceholder": "Cuéntanos brevemente sobre tu consulta…",
       "submit": "Enviar mensaje",
@@ -320,7 +379,9 @@
         "invalid_name": "Ingresa tu nombre completo.",
         "invalid_email": "Ingresa un correo electrónico válido.",
         "invalid_organization": "El nombre de la organización es muy largo.",
-        "invalid_subject": "Escribe un asunto breve.",
+        "invalid_phone": "El número de teléfono es muy largo.",
+        "invalid_country": "El nombre del país es muy largo.",
+        "invalid_subject": "Selecciona un asunto de la lista.",
         "invalid_message": "El mensaje debe tener al menos 10 caracteres.",
         "server_error": "No pudimos enviar tu mensaje. Intenta más tarde."
       }

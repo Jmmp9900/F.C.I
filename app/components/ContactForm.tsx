@@ -5,6 +5,7 @@ import { useFormStatus } from "react-dom";
 import { useLocale, useTranslations } from "next-intl";
 import { Send } from "lucide-react";
 
+import { CONTACT_SUBJECT_KEYS } from "../lib/contact-subjects";
 import { submitContact, type ContactState } from "../actions/contact";
 
 const initialState: ContactState = { status: "idle" };
@@ -91,13 +92,36 @@ export function ContactForm() {
         autoComplete="organization"
       />
       <Field
+        id="contact-phone"
+        name="phone"
+        type="tel"
+        label={t("phone")}
+        placeholder={t("phonePlaceholder")}
+        defaultValue={fields.phone ?? ""}
+        error={fieldError("invalid_phone")}
+        autoComplete="tel"
+      />
+      <Field
+        id="contact-country"
+        name="country"
+        label={t("country")}
+        placeholder={t("countryPlaceholder")}
+        defaultValue={fields.country ?? ""}
+        error={fieldError("invalid_country")}
+        autoComplete="country-name"
+      />
+      <SelectField
         id="contact-subject"
         name="subject"
         label={t("subject")}
-        placeholder={t("subjectPlaceholder")}
         required
         defaultValue={fields.subject ?? ""}
         error={fieldError("invalid_subject")}
+        placeholder={t("subjectPlaceholder")}
+        options={CONTACT_SUBJECT_KEYS.map((key) => ({
+          value: key,
+          label: t(`subjectOptions.${key}`),
+        }))}
       />
       <TextArea
         id="contact-message"
@@ -176,6 +200,65 @@ function Field({
           error ? "border-red-500/50" : "border-white/10"
         }`}
       />
+      {error ? (
+        <p id={`${id}-error`} className="text-xs text-red-300">
+          {error}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+type SelectFieldProps = {
+  id: string;
+  name: string;
+  label: string;
+  placeholder: string;
+  required?: boolean;
+  defaultValue?: string;
+  error?: string | null;
+  options: { value: string; label: string }[];
+};
+
+function SelectField({
+  id,
+  name,
+  label,
+  placeholder,
+  required,
+  defaultValue,
+  error,
+  options,
+}: SelectFieldProps) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label
+        htmlFor={id}
+        className="text-xs font-medium uppercase tracking-wider text-fci-muted"
+      >
+        {label}
+        {required ? <span className="ml-1 text-fci-gold">*</span> : null}
+      </label>
+      <select
+        id={id}
+        name={name}
+        required={required}
+        defaultValue={defaultValue ?? ""}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+        className={`fci-select rounded-md border bg-fci-base/30 px-3 py-2.5 text-sm text-fci-foreground focus:border-fci-gold/60 focus:outline-none focus:ring-1 focus:ring-fci-gold/40 ${
+          error ? "border-red-500/50" : "border-white/10"
+        } ${!defaultValue ? "text-fci-muted/70" : ""}`}
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
       {error ? (
         <p id={`${id}-error`} className="text-xs text-red-300">
           {error}

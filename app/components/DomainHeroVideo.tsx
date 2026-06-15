@@ -43,7 +43,6 @@ export function DomainHeroVideo({ src, ariaLabel, poster }: Props) {
       aria-label={ariaLabel}
       className="absolute inset-0 h-full w-full object-cover"
     >
-      <source src={src} type="video/quicktime" />
       <source src={src} type="video/mp4" />
     </video>
   );
