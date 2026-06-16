@@ -259,30 +259,7 @@
     "domainSpace": "Espacio",
     "detail": "Ver detalle",
     "viewAll": "Ver todas las publicaciones",
-    "empty": "Aún no hay publicaciones destacadas. Visita el blog para ver todo el contenido.",
-    "items": [
-      {
-        "title": "Informe estratégico: riesgo país y conectividad regional",
-        "tag": "Informe estratégico",
-        "kind": "tierra",
-        "author": "Equipo F.C.I.",
-        "date": "Mar 2026"
-      },
-      {
-        "title": "Policy paper: economía New Space y operadores emergentes",
-        "tag": "Policy paper",
-        "kind": "espacio",
-        "author": "Equipo F.C.I.",
-        "date": "Feb 2026"
-      },
-      {
-        "title": "Diagnóstico: gobernanza y normas en órbita baja",
-        "tag": "Diagnóstico",
-        "kind": "espacio",
-        "author": "Equipo F.C.I.",
-        "date": "Ene 2026"
-      }
-    ]
+    "empty": "Aún no hay nada que mostrar. Estamos trabajando para usted."
   },
   "Blog": {
     "metaTitle": "Publicaciones | F.C.I.",

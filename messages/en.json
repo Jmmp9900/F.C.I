@@ -259,30 +259,7 @@
     "domainSpace": "Space",
     "detail": "View details",
     "viewAll": "View all posts",
-    "empty": "No featured posts yet. Visit the blog to see all content.",
-    "items": [
-      {
-        "title": "Strategic report: country risk and regional connectivity",
-        "tag": "Strategic report",
-        "kind": "tierra",
-        "author": "I.C.F. Team",
-        "date": "Mar 2026"
-      },
-      {
-        "title": "Policy paper: New Space economy and emerging operators",
-        "tag": "Policy paper",
-        "kind": "espacio",
-        "author": "I.C.F. Team",
-        "date": "Feb 2026"
-      },
-      {
-        "title": "Assessment: governance and norms in low Earth orbit",
-        "tag": "Assessment",
-        "kind": "espacio",
-        "author": "I.C.F. Team",
-        "date": "Jan 2026"
-      }
-    ]
+    "empty": "Nothing to show yet. We are working for you."
   },
   "Blog": {
     "metaTitle": "Posts | I.C.F.",
