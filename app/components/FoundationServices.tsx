@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -14,25 +14,51 @@ const SERVICE_IDS = [
 
 type ServiceId = (typeof SERVICE_IDS)[number];
 
+const OPEN_DELAY_MS = 1500;
+
 const goldCardClass =
-  "w-full rounded-xl bg-gradient-to-r from-fci-gold-dim via-fci-gold to-fci-gold-hover px-5 py-4 text-left text-sm font-semibold uppercase tracking-wide text-fci-void shadow-[0_4px_24px_rgba(226,189,58,0.28)] transition duration-200 hover:brightness-110 hover:shadow-[0_8px_32px_rgba(226,189,58,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fci-gold/70";
+  "mx-auto flex min-h-[7.5rem] w-full max-w-[10.5rem] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-fci-gold-dim via-fci-gold to-fci-gold-hover px-3 py-5 text-center text-xs font-semibold uppercase tracking-wide text-fci-void shadow-[0_4px_24px_rgba(226,189,58,0.28)] transition duration-200 hover:brightness-110 hover:shadow-[0_8px_32px_rgba(226,189,58,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fci-gold/70 sm:min-h-[8.5rem] sm:max-w-[11.5rem] sm:px-4 sm:text-sm";
 
 export function FoundationServices() {
   const t = useTranslations("FoundationServices");
   const [activeId, setActiveId] = useState<ServiceId | null>(null);
   const [portalReady, setPortalReady] = useState(false);
+  const openTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     setPortalReady(true);
   }, []);
 
-  const open = useCallback((id: ServiceId) => {
-    setActiveId(id);
+  const cancelScheduledOpen = useCallback(() => {
+    if (openTimerRef.current) {
+      clearTimeout(openTimerRef.current);
+      openTimerRef.current = null;
+    }
   }, []);
 
+  const openNow = useCallback(
+    (id: ServiceId) => {
+      cancelScheduledOpen();
+      setActiveId(id);
+    },
+    [cancelScheduledOpen],
+  );
+
+  const scheduleOpen = useCallback(
+    (id: ServiceId) => {
+      cancelScheduledOpen();
+      openTimerRef.current = setTimeout(() => {
+        openTimerRef.current = null;
+        setActiveId(id);
+      }, OPEN_DELAY_MS);
+    },
+    [cancelScheduledOpen],
+  );
+
   const close = useCallback(() => {
+    cancelScheduledOpen();
     setActiveId(null);
-  }, []);
+  }, [cancelScheduledOpen]);
 
   useEffect(() => {
     if (!activeId) return;
@@ -49,6 +75,12 @@ export function FoundationServices() {
     };
   }, [activeId, close]);
 
+  useEffect(() => {
+    return () => {
+      if (openTimerRef.current) clearTimeout(openTimerRef.current);
+    };
+  }, []);
+
   const activeService = activeId;
   const bullets =
     activeService && t.has(`items.${activeService}.bullets`)
@@ -64,19 +96,20 @@ export function FoundationServices() {
         {t("title")}
       </h3>
 
-      <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+      <ul className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-3 sm:max-w-5xl sm:grid-cols-4 sm:gap-4">
         {SERVICE_IDS.map((id) => (
-          <li key={id}>
+          <li key={id} className="flex justify-center">
             <button
               type="button"
               className={goldCardClass}
               aria-expanded={activeId === id}
               aria-controls="foundation-service-panel"
-              onMouseEnter={() => open(id)}
-              onFocus={() => open(id)}
-              onClick={() => open(id)}
+              onMouseEnter={() => scheduleOpen(id)}
+              onMouseLeave={cancelScheduledOpen}
+              onFocus={() => openNow(id)}
+              onClick={() => openNow(id)}
             >
-              <span className="block leading-snug">
+              <span className="block leading-snug text-balance">
                 {t(`items.${id}.title`)}
               </span>
             </button>
