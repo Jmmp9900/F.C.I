@@ -50,15 +50,15 @@ export async function SplitDomains() {
       id="servicios"
       className="scroll-mt-24 border-t border-white/5 py-16 sm:py-24"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+      <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-8">
+        <p className="fci-section-label text-center">
           {t("eyebrow")}
         </p>
-        <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-fci-muted text-balance sm:text-base">
+        <p className="mx-auto mt-4 max-w-5xl text-center text-sm leading-relaxed text-fci-muted text-balance sm:text-base lg:max-w-6xl">
           {t("introP1")}
         </p>
 
-        <div className="relative mt-14 grid gap-0 md:grid-cols-2 md:items-stretch">
+        <div className="relative mt-14 grid gap-6 md:grid-cols-2 md:items-stretch md:gap-0">
           <div
             className="pointer-events-none absolute left-1/2 top-0 z-10 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-fci-gold/0 via-fci-gold/60 to-fci-gold/0 md:block"
             aria-hidden
@@ -70,7 +70,7 @@ export async function SplitDomains() {
           </div>
 
           <div className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-fci-earth/50 bg-gradient-to-br from-cyan-950/30 via-fci-earth/15 to-fci-void ring-1 ring-cyan-500/10 fci-glow-earth md:rounded-r-none md:border-r-0">
-            <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-64 md:h-80 lg:h-96">
+            <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-64 md:h-80 lg:h-[22rem] xl:h-[26rem]">
               <DomainHeroVideo
                 src="/videos/tierra-relaciones-sociales.mp4"
                 poster="/images/brand/tierra.png"
@@ -95,7 +95,7 @@ export async function SplitDomains() {
                 }}
               />
             </div>
-            <div className="flex min-h-0 flex-1 flex-col p-5 sm:p-6">
+            <div className="flex min-h-0 flex-1 flex-col p-5 sm:p-6 lg:p-8">
               <p className="inline-block rounded-sm bg-fci-earth px-3 py-1 font-serif text-sm font-semibold uppercase tracking-widest text-fci-foreground">
                 {t("earthTitle")}
               </p>
@@ -114,7 +114,7 @@ export async function SplitDomains() {
           </div>
 
           <div className="relative mt-6 flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-fci-space/40 bg-gradient-to-br from-fci-space/25 to-fci-void fci-glow-space md:mt-0 md:rounded-l-none">
-            <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-64 md:h-80 lg:h-96">
+            <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-64 md:h-80 lg:h-[22rem] xl:h-[26rem]">
               <DomainHeroVideo
                 src="/videos/tierra-espacio.mp4"
                 poster="/images/brand/espacio.png"
@@ -140,7 +140,7 @@ export async function SplitDomains() {
                 }}
               />
             </div>
-            <div className="flex min-h-0 flex-1 flex-col p-5 sm:p-6">
+            <div className="flex min-h-0 flex-1 flex-col p-5 sm:p-6 lg:p-8">
               <p className="inline-block rounded-sm bg-fci-space px-3 py-1 font-serif text-sm font-semibold uppercase tracking-widest text-fci-foreground">
                 {t("spaceTitle")}
               </p>

@@ -104,7 +104,7 @@ export async function SiteHeader() {
           <div className="flex shrink-0 items-center gap-3 sm:gap-4 lg:gap-6">
             {/* Redes: solo escritorio (segunda fila lleva el menú; aquí no compiten por ancho) */}
             <div className="hidden items-center lg:flex">
-              <SocialNav variant="header" className="gap-2" />
+              <SocialNav variant="header" className="gap-2.5 lg:gap-3.5" />
             </div>
             <span
               className="hidden h-9 w-px shrink-0 bg-gradient-to-b from-transparent via-white/20 to-transparent lg:block"

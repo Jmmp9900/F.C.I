@@ -54,7 +54,7 @@ export function NewsletterForm({ variant = "compact" }: Props) {
   if (variant === "card") {
     return (
       <div className="rounded-lg border border-white/10 bg-fci-surface/40 p-6 sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+        <p className="fci-section-label">
           {t("title")}
         </p>
         <p className="mt-2 text-sm text-fci-muted">{t("subtitle")}</p>
@@ -71,7 +71,7 @@ export function NewsletterForm({ variant = "compact" }: Props) {
 
   return (
     <div className="w-full">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fci-gold">
+      <p className="fci-section-label">
         {t("title")}
       </p>
       <p className="mt-1 text-xs text-fci-muted">{t("subtitle")}</p>

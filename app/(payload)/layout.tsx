@@ -8,7 +8,7 @@ import {
 } from "@payloadcms/next/layouts";
 import React from "react";
 
-import { importMap } from "./admin/importMap.js";
+import { importMap } from "./fci-cms-8k3m7q2x/importMap.js";
 import "./custom.scss";
 
 type Args = {

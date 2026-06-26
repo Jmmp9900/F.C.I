@@ -45,7 +45,7 @@ export async function SiteFooter() {
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-6">
             {/* Píldora de iconos — sin wrap, alineada en una sola fila */}
             <div className="inline-flex items-center gap-1 rounded-full border border-white/[0.09] bg-fci-base/25 px-2 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <SocialNav className="gap-0.5" />
+              <SocialNav className="gap-2 sm:gap-2.5" />
               <span
                 className="mx-1 h-6 w-px shrink-0 bg-gradient-to-b from-transparent via-white/18 to-transparent"
                 aria-hidden

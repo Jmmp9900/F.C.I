@@ -24,7 +24,7 @@ export async function FciConnectTeaser() {
       className="scroll-mt-24 border-t border-white/5 py-14 sm:py-20"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+        <p className="fci-section-label text-center">
           {t("eyebrow")}
         </p>
         <h2 className="mt-2 text-center font-serif text-2xl text-fci-foreground sm:text-3xl">

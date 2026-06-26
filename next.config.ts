@@ -5,6 +5,8 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import { withPayload } from "@payloadcms/next/withPayload";
 
+import { PAYLOAD_ADMIN_SEGMENT } from "./lib/payload-admin-route";
+
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
@@ -33,7 +35,7 @@ function r2CustomHost(): string | null {
   }
 }
 
-/** CSP para el sitio público (no aplica a /admin ni /api — Payload necesita más permisos). */
+/** CSP para el sitio público (no aplica al panel Payload ni /api). */
 function contentSecurityPolicy(): string {
   const r2Host = r2CustomHost();
   const imgHosts = [
@@ -112,7 +114,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/((?!admin|api).*)",
+        source: `/((?!api|${PAYLOAD_ADMIN_SEGMENT}).*)`,
         headers: [
           ...securityHeaders,
           ...(process.env.NODE_ENV === "production"
@@ -126,7 +128,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/admin/:path*",
+        source: `/${PAYLOAD_ADMIN_SEGMENT}/:path*`,
         headers: securityHeaders,
       },
       {

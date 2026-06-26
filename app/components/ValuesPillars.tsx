@@ -18,13 +18,13 @@ export async function ValuesPillars() {
   return (
     <section className="border-t border-white/5 bg-fci-void/40 py-14 sm:py-20">
       <div className="mx-auto max-w-[88rem] px-4 sm:px-6">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+        <p className="fci-section-label text-center">
           {t("label")}
         </p>
         <h2 className="mt-2 text-center font-serif text-2xl text-fci-foreground sm:text-3xl">
           {t("title")}
         </h2>
-        <div className="mx-auto mt-3 max-w-xl space-y-2.5 text-center text-sm leading-relaxed text-fci-muted sm:max-w-2xl">
+        <div className="mx-auto mt-3 max-w-3xl space-y-2.5 text-center text-sm leading-relaxed text-fci-muted sm:max-w-4xl lg:max-w-5xl">
           <p className="text-balance text-fci-foreground/90">
             {t("introOpening")}
           </p>

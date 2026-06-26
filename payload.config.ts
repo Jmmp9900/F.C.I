@@ -16,6 +16,10 @@ import { Posts } from "./collections/Posts";
 import { Tags } from "./collections/Tags";
 import { Users } from "./collections/Users";
 import { migrations } from "./migrations";
+import {
+  PAYLOAD_ADMIN_ROUTE,
+  PAYLOAD_ADMIN_SEGMENT,
+} from "./lib/payload-admin-route";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -104,10 +108,17 @@ function corsOrigins(): string[] | "*" {
 }
 
 export default buildConfig({
+  routes: {
+    admin: PAYLOAD_ADMIN_ROUTE,
+  },
   admin: {
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
+      importMapFile: path.resolve(
+        dirname,
+        `./app/(payload)/${PAYLOAD_ADMIN_SEGMENT}/importMap.js`,
+      ),
     },
     meta: {
       titleSuffix: " · FCI Admin",

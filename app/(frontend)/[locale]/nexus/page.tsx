@@ -49,7 +49,7 @@ export default async function NexusComingSoonPage({ params }: Props) {
           <div className="mx-auto flex size-16 items-center justify-center rounded-2xl border border-fci-violet/40 bg-fci-space/25 text-fci-violet shadow-[0_0_32px_rgba(148,88,255,0.2)]">
             <Network className="size-8" strokeWidth={1.25} aria-hidden />
           </div>
-          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-fci-gold">
+          <p className="fci-section-label mt-8 text-center">
             {t("eyebrow")}
           </p>
           <h1 className="mt-4 font-serif text-4xl font-semibold uppercase tracking-[0.08em] text-fci-foreground sm:text-5xl md:text-6xl">

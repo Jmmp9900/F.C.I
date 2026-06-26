@@ -17,6 +17,8 @@ type ServiceId = (typeof SERVICE_IDS)[number];
 const goldCardClass =
   "w-full rounded-xl bg-gradient-to-r from-fci-gold-dim via-fci-gold to-fci-gold-hover px-5 py-4 text-left text-sm font-semibold uppercase tracking-wide text-fci-void shadow-[0_4px_24px_rgba(226,189,58,0.28)] transition duration-200 hover:brightness-110 hover:shadow-[0_8px_32px_rgba(226,189,58,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fci-gold/70";
 
+const CLOSE_DELAY_MS = 420;
+
 export function FoundationServices() {
   const t = useTranslations("FoundationServices");
   const [activeId, setActiveId] = useState<ServiceId | null>(null);
@@ -37,7 +39,7 @@ export function FoundationServices() {
 
   const scheduleClose = useCallback(() => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-    closeTimerRef.current = setTimeout(() => setActiveId(null), 180);
+    closeTimerRef.current = setTimeout(() => setActiveId(null), CLOSE_DELAY_MS);
   }, []);
 
   const cancelClose = useCallback(() => {
@@ -81,7 +83,7 @@ export function FoundationServices() {
 
   return (
     <div className="mt-14 border-t border-white/10 pt-12">
-      <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+      <p className="fci-section-label text-center">
         {t("eyebrow")}
       </p>
       <h3 className="mt-2 text-center font-serif text-xl text-fci-foreground sm:text-2xl">
@@ -98,6 +100,7 @@ export function FoundationServices() {
               aria-controls="foundation-service-panel"
               onMouseEnter={() => open(id)}
               onMouseLeave={scheduleClose}
+              onFocus={() => open(id)}
               onClick={() =>
                 setActiveId((current) => (current === id ? null : id))
               }
@@ -121,7 +124,6 @@ export function FoundationServices() {
                 className="absolute inset-0 bg-fci-void/75 backdrop-blur-sm"
                 aria-label={t("closeAria")}
                 onClick={close}
-                onMouseEnter={scheduleClose}
               />
               <div
                 id="foundation-service-panel"
@@ -141,7 +143,7 @@ export function FoundationServices() {
                   <X className="size-5" aria-hidden />
                 </button>
 
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fci-gold">
+                <p className="fci-section-label">
                   {t("eyebrow")}
                 </p>
                 <h4

@@ -25,7 +25,7 @@ export async function NexusTeaser() {
               <Network className="size-7" strokeWidth={1.25} />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+              <p className="fci-section-label">
                 {t("eyebrow")}
               </p>
               <h2 className="mt-2 flex flex-wrap items-center gap-2 font-serif text-2xl text-fci-foreground sm:text-3xl">

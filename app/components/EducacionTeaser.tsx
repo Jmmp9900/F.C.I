@@ -17,7 +17,7 @@ export async function EducacionTeaser() {
       <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="order-2 lg:order-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fci-gold">
+            <p className="fci-section-label">
               {t("eyebrow")}
             </p>
             <h2 className="mt-2 font-serif text-2xl text-fci-foreground sm:text-3xl text-balance">

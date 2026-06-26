@@ -18,6 +18,11 @@ function clientIpFromRequest(request: NextRequest): string {
 export default function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  /* Ruta legada: no revelar que existió un panel en /admin */
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    return new NextResponse(null, { status: 404 });
+  }
+
   if (pathname === "/api/users/login" && request.method === "POST") {
     const ip = clientIpFromRequest(request);
     const { allowed } = rateLimit(`login:${ip}`, {
@@ -54,6 +59,8 @@ export default function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     "/api/users/login",
-    "/((?!api|admin|_next|_vercel|.*\\..*).*)",
+    "/admin",
+    "/admin/:path*",
+    "/((?!api|fci-cms-8k3m7q2x|_next|_vercel|.*\\..*).*)",
   ],
 };

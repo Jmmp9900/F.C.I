@@ -12,10 +12,14 @@ function SocialGlyph({
   iconSize,
 }: {
   id: SocialNetworkId;
-  iconSize: "sm" | "md";
+  iconSize: "sm" | "md" | "lg";
 }) {
   const iconClass =
-    iconSize === "sm" ? "size-[13px] shrink-0" : "size-[15px] shrink-0";
+    iconSize === "sm"
+      ? "size-4 shrink-0"
+      : iconSize === "md"
+        ? "size-5 shrink-0"
+        : "size-6 shrink-0 lg:size-7";
   switch (id) {
     case "facebook":
       return (
@@ -110,10 +114,11 @@ export async function SocialNav({
       : compact
         ? socialIconButtonCompactClass
         : socialIconButtonClass;
-  const iconSize: "sm" | "md" =
-    variant === "header" || compact ? "sm" : "md";
+  const iconSize: "sm" | "md" | "lg" =
+    variant === "header" ? "lg" : compact ? "sm" : "md";
   const navClass = [
-    "flex flex-nowrap items-center justify-center gap-1",
+    "flex flex-nowrap items-center justify-center",
+    variant === "header" ? "gap-2 lg:gap-3" : "gap-1.5",
     className,
   ]
     .filter(Boolean)

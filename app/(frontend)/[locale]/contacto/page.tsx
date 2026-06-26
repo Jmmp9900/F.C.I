@@ -48,7 +48,7 @@ export default async function ContactoPage({ params }: Props) {
     <SitePageLayout>
       <section className="border-b border-white/10 bg-fci-void/30 py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+          <p className="fci-section-label text-center">
             {t("eyebrow")}
           </p>
           <h1 className="mt-3 text-center font-serif text-3xl text-fci-foreground sm:text-5xl">
@@ -68,7 +68,7 @@ export default async function ContactoPage({ params }: Props) {
 
           <aside className="space-y-6">
             <div className="rounded-lg border border-white/10 bg-fci-surface/40 p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fci-gold">
+              <p className="fci-section-label">
                 {tAlt("title")}
               </p>
 

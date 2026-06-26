@@ -16,6 +16,7 @@
  */
 import { getPayload } from "payload";
 import config from "../payload.config";
+import { PAYLOAD_ADMIN_ROUTE } from "../lib/payload-admin-route";
 
 /* -------------------------------------------------------------------------- */
 /*  Datos                                                                      */
@@ -334,7 +335,7 @@ async function findOrCreatePost(
   }
 
   if (!ctx.coverId) {
-    console.log(`  ! post ${post.slug} OMITIDO: no hay imágenes en Media para usar como cover. Sube una en /admin y vuelve a correr el seed.`);
+    console.log(`  ! post ${post.slug} OMITIDO: no hay imágenes en Media para usar como cover. Sube una en ${PAYLOAD_ADMIN_ROUTE} y vuelve a correr el seed.`);
     return;
   }
 
@@ -399,7 +400,7 @@ async function run() {
   const coverId = await findCover(payload);
   if (!coverId) {
     console.log(
-      "  ! No hay imágenes en /admin/collections/media. Sube al menos una imagen y vuelve a correr el seed para crear los posts de muestra.",
+      `  ! No hay imágenes en ${PAYLOAD_ADMIN_ROUTE}/collections/media. Sube al menos una imagen y vuelve a correr el seed para crear los posts de muestra.`,
     );
   }
 

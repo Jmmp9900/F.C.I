@@ -66,7 +66,7 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
     <SitePageLayout>
       <section className="border-b border-white/10 bg-fci-void/30 py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fci-gold">
+          <p className="fci-section-label text-center">
             {t("breadcrumbBlog")}
           </p>
           <h1 className="mt-3 text-center font-serif text-3xl text-fci-foreground sm:text-5xl">
