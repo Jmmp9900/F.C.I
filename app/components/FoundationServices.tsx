@@ -17,7 +17,7 @@ type ServiceId = (typeof SERVICE_IDS)[number];
 const OPEN_DELAY_MS = 1500;
 
 const goldCardClass =
-  "mx-auto flex min-h-[7.5rem] w-full max-w-[10.5rem] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-fci-gold-dim via-fci-gold to-fci-gold-hover px-3 py-5 text-center text-xs font-semibold uppercase tracking-wide text-fci-void shadow-[0_4px_24px_rgba(226,189,58,0.28)] transition duration-200 hover:brightness-110 hover:shadow-[0_8px_32px_rgba(226,189,58,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fci-gold/70 sm:min-h-[8.5rem] sm:max-w-[11.5rem] sm:px-4 sm:text-sm";
+  "mx-auto flex min-h-[7rem] w-full max-w-[12.5rem] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-fci-gold-dim via-fci-gold to-fci-gold-hover px-4 py-5 text-center text-xs font-semibold uppercase tracking-normal text-fci-void shadow-[0_4px_24px_rgba(226,189,58,0.28)] transition duration-200 hover:brightness-110 hover:shadow-[0_8px_32px_rgba(226,189,58,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fci-gold/70 sm:min-h-[7.5rem] sm:max-w-[14rem] sm:px-5 sm:text-sm";
 
 export function FoundationServices() {
   const t = useTranslations("FoundationServices");
@@ -96,7 +96,7 @@ export function FoundationServices() {
         {t("title")}
       </h3>
 
-      <ul className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-3 sm:max-w-5xl sm:grid-cols-4 sm:gap-4">
+      <ul className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-3 sm:max-w-6xl sm:grid-cols-4 sm:gap-4">
         {SERVICE_IDS.map((id) => (
           <li key={id} className="flex justify-center">
             <button
