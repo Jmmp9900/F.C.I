@@ -69,10 +69,10 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
           <p className="fci-section-label text-center">
             {t("breadcrumbBlog")}
           </p>
-          <h1 className="mt-3 text-center font-serif text-3xl text-fci-foreground sm:text-5xl">
+          <h1 className="fci-section-subtitle mt-3 text-center">
             {t("pageTitle")}
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-base text-fci-muted text-balance">
+          <p className="fci-section-body mx-auto mt-4 max-w-2xl text-center">
             {t("pageSubtitle")}
           </p>
         </div>

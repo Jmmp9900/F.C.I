@@ -58,7 +58,7 @@ export default async function TagPage({ params, searchParams }: Props) {
           <p className="fci-section-label text-center">
             {t("tagLabel")}
           </p>
-          <h1 className="mt-3 text-center font-serif text-3xl text-fci-foreground sm:text-4xl">
+          <h1 className="fci-section-subtitle mt-3 text-center">
             {t("filtered.byTag", { name: tag.name })}
           </h1>
         </div>

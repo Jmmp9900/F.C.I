@@ -66,26 +66,61 @@
   text-wrap: balance;
 }
 
-/* Etiqueta de sección (PILARES, SERVICIOS, PUBLICACIONES, etc.) */
+/* Jerarquía tipográfica de sección: título (amarillo) > subtítulo (blanco) > cuerpo */
 .fci-section-label {
-  font-size: var(--text-sm);
+  font-size: var(--text-xl);
   font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: 0.22em;
+  line-height: 1.25;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--fci-gold);
 }
 
 @media (min-width: 640px) {
   .fci-section-label {
-    font-size: var(--text-base);
+    font-size: var(--text-2xl);
+    letter-spacing: 0.18em;
   }
 }
 
 @media (min-width: 1024px) {
   .fci-section-label {
+    font-size: var(--text-3xl);
+    letter-spacing: 0.16em;
+  }
+}
+
+.fci-section-subtitle {
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--fci-foreground);
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .fci-section-subtitle {
+    font-size: var(--text-base);
+  }
+}
+
+@media (min-width: 1024px) {
+  .fci-section-subtitle {
     font-size: var(--text-lg);
-    letter-spacing: 0.2em;
+  }
+}
+
+.fci-section-body {
+  font-size: var(--text-xs);
+  line-height: 1.55;
+  color: var(--fci-muted);
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .fci-section-body {
+    font-size: var(--text-sm);
   }
 }
 

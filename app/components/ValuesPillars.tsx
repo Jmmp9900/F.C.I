@@ -21,11 +21,11 @@ export async function ValuesPillars() {
         <p className="fci-section-label text-center">
           {t("label")}
         </p>
-        <h2 className="mt-2 text-center font-serif text-2xl text-fci-foreground sm:text-3xl">
+        <h2 className="fci-section-subtitle mt-2 text-center">
           {t("title")}
         </h2>
-        <div className="mx-auto mt-3 max-w-3xl space-y-2.5 text-center text-sm leading-relaxed text-fci-muted sm:max-w-4xl lg:max-w-5xl">
-          <p className="text-balance text-fci-foreground/90">
+        <div className="fci-section-body mx-auto mt-3 max-w-3xl space-y-2.5 text-center sm:max-w-4xl lg:max-w-5xl">
+          <p className="text-fci-foreground/90">
             {t("introOpening")}
           </p>
           <p className="text-balance">{t("introLine2")}</p>

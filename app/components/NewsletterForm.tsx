@@ -57,7 +57,7 @@ export function NewsletterForm({ variant = "compact" }: Props) {
         <p className="fci-section-label">
           {t("title")}
         </p>
-        <p className="mt-2 text-sm text-fci-muted">{t("subtitle")}</p>
+        <p className="fci-section-body mt-2">{t("subtitle")}</p>
         <Form
           formAction={formAction}
           locale={locale}
@@ -74,7 +74,7 @@ export function NewsletterForm({ variant = "compact" }: Props) {
       <p className="fci-section-label">
         {t("title")}
       </p>
-      <p className="mt-1 text-xs text-fci-muted">{t("subtitle")}</p>
+      <p className="fci-section-body mt-1">{t("subtitle")}</p>
       <Form
         formAction={formAction}
         locale={locale}

@@ -51,10 +51,10 @@ export default async function ContactoPage({ params }: Props) {
           <p className="fci-section-label text-center">
             {t("eyebrow")}
           </p>
-          <h1 className="mt-3 text-center font-serif text-3xl text-fci-foreground sm:text-5xl">
+          <h1 className="fci-section-subtitle mt-3 text-center">
             {t("title")}
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-base text-fci-muted text-balance">
+          <p className="fci-section-body mx-auto mt-4 max-w-2xl text-center">
             {t("intro")}
           </p>
         </div>

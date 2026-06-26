@@ -50,11 +50,11 @@ export async function SplitDomains() {
       id="servicios"
       className="scroll-mt-24 border-t border-white/5 py-16 sm:py-24"
     >
-      <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[110rem] px-3 sm:px-4 lg:px-6">
         <p className="fci-section-label text-center">
           {t("eyebrow")}
         </p>
-        <p className="mx-auto mt-4 max-w-5xl text-center text-sm leading-relaxed text-fci-muted text-balance sm:text-base lg:max-w-6xl">
+        <p className="fci-section-body mx-auto mt-4 max-w-5xl text-center lg:max-w-7xl">
           {t("introP1")}
         </p>
 
@@ -99,7 +99,7 @@ export async function SplitDomains() {
               <p className="inline-block rounded-sm bg-fci-earth px-3 py-1 font-serif text-sm font-semibold uppercase tracking-widest text-fci-foreground">
                 {t("earthTitle")}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-fci-muted">
+              <p className="fci-section-body mt-3">
                 {t("earthBody")}
               </p>
               <div className="mt-auto flex w-full flex-col pt-4">
@@ -144,7 +144,7 @@ export async function SplitDomains() {
               <p className="inline-block rounded-sm bg-fci-space px-3 py-1 font-serif text-sm font-semibold uppercase tracking-widest text-fci-foreground">
                 {t("spaceTitle")}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-fci-muted">
+              <p className="fci-section-body mt-3">
                 {t("spaceBody")}
               </p>
               <div className="mt-auto flex w-full flex-col pt-4">
@@ -162,7 +162,7 @@ export async function SplitDomains() {
         <FoundationServices />
 
         <div className="mt-12 text-center">
-          <p className="font-serif text-lg text-balance text-fci-foreground sm:text-xl">
+          <p className="fci-section-subtitle text-center">
             {t("closing")}
           </p>
           <Link

@@ -52,11 +52,11 @@ export default async function NexusComingSoonPage({ params }: Props) {
           <p className="fci-section-label mt-8 text-center">
             {t("eyebrow")}
           </p>
-          <h1 className="mt-4 font-serif text-4xl font-semibold uppercase tracking-[0.08em] text-fci-foreground sm:text-5xl md:text-6xl">
+          <h1 className="fci-section-subtitle mt-4 text-center uppercase tracking-[0.08em]">
             {t("title")}
           </h1>
           <div className="mx-auto mt-8 h-px w-24 bg-fci-gold/70" />
-          <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-fci-muted text-balance sm:text-lg">
+          <p className="fci-section-body mx-auto mt-8 max-w-xl">
             {t("body")}
           </p>
           <Link

@@ -27,10 +27,10 @@ export async function FciConnectTeaser() {
         <p className="fci-section-label text-center">
           {t("eyebrow")}
         </p>
-        <h2 className="mt-2 text-center font-serif text-2xl text-fci-foreground sm:text-3xl">
+        <h2 className="fci-section-subtitle mt-2 text-center">
           {t("title")}
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-fci-muted text-balance">
+        <p className="fci-section-body mx-auto mt-3 max-w-2xl text-center">
           {t("intro")}
         </p>
         <ul className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:items-stretch lg:grid-cols-4">

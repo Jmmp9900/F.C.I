@@ -20,10 +20,10 @@ export async function EducacionTeaser() {
             <p className="fci-section-label">
               {t("eyebrow")}
             </p>
-            <h2 className="mt-2 font-serif text-2xl text-fci-foreground sm:text-3xl text-balance">
+            <h2 className="fci-section-subtitle mt-2 text-balance">
               {t("title")}
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-fci-muted sm:text-base">
+            <p className="fci-section-body mt-4">
               {t("body")}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">

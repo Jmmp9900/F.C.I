@@ -32,7 +32,7 @@ export async function PublicationsTeaser() {
         <p className="fci-section-label text-center">
           {t("eyebrow")}
         </p>
-        <h2 className="mt-2 text-center font-serif text-2xl text-fci-foreground sm:text-3xl">
+        <h2 className="fci-section-subtitle mt-2 text-center">
           {t("title")}
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-fci-muted text-balance">
@@ -68,7 +68,7 @@ type Translator = Awaited<ReturnType<typeof getTranslations<"Publications">>>;
 
 function EmptyMessage({ message }: { message: string }) {
   return (
-    <p className="mx-auto mt-10 max-w-xl rounded-xl border border-white/10 bg-fci-surface/30 px-6 py-8 text-center text-sm leading-relaxed text-fci-muted sm:text-base">
+    <p className="fci-section-body mx-auto mt-10 max-w-xl rounded-xl border border-white/10 bg-fci-surface/30 px-6 py-8 text-center">
       {message}
     </p>
   );

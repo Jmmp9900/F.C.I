@@ -28,17 +28,17 @@ export async function NexusTeaser() {
               <p className="fci-section-label">
                 {t("eyebrow")}
               </p>
-              <h2 className="mt-2 flex flex-wrap items-center gap-2 font-serif text-2xl text-fci-foreground sm:text-3xl">
+              <h2 className="fci-section-subtitle mt-2 flex flex-wrap items-center gap-2">
                 {t("title")}
                 <ArrowRight
                   className="size-5 shrink-0 text-fci-violet opacity-70 transition group-hover:translate-x-0.5 group-hover:opacity-100"
                   aria-hidden
                 />
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-balance text-fci-muted sm:text-base">
+              <p className="fci-section-body mt-4">
                 {t("body")}
               </p>
-              <p className="mt-3 flex items-start gap-2.5 text-xs leading-relaxed text-balance text-fci-muted sm:text-sm">
+              <p className="fci-section-body mt-3 flex items-start gap-2.5">
                 <Cpu className="size-4 shrink-0 text-fci-gold" aria-hidden />
                 {t("footnote")}
               </p>

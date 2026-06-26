@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -17,42 +17,22 @@ type ServiceId = (typeof SERVICE_IDS)[number];
 const goldCardClass =
   "w-full rounded-xl bg-gradient-to-r from-fci-gold-dim via-fci-gold to-fci-gold-hover px-5 py-4 text-left text-sm font-semibold uppercase tracking-wide text-fci-void shadow-[0_4px_24px_rgba(226,189,58,0.28)] transition duration-200 hover:brightness-110 hover:shadow-[0_8px_32px_rgba(226,189,58,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fci-gold/70";
 
-const CLOSE_DELAY_MS = 420;
-
 export function FoundationServices() {
   const t = useTranslations("FoundationServices");
   const [activeId, setActiveId] = useState<ServiceId | null>(null);
   const [portalReady, setPortalReady] = useState(false);
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     setPortalReady(true);
   }, []);
 
   const open = useCallback((id: ServiceId) => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
-    }
     setActiveId(id);
   }, []);
 
-  const scheduleClose = useCallback(() => {
-    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-    closeTimerRef.current = setTimeout(() => setActiveId(null), CLOSE_DELAY_MS);
-  }, []);
-
-  const cancelClose = useCallback(() => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
-    }
-  }, []);
-
   const close = useCallback(() => {
-    cancelClose();
     setActiveId(null);
-  }, [cancelClose]);
+  }, []);
 
   useEffect(() => {
     if (!activeId) return;
@@ -69,12 +49,6 @@ export function FoundationServices() {
     };
   }, [activeId, close]);
 
-  useEffect(() => {
-    return () => {
-      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-    };
-  }, []);
-
   const activeService = activeId;
   const bullets =
     activeService && t.has(`items.${activeService}.bullets`)
@@ -86,7 +60,7 @@ export function FoundationServices() {
       <p className="fci-section-label text-center">
         {t("eyebrow")}
       </p>
-      <h3 className="mt-2 text-center font-serif text-xl text-fci-foreground sm:text-2xl">
+      <h3 className="fci-section-subtitle mt-2 text-center">
         {t("title")}
       </h3>
 
@@ -99,11 +73,8 @@ export function FoundationServices() {
               aria-expanded={activeId === id}
               aria-controls="foundation-service-panel"
               onMouseEnter={() => open(id)}
-              onMouseLeave={scheduleClose}
               onFocus={() => open(id)}
-              onClick={() =>
-                setActiveId((current) => (current === id ? null : id))
-              }
+              onClick={() => open(id)}
             >
               <span className="block leading-snug">
                 {t(`items.${id}.title`)}
@@ -119,11 +90,9 @@ export function FoundationServices() {
               className="fixed inset-0 z-[200] flex min-h-[100dvh] items-center justify-center p-4 sm:p-6"
               role="presentation"
             >
-              <button
-                type="button"
+              <div
                 className="absolute inset-0 bg-fci-void/75 backdrop-blur-sm"
-                aria-label={t("closeAria")}
-                onClick={close}
+                aria-hidden
               />
               <div
                 id="foundation-service-panel"
@@ -131,8 +100,6 @@ export function FoundationServices() {
                 aria-modal="true"
                 aria-labelledby="foundation-service-title"
                 className="relative z-[1] max-h-[min(85dvh,44rem)] w-full max-w-2xl overflow-y-auto rounded-2xl border border-fci-gold/35 bg-gradient-to-b from-fci-navy/95 to-fci-void p-6 shadow-[0_0_48px_rgba(226,189,58,0.22)] sm:p-8"
-                onMouseEnter={cancelClose}
-                onMouseLeave={scheduleClose}
               >
                 <button
                   type="button"
@@ -148,13 +115,13 @@ export function FoundationServices() {
                 </p>
                 <h4
                   id="foundation-service-title"
-                  className="mt-2 pr-8 font-serif text-xl text-fci-foreground sm:text-2xl"
+                  className="fci-section-subtitle mt-2 pr-8"
                 >
                   {t(`items.${activeService}.title`)}
                 </h4>
                 <div className="mt-4 h-px w-16 bg-fci-gold/70" />
 
-                <div className="mt-5 space-y-4 text-left text-sm leading-relaxed text-fci-muted sm:text-base">
+                <div className="fci-section-body mt-5 space-y-4 text-left">
                   <p>{t(`items.${activeService}.p1`)}</p>
                   {t.has(`items.${activeService}.p2`) ? (
                     <p>{t(`items.${activeService}.p2`)}</p>

@@ -63,11 +63,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           <p className="fci-section-label text-center">
             {t("categoryLabel")}
           </p>
-          <h1 className="mt-3 text-center font-serif text-3xl text-fci-foreground sm:text-4xl">
+          <h1 className="fci-section-subtitle mt-3 text-center">
             {t("filtered.byCategory", { name: category.name })}
           </h1>
           {category.description ? (
-            <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-fci-muted">
+            <p className="fci-section-body mx-auto mt-3 max-w-2xl text-center">
               {category.description}
             </p>
           ) : null}
