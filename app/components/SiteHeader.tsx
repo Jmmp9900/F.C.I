@@ -90,7 +90,7 @@ export async function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-fci-void/90 backdrop-blur-md">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         {/* Fila 1: marca + acciones (móvil/tablet/escritorio) */}
-        <div className="flex items-center justify-between gap-4 py-3.5 lg:border-b lg:border-white/[0.08] lg:py-4">
+        <div className="flex items-center justify-between gap-4 py-4 lg:border-b lg:border-white/[0.08] lg:py-5">
           <a
             href={`${homePath}#inicio`}
             className="inline-flex min-w-0 shrink items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2"
@@ -101,7 +101,7 @@ export async function SiteHeader() {
               width={1081}
               height={1081}
               priority
-              className="h-14 w-auto max-w-[min(100%,18rem)] object-contain object-left sm:h-16 sm:max-w-[20rem] lg:h-[4.75rem] lg:max-w-[22rem]"
+              className="h-20 w-auto max-w-[min(100%,24rem)] object-contain object-left sm:h-24 sm:max-w-[28rem] md:h-28 lg:h-32 lg:max-w-[32rem] xl:h-36 xl:max-w-[36rem]"
             />
           </a>
 
