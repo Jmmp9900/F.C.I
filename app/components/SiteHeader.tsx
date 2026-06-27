@@ -85,23 +85,27 @@ export async function SiteHeader() {
     locale === "en"
       ? "/images/brand/fci-logo-en.png"
       : "/images/brand/fci-logo-es.png";
+  const logoSize =
+    locale === "en"
+      ? { width: 833, height: 521 }
+      : { width: 860, height: 512 };
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-fci-void/90 backdrop-blur-md">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         {/* Fila 1: marca + acciones (móvil/tablet/escritorio) */}
-        <div className="flex items-center justify-between gap-4 py-4 lg:border-b lg:border-white/[0.08] lg:py-5">
+        <div className="flex items-center justify-between gap-4 py-4 lg:border-b lg:border-white/[0.08] lg:py-6">
           <a
             href={`${homePath}#inicio`}
-            className="inline-flex min-w-0 shrink items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2"
+            className="inline-flex min-w-0 max-w-[calc(100%-3.25rem)] items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2 sm:max-w-[calc(100%-4rem)] lg:max-w-none"
           >
             <Image
               src={logoSrc}
               alt={`${tc("brandAcronym")} — ${tc("tagline")}`}
-              width={1081}
-              height={1081}
+              width={logoSize.width}
+              height={logoSize.height}
               priority
-              className="h-20 w-auto max-w-[min(100%,24rem)] object-contain object-left sm:h-24 sm:max-w-[28rem] md:h-28 lg:h-32 lg:max-w-[32rem] xl:h-36 xl:max-w-[36rem]"
+              className="h-28 w-auto max-w-[min(100%,34rem)] object-contain object-left sm:h-32 sm:max-w-[38rem] md:h-36 lg:h-40 lg:max-w-[42rem] xl:h-44 xl:max-w-[46rem]"
             />
           </a>
 
