@@ -81,6 +81,10 @@ export async function SiteHeader() {
   const tc = await getTranslations("Common");
   const locale = await getLocale();
   const homePath = getPathname({ locale, href: "/" });
+  const logoSrc =
+    locale === "en"
+      ? "/images/brand/fci-logo-en.png"
+      : "/images/brand/fci-logo-es.png";
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-fci-void/90 backdrop-blur-md">
@@ -92,10 +96,10 @@ export async function SiteHeader() {
             className="inline-flex min-w-0 shrink items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-fci-gold/60 focus-visible:outline-offset-2"
           >
             <Image
-              src="/images/brand/fci-logo.png"
+              src={logoSrc}
               alt={`${tc("brandAcronym")} — ${tc("tagline")}`}
-              width={320}
-              height={104}
+              width={1081}
+              height={1081}
               priority
               className="h-14 w-auto max-w-[min(100%,18rem)] object-contain object-left sm:h-16 sm:max-w-[20rem] lg:h-[4.75rem] lg:max-w-[22rem]"
             />
