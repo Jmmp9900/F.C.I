@@ -87,8 +87,8 @@ export async function SiteHeader() {
       : "/images/brand/fci-logo-es.png";
   const logoSize =
     locale === "en"
-      ? { width: 833, height: 521 }
-      : { width: 860, height: 512 };
+      ? { width: 1081, height: 1081 }
+      : { width: 1080, height: 1081 };
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-fci-void/90 backdrop-blur-md">
@@ -105,7 +105,7 @@ export async function SiteHeader() {
               width={logoSize.width}
               height={logoSize.height}
               priority
-              className="h-28 w-auto max-w-[min(100%,34rem)] object-contain object-left sm:h-32 sm:max-w-[38rem] md:h-36 lg:h-40 lg:max-w-[42rem] xl:h-44 xl:max-w-[46rem]"
+              className="h-32 w-auto max-w-[min(100%,20rem)] object-contain object-left sm:h-36 sm:max-w-[22rem] md:h-40 lg:h-44 lg:max-w-[24rem] xl:h-48 xl:max-w-[26rem]"
             />
           </a>
 
